@@ -15,6 +15,7 @@
 		"@commitlint/config-conventional": "^19.1.0",
 		"@typescript-eslint/eslint-plugin": "^7.3.1",
 		"@typescript-eslint/parser": "^7.3.1",
+		"@vue/runtime-core": "^3.4.21",
 		"commitizen": "^4.3.0",
 		"commitlint-config-monorepo": "^2.0.2",
 		"conventional-changelog-cli": "^2.2.2",
@@ -33,7 +34,12 @@
 		"husky": "^9.0.11",
 		"lerna": "^3.22.1",
 		"lint-staged": "^15.2.2",
-		"prettier": "^3.2.5"
+		"prettier": "^3.2.5",
+		"sass": "^1.72.0",
+		"sass-loader": "^14.1.1",
+		"typescript": "^5.4.2",
+		"unplugin-vue-define-options": "^1.4.2",
+		"vue": "^3.4.21"
 	},
 	"repository": {
 		"type": "git",
@@ -50,10 +56,11 @@
 		}
 	},
 	"workspaces": [
-		"packages/*"
+		"packages/**",
+		"play"
 	],
 	"lint-staged": {
-		"src/**/*.{js,jsx,ts,tsx,vue}": [
+		"**/*.{js,jsx,ts,tsx,vue}": [
 			"eslint --ext .js,.jsx,.vue,.ts,.tsx --fix --quiet ./"
 		]
 	}

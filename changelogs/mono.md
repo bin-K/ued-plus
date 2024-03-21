@@ -1,3 +1,12 @@
+### v1.0.1
+#### 2024-03-22 00:19:49 +0800
+
+### Features
+
+* **mono:** 搭建项目并开发组件  ([40abf34](https://github.com/bin-K/ued-plus/commit/40abf34)) by: **Kuangzhibin**
+
+---
+
 ### v1.0.0
 #### 2024-03-20 23:43:18 +0800
 

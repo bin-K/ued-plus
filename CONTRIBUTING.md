@@ -1,5 +1,7 @@
 ### 自定义组件库（Vue3）
 
+- 参考：https://juejin.cn/column/7118932817119019015
+
 #### 组件库的环境配置
 
 - 技术选型：使用 Vite+Ts 开发的是 Vue3 组件库
@@ -33,7 +35,7 @@ npx tsc --init
 }
 ```
 
-##### 搭建基于vite的vue3项目
+#### 搭建基于vite的vue3项目
 
 - 新建play 文件夹，初始化pnpm init, 后续的组件调试就在这个项目下进行
 - 安装依赖，在play安装vite和vitejs/plugin-vue插件,@vitejs/plugin-vue插件是为了解析后缀为.vue文件的
@@ -116,9 +118,9 @@ declare module '*.vue' {
 }
 ```
 
-##### 开发一个组件
+#### 开发一个组件
 
-###### 测试组件
+##### 测试组件
 
 - packages目录下新建components和utils
 
@@ -174,7 +176,7 @@ import { Button } from '@easyest/components'
 </script>
 ```
 
-###### 全局挂载组件
+##### 全局挂载组件
 
 - 使用app.use 挂载全局组件，会调用传入参数的 install 方法，给每个组件添加一个 install 方法,然后再导出整个组件库
 - 改造`button/index.ts`
@@ -290,4 +292,327 @@ export default defineConfig({
 })
 ```
 
-###### 基础组件开发
+#### 使用vite 打包组件库
+
+##### 打包配置
+
+- 全局安装 vite 以及@vitejs/plugin-vue
+
+```shell
+pnpm add vite @vitejs/plugin-vue -D -w
+```
+
+- `components/vite.config.ts` components下新建vite.config.ts
+
+```ts
+import { defineConfig } from 'vite'
+import vue from '@vitejs/plugin-vue'
+export default defineConfig({
+	build: {
+		// 打包后文件目录
+		outDir: 'ued',
+		// 压缩
+		minify: false,
+		rollupOptions: {
+			// 忽略打包vue文件
+			external: ['vue'],
+			output: {
+				globals: {
+					vue: 'Vue',
+				},
+				dir: 'dist',
+			},
+		},
+		lib: {
+			entry: './index.ts',
+			name: 'ued',
+			fileName: 'ued',
+			formats: ['es', 'umd', 'cjs'],
+		},
+	},
+	plugins: [vue()],
+})
+```
+
+- 配置打包命令并执行， `components/package.json`下
+- 这种打包方式最终会将整个组件库打包到一个文件中,并且样式文件也不能按需加载
+
+```json
+{
+	"script": {
+		"build": "vite build"
+	}
+}
+```
+
+```shell
+pnpm build
+```
+
+- 需要修改一下配置让打包后的结构和我们开发的结构一致
+
+```ts
+import { defineConfig } from 'vite'
+import vue from '@vitejs/plugin-vue'
+export default defineConfig({
+	build: {
+		// 打包后文件目录
+		outDir: 'ued',
+		// 压缩
+		minify: false,
+		rollupOptions: {
+			// 忽略打包vue文件
+			external: ['vue'],
+			input: ['index.ts'],
+			output: [
+				{
+					// 打包格式
+					format: 'es',
+					// 打包后文件名
+					entryFileNames: '[name].mjs',
+					// 让打包目录和我们目录对应
+					preserveModules: true,
+					exports: 'named',
+					// 配置打包根目录
+					dir: '../ued/es',
+				},
+				{
+					// 打包格式
+					format: 'cjs',
+					// 打包后文件名
+					entryFileNames: '[name].js',
+					// 让打包目录和我们目录对应
+					preserveModules: true,
+					exports: 'named',
+					// 配置打包根目录
+					dir: '../ued/lib',
+				},
+			],
+		},
+		lib: {
+			entry: './index.ts',
+		},
+	},
+	plugins: [vue()],
+})
+```
+
+##### 声明文件
+
+- 安装vite-plugin-dts
+
+```shell
+pnpm add vite-plugin-dts -D -w
+```
+
+- `compoments/vite.config.ts`
+
+```ts
+import { defineConfig } from 'vite'
+import vue from '@vitejs/plugin-vue'
+import dts from 'vite-plugin-dts'
+export default defineConfig({
+	plugins: [
+		vue(),
+		dts({
+			entryRoot: './src',
+			outDir: ['../ued/es/src', '../ued/lib/src'],
+			// 指定使用的tsconfig.json为我们整个项目根目录下,如果不配置,你也可以在components下新建tsconfig.json
+			tsconfigPath: '../../tsconfig.json',
+		}),
+	],
+})
+```
+
+#### 使用 gulp 打包组件库并实现按需加载
+
+##### 删除打包文件
+
+- 在 components 新建一个 script 文件夹用于存放我们的脚本相关内容
+- 安装 @types/node
+
+```shell
+pnpm add @types/node -D -w
+```
+
+- 新建 `script/utils/path.ts`
+
+```ts
+import { resolve } from 'path'
+
+//组件库根目录
+export const componentPath = resolve(__dirname, '../../')
+
+//pkg根目录
+export const pkgPath = resolve(__dirname, '../../../')
+```
+
+- 新建 `script/utils/del-path.ts`
+
+```ts
+import fs from 'fs'
+import { resolve } from 'path'
+import { pkgPath } from './path'
+// 保留的文件
+const stayFile = ['package.json', 'README.md']
+
+const delPath = async (path: string) => {
+	let files: string[] = []
+
+	if (fs.existsSync(path)) {
+		files = fs.readdirSync(path)
+
+		files.forEach(async (file) => {
+			const curPath = resolve(path, file)
+
+			if (fs.statSync(curPath).isDirectory()) {
+				// recurse
+				if (file !== 'node_modules') await delPath(curPath)
+			} else {
+				// delete file
+				if (!stayFile.includes(file)) {
+					fs.unlinkSync(curPath)
+				}
+			}
+		})
+
+		if (path !== `${pkgPath}/easyest`) fs.rmdirSync(path)
+	}
+}
+export default delPath
+```
+
+##### 使用 gulp 删除打包文件
+
+- 安装一些依赖使得 gulp 支持ts 以及新的 es6 语法
+- sucras 可以让执行 gulp 可以使用最新语法并且支持 ts
+
+```shell
+pnpm i gulp @types/gulp sucrase -D -w
+```
+
+- 新建 `scropt/build/index.ts`
+
+```ts
+import { series } from 'gulp'
+import delPath from '../utils/del-path'
+import { pkgPath } from '../utils/path'
+
+export const removeDist = () => {
+	return delPath(`${pkgPath}/ued`)
+}
+
+export default series(async () => removeDist())
+```
+
+- 根目录下添加脚本,并执行
+
+```json
+{
+	"script": {
+		"build:ued": "gulp -f packages/components/script/build/index.ts"
+	}
+}
+```
+
+##### glup打包样式
+
+- 安装gulp-sass,同时在安装一个自动补全 css 前缀插件gulp-autoprefixer
+- gulp-autoprefixer@^9.0.0 会出现TypeError [ERR_UNKNOWN_FILE_EXTENSION]: Unknown file extension ".ts"的问题（待解决）
+
+```shell
+pnpm add gulp-sass @types/gulp-sass gulp-autoprefixer@^8.0.0 @types/gulp-autoprefixer -D -w
+```
+
+- 修改`build/index.ts`
+
+```ts
+import { series, src, dest, parallel } from 'gulp'
+import autoprefixer from 'gulp-autoprefixer'
+import delPath from '../utils/del-path'
+import { pkgPath, componentPath } from '../utils/path'
+const sass = require('gulp-sass')(require('sass'))
+
+export const removeDist = () => {
+	return delPath(`${pkgPath}/ued`)
+}
+
+// 打包样式
+export const buildStyle = () => {
+	return src(`${componentPath}/src/**/styles/**.scss`)
+		.pipe(sass())
+		.pipe(autoprefixer())
+		.pipe(dest(`${pkgPath}/ued/lib/src`))
+		.pipe(dest(`${pkgPath}/ued/es/src`))
+}
+
+export default series(
+	async () => removeDist(),
+	parallel(async () => buildStyle())
+)
+```
+
+- 新建`utils/run.ts`
+
+```ts
+import { spawn } from 'child_process'
+
+export default async (command: string, path: string) => {
+	// cmd表示命令，args代表参数，如 rm -rf  rm就是命令，-rf就为参数
+	const [cmd, ...args] = command.split(' ')
+	return new Promise((resolve) => {
+		const app = spawn(cmd, args, {
+			cwd: path, // 执行命令的路径
+			stdio: 'inherit', // 输出共享给父进程
+			shell: true, // mac不需要开启，windows下git base需要开启支持
+		})
+		// 执行完毕关闭并resolve
+		app.on('close', resolve)
+	})
+}
+```
+
+- `build/index.ts`新增
+
+```ts
+//打包组件
+export const buildComponent = async () => {
+	run('pnpm run build', componentPath)
+}
+```
+
+- `vite.config.ts`中忽略打包sass
+
+```ts
+rollupOptions: {
+	// 忽略打包vue文件
+	external: ['vue', /\.scss/],
+}
+```
+
+- vite 打包忽略了 sass 文件打包,所以打包后的文件遇到.scss 文件的引入会自动跳过,所以引入代码没变将代码中的.scss换成.css
+
+- 在`components/vite.config.ts` 中的 plugins 中新增
+
+```ts
+ plugins: [
+    {
+      name: "style",
+      generateBundle(config, bundle) {
+        //这里可以获取打包后的文件目录以及代码code
+        const keys = Object.keys(bundle);
+
+        for (const key of keys) {
+          const bundler: any = bundle[key as any];
+          //rollup内置方法,将所有输出文件code中的.scss换成.css,因为我们当时没有打包scss文件
+
+          this.emitFile({
+            type: "asset",
+            fileName: key, //文件名名不变
+            source: bundler.code.replace(/\.scss/g, ".css"),
+          });
+        }
+      },
+    },
+  ],
+```

@@ -5,7 +5,9 @@
 	"type": "module",
 	"main": "index.ts",
 	"scripts": {
-		"build": "vite build"
+		"build": "vite build",
+		"test": "vitest",
+		"coverage": "vitest run --coverage"
 	},
 	"keywords": [],
 	"author": "",

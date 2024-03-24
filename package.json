@@ -6,7 +6,10 @@
 	"scripts": {
 		"init": "sh ./scripts/shell/init.sh --all",
 		"lint-staged": "lint-staged",
-		"build:ued": "gulp -f packages/components/script/build/index.ts"
+		"lint:script": "eslint --ext .js,.jsx,.vue,.ts,.tsx --fix ./",
+		"lint:style": "stylelint --fix \"**/*.{css,less,scss}\"",
+		"build:ued": "gulp -f packages/components/script/build/index.ts",
+		"prepare": "husky"
 	},
 	"keywords": [],
 	"author": "",
@@ -43,9 +46,17 @@
 		"husky": "^9.0.11",
 		"lerna": "^3.22.1",
 		"lint-staged": "^15.2.2",
+		"postcss-html": "^1.6.0",
 		"prettier": "^3.2.5",
 		"sass": "^1.72.0",
 		"sass-loader": "^14.1.1",
+		"stylelint": "^15.10.3",
+		"stylelint-config-prettier": "^9.0.5",
+		"stylelint-config-recess-order": "^4.3.0",
+		"stylelint-config-recommended-scss": "^14.0.0",
+		"stylelint-config-recommended-vue": "^1.5.0",
+		"stylelint-config-standard": "^34.0.0",
+		"stylelint-prettier": "^4.0.2",
 		"sucrase": "^3.35.0",
 		"typescript": "^5.4.2",
 		"unplugin-vue-define-options": "^1.4.2",
@@ -74,7 +85,10 @@
 	],
 	"lint-staged": {
 		"**/*.{js,jsx,ts,tsx,vue}": [
-			"eslint --ext .js,.jsx,.vue,.ts,.tsx --fix --quiet ./"
+			"eslint --ext .js,.jsx,.vue,.ts,.tsx  --fix  ./"
+		],
+		"**/*.{css,less,scss}": [
+			"stylelint --fix \"**/*.{css,less}\""
 		]
 	}
 }

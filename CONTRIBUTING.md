@@ -738,3 +738,53 @@ export default {
 	},
 }
 ```
+
+#### 集成项目的编程规范工具链(ESlint+Prettier+Stylelint)
+
+- ESlint和Prettier在搭建monorepo时已经添加，需要补充Stylelint
+
+```shell
+pnpm add stylelint@^15.10.3 stylelint-prettier@^4.0.2 stylelint-config-standard stylelint-config-recommended-scss postcss-html stylelint-config-recommended-vue stylelint-config-recess-order stylelint-config-prettier -D -w
+
+```
+
+- 新建`.stylelintrc.cjs`
+
+```js
+module.exports = {
+	// 注册 stylelint 的 prettier 插件
+	plugins: ['stylelint-prettier'],
+	// 继承一系列规则集合
+	extends: [
+		// standard 规则集合
+		'stylelint-config-standard',
+		'stylelint-config-recommended-scss',
+		// 样式属性顺序规则
+		'stylelint-config-recess-order',
+		// 接入 Prettier 规则
+		'stylelint-config-prettier',
+		'stylelint-prettier/recommended',
+	],
+	// 配置 rules
+	rules: {
+		// 开启 Prettier 自动格式化功能
+		'prettier/prettier': true,
+	},
+}
+```
+
+- 新增命令
+
+```json
+{
+	"script": {
+		// stylelint 命令
+		"lint:style": "stylelint --fix \"**/*.{css,less,scss}\""
+	},
+	"lint-staged": {
+		"**/*.{css,less,scss}": ["stylelint --fix \"**/*.{css,less}\""]
+	}
+}
+```
+
+- 执行命令即可完成样式格式化

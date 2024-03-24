@@ -1,3 +1,12 @@
+### v1.0.4
+#### 2024-03-24 17:19:40 +0800
+
+### Features
+
+* **mono:** 配置stylelint  ([ac88747](https://github.com/bin-K/ued-plus/commit/ac88747)) by: **kuangzhibin**
+
+---
+
 ### v1.0.3
 #### 2024-03-24 16:26:25 +0800
 

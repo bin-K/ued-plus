@@ -788,3 +788,92 @@ module.exports = {
 ```
 
 - 执行命令即可完成样式格式化
+
+#### 引入现代前端测试框架 Vitest
+
+- 安装依赖
+
+```shell
+pnpm add vitest happy-dom @vitest/coverage-v8 -D -w
+```
+
+- 在`components/vite.config.ts`中对 Vitest 做一个相关配置
+
+```ts
+// 三斜线命令告诉编译器在编译过程中要引入的额外的文件
+/// <reference types="vitest" />
+import { defineConfig } from "vite";
+import vue from "@vitejs/plugin-vue"
+...
+export default defineConfig(
+    {
+        ...
+        test: {
+            environment: "happy-dom"
+        },
+
+    }
+)
+```
+
+- 添加测试命令, `components/package.json`
+
+```json
+{
+	"scripts": {
+		"test": "vitest",
+		"coverage": "vitest run --coverage"
+	}
+}
+```
+
+- 执行test命令时,Vitest 会执行`**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}`的文件,
+  这里我们的测试文件统一命名为`**/*.{test}.ts`的形式并放在每个组件的`__tests__`目录下
+- 新建`__tests__/button.test.ts`
+
+```ts
+import { describe, expect, it } from 'vitest'
+
+describe('helloued', () => {
+	it('should be helloued', () => {
+		expect('hello' + 'ued').toBe('helloued')
+	})
+})
+```
+
+- 测试组件
+
+```shell
+pnpm add @vue/test-utils -D -w
+
+```
+
+```ts
+import { describe, expect, it } from 'vitest'
+
+import { mount } from '@vue/test-utils'
+import button from '../button.vue'
+
+// The component to test
+describe('test button', () => {
+	it('should render slot', () => {
+		const wrapper = mount(button, {
+			slots: {
+				default: 'ued',
+			},
+		})
+
+		// Assert the rendered text of the component
+		expect(wrapper.text()).toContain('ued')
+	})
+
+	it('should have class', () => {
+		const wrapper = mount(button, {
+			props: {
+				type: 'primary',
+			},
+		})
+		expect(wrapper.classes()).toContain('ued-button--primary')
+	})
+})
+```

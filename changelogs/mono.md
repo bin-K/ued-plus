@@ -1,3 +1,12 @@
+### v1.0.3
+#### 2024-03-24 16:26:25 +0800
+
+### Features
+
+* **mono:** vitepress搭建组件文档  ([91cbad9](https://github.com/bin-K/ued-plus/commit/91cbad9)) by: **kuangzhibin**
+
+---
+
 ### v1.0.2
 #### 2024-03-23 11:09:53 +0800
 

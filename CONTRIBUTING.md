@@ -616,3 +616,125 @@ rollupOptions: {
     },
   ],
 ```
+
+#### VitePress 搭建部署组件库文档
+
+##### 安装vitepress
+
+- `新建site文件夹`,并初始化 pnpm init
+- 安装 vitepress和vue
+
+```shell
+pnpm install -D vitepress vue
+```
+
+- 新建`site/docs/index.md`
+
+```md
+# Hello ued-plus
+```
+
+- 添加命令
+
+```json
+{
+	"scripts": {
+		"docs:dev": "vitepress dev docs",
+		"docs:build": "vitepress build docs",
+		"docs:preview": "vitepress preview docs"
+	}
+}
+```
+
+- 执行命令
+
+```shell
+pnpm docs:dev
+```
+
+##### 导航栏配置
+
+- 新建`site/docs/.vitepress/config.js`
+
+```js
+export default {
+	themeConfig: {
+		siteTitle: 'vitepress',
+		nav: [
+			{ text: '指南', link: '/guide/installation/' },
+			{ text: '组件', link: '/components/button/' },
+		],
+		socialLinks: [{ icon: 'github', link: 'https://github.com/bin-K/ued-plus' }],
+	},
+}
+```
+
+- 新建`site/docs/guide/index.md` `site/docs/guide/installation/index.md`
+- 新建`site/docs/components/button/index.md`
+
+##### 侧边栏配置
+
+- `site/docs/.vitepress/config.js`配置sidebar
+
+```js
+sidebar: {
+	'/guide/': [
+		{
+			text: '基础',
+			items: [
+				{
+					text: '安装',
+					link: '/guide/installation/',
+				},
+				{
+					text: '快速开始',
+					link: '/guide/quickstart/',
+				},
+			],
+		},
+	],
+	'/components/': [
+		{
+			text: '基础组件',
+			items: [
+				{
+					text: 'Button',
+					link: '/components/button/',
+				},
+			],
+		},
+	],
+},
+```
+
+##### 引入组件库
+
+- `pnpm-workspace.yaml`新增一个site目录
+
+```yml
+packages:
+  - 'packages/**'
+  - 'play'
+  - 'site'
+```
+
+- `site`安装组件库
+
+```shell
+pnpm add @ued-plus/components
+```
+
+- 新建`site/docs/.vitepress/theme/index.js`引入组件库
+
+```js
+import DefaultTheme from 'vitepress/theme'
+import ued from '@ued-plus/components'
+export default {
+	...DefaultTheme,
+	enhanceApp: async ({ app }) => {
+		// app is the Vue 3 app instance from `createApp()`. router is VitePress'
+		// custom router. `siteData`` is a `ref`` of current site-level metadata.
+		app.use(ued)
+	},
+}
+```

@@ -69,7 +69,8 @@
 	},
 	"workspaces": [
 		"packages/**",
-		"play"
+		"play",
+		"site"
 	],
 	"lint-staged": {
 		"**/*.{js,jsx,ts,tsx,vue}": [

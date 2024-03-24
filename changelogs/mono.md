@@ -1,3 +1,12 @@
+### v1.0.6
+#### 2024-03-24 18:12:49 +0800
+
+### Features
+
+* **mono:** 配置文档部署命令  ([09ba481](https://github.com/bin-K/ued-plus/commit/09ba481)) by: **kuangzhibin**
+
+---
+
 ### v1.0.5
 #### 2024-03-24 17:48:28 +0800
 

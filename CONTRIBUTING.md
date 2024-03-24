@@ -739,6 +739,47 @@ export default {
 }
 ```
 
+##### 配置命令部署组件库
+
+- 新建`site/deploy.sh`
+
+```shell
+#!/usr/bin/env sh
+
+# 忽略错误
+# set -e
+
+# 构建
+pnpm run docs:build
+# 进入待发布的目录
+cd docs/.vitepress/dist
+git init
+git remote add origin git@github.com:bin-K/ued-ui.git
+git add -A
+git commit -m 'docs(update):更新文档'
+# 访问地址：https://bin-k.github.io/ued-ui/
+git push -f origin master
+```
+
+- 配置 命令
+
+```json
+{
+	"scripts": {
+		"docs:publish": "sh deploy.sh"
+	}
+}
+```
+
+- 新建 ued-ui仓库并且在setting中的pages 配置部署
+- 修改config.js
+
+```js
+export default {
+	base: process.env.NODE_ENV === 'production' ? '/ued-ui/' : '/',
+}
+```
+
 #### 集成项目的编程规范工具链(ESlint+Prettier+Stylelint)
 
 - ESlint和Prettier在搭建monorepo时已经添加，需要补充Stylelint

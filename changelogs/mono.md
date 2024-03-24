@@ -1,3 +1,12 @@
+### v1.0.5
+#### 2024-03-24 17:48:28 +0800
+
+### Features
+
+* **mono:** 配置vitest  ([fe85a6e](https://github.com/bin-K/ued-plus/commit/fe85a6e)) by: **kuangzhibin**
+
+---
+
 ### v1.0.4
 #### 2024-03-24 17:19:40 +0800
 

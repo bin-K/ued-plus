@@ -1,30 +1,340 @@
+@import url('../../../../theme/common/var.scss');
+
 .ued-button {
 	box-sizing: border-box;
 	display: inline-block;
-	padding: 12px 20px;
-	margin: 0;
-	font-size: 14px;
-	font-weight: 500;
+	padding: 8px 15px;
+	margin: 0 0 0 12px;
+	font-size: var(--ued-font-size-base);
+	font-weight: var(--ued-font-weight-primary);
 	line-height: 1;
-	color: #606266;
+	color: var(--ued-button-text-color, var(--ued-text-color-regular));
 	text-align: center;
 	white-space: nowrap;
 	cursor: pointer;
-	background: rgba(255, 255, 255, 1);
-	border: 1px solid #dcdfe6;
-	border-radius: 4px;
+	background: var(--ued-button-bg-color, var(--ued-color-white));
+	border: 1px solid var(--ued-button-border-color, var(--ued-border-color));
+	border-radius: var(--ued-border-radius-base);
 	outline: none;
 	transition: 0.1s;
-}
 
-.ued-button.ued-button--primary {
-	color: #fff;
-	background-color: #409eff;
-	border-color: #409eff;
+	&:first-child {
+		margin: 0;
+	}
 
+	&:focus,
 	&:hover {
-		color: #fff;
-		background: #66b1ff;
-		border-color: #66b1ff;
+		color: var(--ued-button-hover-text-color);
+		background-color: var(--ued-button-hover-bg-color);
+		border-color: var(--ued-button-hover-border-color, var(--ued-button-hover-bg-color));
+	}
+
+	&:active {
+		color: var(--ued-button-active-text-color);
+		background-color: var(--ued-button-active-bg-color);
+		border-color: var(--ued-button-active-border-color);
+	}
+
+	--ued-button-text-color: var(--ued-text-color-primary);
+	--ued-button-hover-text-color: var(--ued-color-primary);
+	--ued-button-hover-bg-color: var(--ued-color-primary-light-9);
+	--ued-button-hover-border-color: var(--ued-color-primary-light-8);
+	--ued-button-active-text-color: var(--ued-color-primary);
+	--ued-button-active-bg-color: var(--ued-color-primary-light-9);
+	--ued-button-active-border-color: var(--ued-color-primary);
+
+	// 基础按钮
+	&--primary,
+	&--success,
+	&--warning,
+	&--danger,
+	&--error,
+	&--info {
+		--ued-button-text-color: var(--ued-color-white);
+		--ued-button-hover-text-color: var(--ued-color-white);
+		--ued-button-active-text-color: var(--ued-button-hover-text-color);
+	}
+
+	&--primary {
+		--ued-button-bg-color: var(--ued-color-primary);
+		--ued-button-border-color: var(--ued-color-primary);
+		--ued-button-hover-bg-color: var(--ued-color-primary-dark-2);
+		--ued-button-hover-border-color: var(--ued-color-primary-dark-2);
+		--ued-button-active-bg-color: var(--ued-color-primary-light-3);
+		--ued-button-active-border-color: var(--ued-color-primary-light-3);
+	}
+
+	&--success {
+		--ued-button-bg-color: var(--ued-color-success);
+		--ued-button-border-color: var(--ued-color-success);
+		--ued-button-hover-bg-color: var(--ued-color-success-dark-2);
+		--ued-button-hover-border-color: var(--ued-color-success-dark-2);
+		--ued-button-active-bg-color: var(--ued-color-success-light-3);
+		--ued-button-active-border-color: var(--ued-color-success-light-3);
+	}
+
+	&--warning {
+		--ued-button-bg-color: var(--ued-color-warning);
+		--ued-button-border-color: var(--ued-color-warning);
+		--ued-button-hover-bg-color: var(--ued-color-warning-dark-2);
+		--ued-button-hover-border-color: var(--ued-color-warning-dark-2);
+		--ued-button-active-bg-color: var(--ued-color-warning-light-3);
+		--ued-button-active-border-color: var(--ued-color-warning-light-3);
+	}
+
+	&--danger {
+		--ued-button-bg-color: var(--ued-color-danger);
+		--ued-button-border-color: var(--ued-color-danger);
+		--ued-button-hover-bg-color: var(--ued-color-danger-dark-2);
+		--ued-button-hover-border-color: var(--ued-color-danger-dark-2);
+		--ued-button-active-bg-color: var(--ued-color-danger-light-3);
+		--ued-button-active-border-color: var(--ued-color-danger-light-3);
+	}
+
+	&--info {
+		--ued-button-bg-color: var(--ued-color-info);
+		--ued-button-border-color: var(--ued-color-info);
+		--ued-button-hover-bg-color: var(--ued-color-info-dark-2);
+		--ued-button-hover-border-color: var(--ued-color-info-dark-2);
+		--ued-button-active-bg-color: var(--ued-color-info-light-3);
+		--ued-button-active-border-color: var(--ued-color-info-light-3);
+	}
+
+	&.is-plain {
+		--ued-button-hover-bg-color: transparent;
+		--ued-button-hover-border-color: var(--ued-color-primary);
+		--ued-button-active-text-color: var(--ued-color-primary);
+		--ued-button-active-bg-color: transparent;
+		--ued-button-active-border-color: var(--ued-color-primary);
+	}
+
+	// 朴素按钮
+	&--primary.is-plain {
+		--ued-button-text-color: var(--ued-color-primary);
+		--ued-button-bg-color: var(--ued-color-primary-light-9);
+		--ued-button-border-color: var(--ued-color-primary-light-5);
+		--ued-button-hover-bg-color: var(--ued-color-primary);
+		--ued-button-hover-border-color: var(--ued-color-primary);
+	}
+
+	&--success.is-plain {
+		--ued-button-text-color: var(--ued-color-success);
+		--ued-button-bg-color: var(--ued-color-success-light-9);
+		--ued-button-border-color: var(--ued-color-success-light-5);
+		--ued-button-hover-bg-color: var(--ued-color-success);
+		--ued-button-hover-border-color: var(--ued-color-success);
+	}
+
+	&--warning.is-plain {
+		--ued-button-text-color: var(--ued-color-warning);
+		--ued-button-bg-color: var(--ued-color-warning-light-9);
+		--ued-button-border-color: var(--ued-color-warning-light-5);
+		--ued-button-hover-bg-color: var(--ued-color-warning);
+		--ued-button-hover-border-color: var(--ued-color-warning);
+	}
+
+	&--danger.is-plain {
+		--ued-button-text-color: var(--ued-color-danger);
+		--ued-button-bg-color: var(--ued-color-danger-light-9);
+		--ued-button-border-color: var(--ued-color-danger-light-5);
+		--ued-button-hover-bg-color: var(--ued-color-danger);
+		--ued-button-hover-border-color: var(--ued-color-danger);
+	}
+
+	&--info.is-plain {
+		--ued-button-text-color: var(--ued-color-info);
+		--ued-button-bg-color: var(--ued-color-info-light-9);
+		--ued-button-border-color: var(--ued-color-info-light-5);
+		--ued-button-hover-bg-color: var(--ued-color-info);
+		--ued-button-hover-border-color: var(--ued-color-info);
+	}
+
+	// 圆角按钮
+	&.is-round {
+		border-radius: var(--ued-border-radius-round);
+	}
+
+	// 圆形按钮
+	&.is-circle {
+		padding: 8px;
+		border-radius: 50%;
+	}
+
+	// 禁用状态
+	&.is-disabled {
+		color: var(--ued-button-disabled-text-color);
+		background-color: var(--ued-button-disabled-bg-color);
+		border-color: var(--ued-button-disabled-border-color);
+
+		&:hover {
+			cursor: not-allowed;
+		}
+
+		--ued-button-hover-text-color: var(--ued-text-color-primary);
+		--ued-button-active-text-color: var(--ued-text-color-primary);
+		--ued-button-disabled-text-color: var(--ued-disabled-text-color);
+	}
+
+	&--primary.is-disabled,
+	&--success.is-disabled,
+	&--warning.is-disabled,
+	&--danger.is-disabled,
+	&--info.is-disabled {
+		--ued-button-disabled-text-color: var(--ued-color-white);
+	}
+
+	&--primary.is-disabled {
+		--ued-button-disabled-bg-color: var(--ued-color-primary-light-5);
+		--ued-button-disabled-border-color: var(--ued-color-primary-light-5);
+	}
+
+	&--warning.is-disabled {
+		--ued-button-disabled-bg-color: var(--ued-color-warning-light-5);
+		--ued-button-disabled-border-color: var(--ued-color-warning-light-5);
+	}
+
+	&--danger.is-disabled {
+		--ued-button-disabled-bg-color: var(--ued-color-danger-light-5);
+		--ued-button-disabled-border-color: var(--ued-color-danger-light-5);
+	}
+
+	&--info.is-disabled {
+		--ued-button-disabled-bg-color: var(--ued-color-info-light-5);
+		--ued-button-disabled-border-color: var(--ued-color-info-light-5);
+	}
+
+	&--success.is-disabled {
+		--ued-button-disabled-bg-color: var(--ued-color-success-light-5);
+		--ued-button-disabled-border-color: var(--ued-color-success-light-5);
+	}
+
+	&--primary.is-disabled.is-plain {
+		--ued-button-disabled-text-color: var(--ued-color-primary-light-5);
+		--ued-button-disabled-bg-color: var(--ued-color-primary-light-9);
+		--ued-button-disabled-border-color: var(--ued-color-primary-light-8);
+	}
+
+	&--success.is-disabled.is-plain {
+		--ued-button-disabled-text-color: var(--ued-color-success-light-5);
+		--ued-button-disabled-bg-color: var(--ued-color-success-light-9);
+		--ued-button-disabled-border-color: var(--ued-color-success-light-8);
+	}
+
+	&--warning.is-disabled.is-plain {
+		--ued-button-disabled-text-color: var(--ued-color-warning-light-5);
+		--ued-button-disabled-bg-color: var(--ued-color-warning-light-9);
+		--ued-button-disabled-border-color: var(--ued-color-warning-light-8);
+	}
+
+	&--danger.is-disabled.is-plain {
+		--ued-button-disabled-text-color: var(--ued-color-danger-light-5);
+		--ued-button-disabled-bg-color: var(--ued-color-danger-light-9);
+		--ued-button-disabled-border-color: var(--ued-color-danger-light-8);
+	}
+
+	&--info.is-disabled.is-plain {
+		--ued-button-disabled-text-color: var(--ued-color-info-light-5);
+		--ued-button-disabled-bg-color: var(--ued-color-info-light-9);
+		--ued-button-disabled-border-color: var(--ued-color-info-light-8);
+	}
+
+	// 链接按钮
+	&.is-link,
+	&.is-text {
+		height: auto;
+		padding: 2px;
+		color: var(--ued-button-text-color);
+		background: transparent;
+		border-color: transparent;
+
+		--ued-button-hover-link-text-color: var(--ued-color-info);
+		--ued-button-active-link-text-color: var(--ued-button-text-color);
+	}
+
+	&.is-link {
+		&:focus,
+		&:hover {
+			color: var(--ued-button-hover-link-text-color);
+		}
+
+		&:active {
+			color: var(--ued-button-active-link-text-color);
+		}
+	}
+
+	&--primary.is-link,
+	&--primary.is-text {
+		--ued-button-text-color: var(--ued-color-primary);
+		--ued-button-hover-link-text-color: var(--ued-color-primary-light-5);
+		--ued-button-active-text-color: var(--ued-button-text-color);
+	}
+
+	&--success.is-link,
+	&--success.is-text {
+		--ued-button-text-color: var(--ued-color-success);
+		--ued-button-hover-link-text-color: var(--ued-color-success-light-5);
+		--ued-button-active-text-color: var(--ued-button-text-color);
+	}
+
+	&--warning.is-link,
+	&--warning.is-text {
+		--ued-button-text-color: var(--ued-color-warning);
+		--ued-button-hover-link-text-color: var(--ued-color-warning-light-5);
+		--ued-button-active-text-color: var(--ued-button-text-color);
+	}
+
+	&--danger.is-link,
+	&--danger.is-text {
+		--ued-button-text-color: var(--ued-color-danger);
+		--ued-button-hover-link-text-color: var(--ued-color-danger-light-5);
+		--ued-button-active-text-color: var(--ued-button-text-color);
+	}
+
+	&--info.is-link,
+	&--info.is-text {
+		--ued-button-text-color: var(--ued-color-info);
+		--ued-button-hover-link-text-color: var(--ued-color-info-light-5);
+		--ued-button-active-text-color: var(--ued-button-text-color);
+	}
+
+	&.is-link.is-disabled,
+	&.is-text.is-disabled {
+		color: var(--ued-button-hover-link-text-color);
+	}
+
+	// 文字按钮
+	&.is-text {
+		padding: 8px;
+
+		&:focus,
+		&:hover {
+			background-color: var(--ued-fill-color-light);
+		}
+	}
+
+	&.is-text.is-disabled {
+		&:focus,
+		&:hover {
+			background-color: transparent;
+		}
+	}
+
+	&.is-text.is-has-bg {
+		background-color: var(--ued-fill-color-light);
+
+		&:focus {
+			background-color: var(--ued-fill-color);
+		}
+	}
+
+	// 按钮大小
+	&--large {
+		padding: 12px 19px;
+		font-size: var(--ued-font-size-base);
+	}
+
+	&--small {
+		padding: 5px 11px;
+		font-size: var(--ued-font-size-extra-small);
 	}
 }

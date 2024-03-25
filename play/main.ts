@@ -1,7 +1,6 @@
 import { createApp } from 'vue'
 import App from './app.vue'
-import ued from '@ued-plus/components'
-const app = createApp(App)
+import router from './router'
 
-app.use(ued)
-app.mount('#app')
+const app = createApp(App)
+app.use(router).mount('#app')

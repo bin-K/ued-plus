@@ -1,8 +1,10 @@
 <template>
-	<div>
-		<ued-button>默认按钮</ued-button>
-		<ued-button type="primary">主要按钮</ued-button>
-	</div>
+	<router-link v-for="item in link" :key="item" :to="'/' + item">{{ item }}</router-link>
+	<router-view></router-view>
 </template>
 
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+import { ref } from 'vue'
+
+const link = ref(['button'])
+</script>

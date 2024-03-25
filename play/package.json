@@ -16,6 +16,7 @@
 		"vite": "^5.2.2"
 	},
 	"dependencies": {
-		"@ued-plus/components": "workspace:^"
+		"@ued-plus/components": "workspace:^",
+		"vue-router": "^4.3.0"
 	}
 }

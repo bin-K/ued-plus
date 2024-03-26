@@ -1,26 +1,6 @@
 <template>
 	<div class="button">
-		<div class="button-base">
-			<h1>基础按钮</h1>
-			<div class="button-base-show">
-				<ued-button v-for="item in buttonType" :key="item.type" :type="item.type">
-					{{ item.text }}
-				</ued-button>
-			</div>
-			<div class="button-base-show">
-				<ued-button v-for="item in buttonType" :key="item.type" :type="item.type" plain>
-					{{ item.text }}
-				</ued-button>
-			</div>
-			<div class="button-base-show">
-				<ued-button v-for="item in buttonType" :key="item.type" :type="item.type" round>
-					{{ item.text }}
-				</ued-button>
-			</div>
-			<div class="button-base-show">
-				<ued-button v-for="item in buttonType" :key="item.type" :type="item.type" circle />
-			</div>
-		</div>
+		<ButtonBasic :button-type="buttonType" />
 		<div class="button-disabled">
 			<h1>禁用状态</h1>
 			<div class="button-disabled-show">
@@ -112,8 +92,10 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue'
-import { UedButton } from '@ued-plus/components'
+import { ref, defineAsyncComponent } from 'vue'
+
+const ButtonBasic = defineAsyncComponent(() => import('./basic/index.vue'))
+
 const buttonType = ref([
 	{ type: '', text: '默认按钮' },
 	{ type: 'primary', text: '主要按钮' },
@@ -123,6 +105,17 @@ const buttonType = ref([
 	{ type: 'info', text: '信息按钮' },
 ])
 </script>
+<style lang="scss">
+.button {
+	&-content {
+		display: flex;
+		flex-direction: column;
+		border: 1px solid #e4e7ed;
+		padding: 30px;
+		border-radius: 5px;
+	}
+}
+</style>
 <style lang="scss" scoped>
 .button {
 	&-base,

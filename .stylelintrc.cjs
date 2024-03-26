@@ -19,5 +19,6 @@ module.exports = {
 		'selector-class-pattern': null,
 		'color-function-notation': null,
 		'alpha-value-notation': null,
+		'color-hex-length': null,
 	},
 }

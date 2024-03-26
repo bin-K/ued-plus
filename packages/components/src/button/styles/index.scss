@@ -12,7 +12,7 @@
 	text-align: center;
 	white-space: nowrap;
 	cursor: pointer;
-	background: var(--ued-button-bg-color, var(--ued-color-white));
+	background: var(--ued-button-bg-color, var(--ued-fill-color-blank));
 	border: 1px solid var(--ued-button-border-color, var(--ued-border-color));
 	border-radius: var(--ued-border-radius-base);
 	outline: none;

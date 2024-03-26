@@ -29,13 +29,3 @@ defineProps({
 	},
 })
 </script>
-
-<style scoped>
-.button-basic > div {
-	margin-bottom: 15px;
-}
-
-.button-basic > div:last-child {
-	margin: 0;
-}
-</style>

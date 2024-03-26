@@ -17,3 +17,9 @@ const buttonType = ref([
 <!--@include: ./basic/index.md-->
 
 <!--@include: ./disabled/index.md-->
+
+<!--@include: ./link/index.md-->
+
+<!--@include: ./size/index.md-->
+
+<!--@include: ./tag/index.md-->

@@ -45,8 +45,10 @@ body {
 		}
 	}
 	.content {
+		&::-webkit-scrollbar {
+			display: none;
+		}
 		overflow: auto;
-		width: 85%;
 		height: 100%;
 	}
 }

@@ -1,19 +1,7 @@
 <template>
 	<div class="button">
-		<ButtonBasic :button-type="buttonType" />
-		<div class="button-disabled">
-			<h1>禁用状态</h1>
-			<div class="button-disabled-show">
-				<ued-button v-for="item in buttonType" :key="item.type" :type="item.type" disabled>
-					{{ item.text }}
-				</ued-button>
-			</div>
-			<div class="button-disabled-show">
-				<ued-button v-for="item in buttonType" :key="item.type" :type="item.type" disabled plain>
-					{{ item.text }}
-				</ued-button>
-			</div>
-		</div>
+		<button-basic :button-type="buttonType" />
+		<button-disabled :button-type="buttonType" />
 		<div class="button-link">
 			<h1>链接按钮</h1>
 			<div class="button-link-show">
@@ -95,6 +83,7 @@
 import { ref, defineAsyncComponent } from 'vue'
 
 const ButtonBasic = defineAsyncComponent(() => import('./basic/index.vue'))
+const ButtonDisabled = defineAsyncComponent(() => import('./disabled/index.vue'))
 
 const buttonType = ref([
 	{ type: '', text: '默认按钮' },
@@ -113,6 +102,14 @@ const buttonType = ref([
 		border: 1px solid #e4e7ed;
 		padding: 30px;
 		border-radius: 5px;
+
+		& > div {
+			margin-bottom: 15px;
+
+			&:last-child {
+				margin: 0;
+			}
+		}
 	}
 }
 </style>

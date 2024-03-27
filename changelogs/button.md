@@ -1,3 +1,12 @@
+### v1.1.2
+#### 2024-03-27 17:19:36 +0800
+
+### Tests
+
+* **button:** 补充button测试用例  ([27a8e51](https://github.com/bin-K/ued-plus/commit/27a8e51)) by: **kuangzhibin**
+
+---
+
 ### v1.1.1
 #### 2024-03-27 16:51:49 +0800
 

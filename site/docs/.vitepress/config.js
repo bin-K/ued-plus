@@ -6,7 +6,9 @@ export default {
 			{ text: '指南', link: '/guide/installation/' },
 			{ text: '组件', link: '/components/button/' },
 		],
-		socialLinks: [{ icon: 'github', link: 'https://github.com/bin-K/ued-plus' }],
+		socialLinks: [
+			{ icon: 'github', link: 'https://github.com/bin-K/ued-plus' },
+		],
 		sidebar: {
 			'/guide/': [
 				{
@@ -30,6 +32,10 @@ export default {
 						{
 							text: 'Button',
 							link: '/components/button/',
+						},
+						{
+							text: 'Icon',
+							link: '/components/icon/',
 						},
 					],
 				},

@@ -1,6 +1,11 @@
 // button.vue
 <template>
-	<component :is="buttonTag" :class="buttonStyle" :disabled="disabled" class="ued-button">
+	<component
+		:is="buttonTag"
+		:class="buttonStyle"
+		:disabled="disabled"
+		class="ued-button"
+	>
 		<slot />
 	</component>
 </template>

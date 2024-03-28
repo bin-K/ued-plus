@@ -1,0 +1,54 @@
+.ued-icon {
+	--color: var(--ued-text-color-primary);
+	--ued-dot-color: var(--ued-color-white);
+	--ued-dot-font-size: var(--ued-font-size-extra-small);
+	--ued-dot-font-weight: var(--ued-font-weight-primary);
+	--ued-dot-border: var(--ued-color-white);
+	--ued-dot-bg-color: var(--ued-color-error);
+
+	position: relative;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 1em;
+	height: 1em;
+	margin-right: 8px;
+	font-size: inherit;
+	line-height: 1em;
+	color: var(--color);
+	fill: currentColor;
+
+	&:last-child {
+		margin: 0;
+	}
+
+	& svg {
+		height: 1em;
+	}
+
+	&-dot {
+		position: absolute;
+		top: 0;
+		right: 0;
+		box-sizing: border-box;
+		min-width: 16px;
+		padding: 0 3px;
+		font-size: var(--ued-dot-font-size);
+		font-weight: var(--ued-dot-font-weight);
+		line-height: 1.2;
+		color: var(--ued-dot-color);
+		text-align: center;
+		background-color: var(--ued-dot-bg-color);
+		border: 1px solid var(--ued-dot-border);
+		border-radius: 16px;
+		transform: translate(50%, -50%);
+
+		&.ued-dot {
+			width: 8px;
+			min-width: 0;
+			height: 8px;
+			background-color: var(--ued-dot-bg-color);
+			border-radius: 100%;
+		}
+	}
+}

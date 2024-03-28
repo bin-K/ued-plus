@@ -7,6 +7,7 @@
     <ued-button>默认按钮</ued-button>
     <ued-button tag="div">div</ued-button>
     <ued-button
+			class="vp-raw"
       type="primary"
       tag="a"
       href="https://github.com/bin-K/ued-plus"

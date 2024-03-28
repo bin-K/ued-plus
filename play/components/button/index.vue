@@ -35,6 +35,7 @@ const buttonType = ref([
 	&-content {
 		display: flex;
 		flex-direction: column;
+		width: 700px;
 		border: 1px solid #e4e7ed;
 		padding: 30px;
 		border-radius: 5px;

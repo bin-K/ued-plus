@@ -1,0 +1,290 @@
+@charset "utf-8";
+
+* {
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+	appearance: none;
+	user-select: none;
+	backface-visibility: hidden;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-size: 16px;
+	font-weight: normal;
+	text-decoration: none;
+}
+
+hr {
+	box-sizing: content-box;
+	height: 0;
+	overflow: visible;
+}
+
+a {
+	text-decoration: none;
+	background-color: transparent;
+}
+
+a:focus,
+*:focus {
+	outline: none;
+}
+
+/* 缩写标签格式化 */
+abbr[title] {
+	text-decoration: underline dotted;
+	text-decoration: underline;
+	border-bottom: none;
+}
+
+b,
+strong,
+i,
+ins,
+del,
+s,
+big,
+small,
+em {
+	font-size: 16px;
+	font-style: normal;
+	font-weight: normal;
+	text-decoration: none;
+}
+
+code,
+kbd,
+samp {
+	font-family: monospace;
+}
+
+sub,
+sup {
+	position: relative;
+	font-size: 12px;
+	line-height: 0;
+	vertical-align: baseline;
+}
+
+sub {
+	bottom: -0.25em;
+}
+
+sup {
+	top: -0.5em;
+}
+
+img {
+	display: block;
+	border-style: none;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+	font-family: inherit;
+}
+
+button,
+input {
+	display: block;
+	overflow: visible;
+	outline: none;
+}
+
+button,
+select {
+	text-transform: none;
+}
+
+button,
+[type='button'],
+[type='reset'],
+[type='submit'] {
+	appearance: button;
+}
+
+button::-moz-focus-inner,
+[type='button']::-moz-focus-inner,
+[type='reset']::-moz-focus-inner,
+[type='submit']::-moz-focus-inner {
+	border-style: none;
+}
+
+button:-moz-focusring,
+[type='button']:-moz-focusring,
+[type='reset']:-moz-focusring,
+[type='submit']:-moz-focusring {
+	outline: 1px dotted ButtonText;
+}
+
+/* 自定义placeholder样式 */
+::placeholder {
+	color: #3a3c4c;
+}
+
+textarea {
+	overflow: auto;
+}
+
+[type='number']::-webkit-inner-spin-button,
+[type='number']::-webkit-outer-spin-button {
+	height: auto;
+}
+
+[type='search'] {
+	appearance: textfield;
+	outline-offset: -2px;
+}
+
+[type='search']::-webkit-search-decoration {
+	appearance: none;
+}
+
+::-webkit-file-upload-button {
+	font: inherit;
+	appearance: button;
+}
+
+dl,
+dt,
+dd,
+ol,
+ul,
+li {
+	list-style: none;
+}
+
+table {
+	border-spacing: 0;
+	border-collapse: collapse;
+}
+
+th {
+	text-align: inherit;
+}
+
+/* 鼠标样式 */
+.cp {
+	cursor: pointer;
+}
+
+.cm {
+	cursor: move;
+}
+
+/* 遮罩层 */
+.mask {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.6);
+}
+
+/* display */
+summary {
+	display: list-item;
+}
+
+.hide,
+[hidden],
+template {
+	display: none;
+}
+
+.block,
+details,
+iframe {
+	display: block;
+}
+
+.inlineBlock,
+.fl,
+.fr {
+	display: inline-block;
+}
+
+/* 浮动 */
+.fl {
+	float: left;
+}
+
+.fr {
+	float: right;
+}
+
+/* 文字定位 */
+.al {
+	text-align: left;
+}
+
+.ac {
+	text-align: center;
+}
+
+.ar {
+	text-align: right;
+}
+
+/* 定位、居中 */
+.fixed {
+	position: fixed;
+}
+
+.relative {
+	position: relative;
+}
+
+.absolute {
+	position: absolute;
+}
+
+.horMid {
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+.verMid {
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+.marginMiddle {
+	margin: 0 auto;
+}
+
+.imgMid {
+	vertical-align: middle;
+}
+
+/* 清除浮动 */
+.clearfix {
+	*zoom: 1;
+}
+
+.clearfix::after {
+	clear: both;
+}
+
+.clearfix::before,
+.clearfix::after {
+	display: table;
+	content: '';
+}
+
+/* 强制不换行 */
+.nowrap {
+	word-break: break-all;
+	white-space: nowrap;
+}

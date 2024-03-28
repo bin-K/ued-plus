@@ -1,0 +1,23 @@
+.ued-icon {
+	--color: inherit;
+
+	position: relative;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 1em;
+	height: 1em;
+	margin-right: 8px;
+	font-size: inherit;
+	line-height: 1em;
+	color: var(--color);
+	fill: currentColor;
+
+	&:last-child {
+		margin: 0;
+	}
+
+	& svg {
+		height: 1em;
+	}
+}

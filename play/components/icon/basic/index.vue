@@ -1,20 +1,21 @@
 <template>
+	<!-- https://www.cnblogs.com/joyce33/p/13396415.html 解决color不生效的方法 -->
 	<h2>基本用法</h2>
 	<div class="icon-content icon-basic">
 		<div class="icon-basic-first">
 			<div v-for="item in iconName" :key="item" class="icon-basic-item">
 				<div>
-					<ued-icon :name="item" :size="20" color="#409efc" />
+					<ued-icon :name="item" :size="20" />
 					<span class="icon-name">{{ item }}</span>
 				</div>
 			</div>
 		</div>
 		<div class="icon-basic-second">
 			<div>
-				<ued-icon :size="20"><Plus /></ued-icon>
+				<ued-icon :size="20" color="#409efc"><Plus /></ued-icon>
 			</div>
 			<div>
-				<ued-icon :size="20" color="#409efc"><Minus /></ued-icon>
+				<ued-icon :size="20"><Minus /></ued-icon>
 			</div>
 			<div>
 				<ued-icon :size="20"><CirclePlus /></ued-icon>
@@ -31,17 +32,19 @@ import { ref } from 'vue'
 const iconName = ref(['Plus', 'Minus', 'CirclePlus', 'CircleMinus'])
 </script>
 
-<style scoped>
+<style>
 .icon-basic-first {
 	display: flex;
 }
-.icon-basic-item {
+.icon-basic-item,
+.icon-basic-second > div {
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	border: 1px solid #e4e7ed;
 	width: 114px;
 	height: 90px;
+	cursor: pointer;
 }
 .icon-basic-item > div {
 	display: flex;
@@ -61,14 +64,5 @@ const iconName = ref(['Plus', 'Minus', 'CirclePlus', 'CircleMinus'])
 
 .icon-basic-second {
 	display: flex;
-}
-
-.icon-basic-second > div {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	border: 1px solid #e4e7ed;
-	width: 114px;
-	height: 90px;
 }
 </style>

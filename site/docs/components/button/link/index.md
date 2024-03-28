@@ -1,6 +1,6 @@
 ## 链接按钮
 
-<div class="button-link">
+<div class="button-content button-link">
   <div class="button-link-defalut">
     <ued-button v-for="item in buttonType" :key="item.type" :type="item.type" link>
       {{ item.text }}
@@ -12,25 +12,6 @@
     </ued-button>
   </div>
 </div>
-
-<style>
-.button-link {
-	display: flex;
-	flex-direction: column;
-  border: 1px solid #e4e7ed;
-	padding: 30px;
-	border-radius: 5px;
-}
-
-.button-link > div {
-	margin-bottom: 15px;
-}
-
-.button-link > div:last-child {
-	margin: 0;
-}
-
-</style>
 
 ::: details 显示代码
 

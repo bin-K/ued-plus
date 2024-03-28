@@ -2,7 +2,7 @@
 
 使用 type、plain、round 和 circle 来定义按钮的样式。
 
-<div class="button-basic">
+<div class="button-content button-basic">
   <div class="button-basic-defalut">
    <ued-button 
       v-for="item in buttonType" 
@@ -41,25 +41,6 @@
     />
   </div>
 </div>
-
-<style>
-.button-basic {
-	display: flex;
-	flex-direction: column;
-  border: 1px solid #e4e7ed;
-	padding: 30px;
-	border-radius: 5px;
-}
-
-.button-basic > div {
-	margin-bottom: 15px;
-}
-
-.button-basic > div:last-child {
-	margin: 0;
-}
-
-</style>
 
 ::: details 显示代码
 

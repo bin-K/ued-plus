@@ -15,10 +15,11 @@ module.exports = {
 	// 配置 rules
 	rules: {
 		// 开启 Prettier 自动格式化功能
-		'prettier/prettier': true,
+		'prettier/prettier': null,
 		'selector-class-pattern': null,
 		'color-function-notation': null,
 		'alpha-value-notation': null,
 		'color-hex-length': null,
+		'value-keyword-case': null,
 	},
 }

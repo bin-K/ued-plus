@@ -1,3 +1,12 @@
+### v1.2.2
+#### 2024-03-29 10:41:42 +0800
+
+### Bug Fixes
+
+* **icon:** 解决icon vitepress打包问题  ([7d2022e](https://github.com/bin-K/ued-plus/commit/7d2022e)) by: **kuangzhibin**
+
+---
+
 ### v1.2.1
 #### 2024-03-29 00:34:55 +0800
 

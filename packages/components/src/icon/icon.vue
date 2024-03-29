@@ -5,12 +5,17 @@
 	</component>
 </template>
 <script lang="ts" setup>
-import { computed } from 'vue'
+import { computed, onMounted } from 'vue'
 import './styles/index.scss'
 
 import Common from './components/common/index.vue'
 
 defineOptions({ name: 'UedIcon' })
+
+onMounted(() => {
+	// 引入字体图标文件
+	import('./font/iconfont.js' as any)
+})
 
 type IconProps = {
 	name?: string

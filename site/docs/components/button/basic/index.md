@@ -37,8 +37,21 @@
       v-for="item in buttonType" 
       :key="item.type" 
       :type="item.type" 
+      :icon="Plus"
       circle 
     />
+  </div>
+  <div class="button-basic-circle">
+    <ued-button 
+      v-for="item in buttonType" 
+      :key="item.type" 
+      :type="item.type" 
+      circle 
+    >
+      <ued-icon>
+        <Plus />
+      </ued-icon>
+    </ued-button>
   </div>
 </div>
 

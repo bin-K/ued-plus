@@ -6,6 +6,7 @@
 		<button-text :button-type="buttonType" />
 		<button-size :button-type="buttonType" />
 		<button-tag :button-type="buttonType" />
+		<button-icon :button-type="buttonType" />
 	</div>
 </template>
 
@@ -20,6 +21,7 @@ const ButtonLink = defineAsyncComponent(() => import('./link/index.vue'))
 const ButtonText = defineAsyncComponent(() => import('./text/index.vue'))
 const ButtonSize = defineAsyncComponent(() => import('./size/index.vue'))
 const ButtonTag = defineAsyncComponent(() => import('./tag/index.vue'))
+const ButtonIcon = defineAsyncComponent(() => import('./button-icon/index.vue'))
 
 const buttonType = ref([
 	{ type: '', text: '默认按钮' },
@@ -35,7 +37,7 @@ const buttonType = ref([
 	&-content {
 		display: flex;
 		flex-direction: column;
-		width: 700px;
+		width: 750px;
 		border: 1px solid #e4e7ed;
 		padding: 30px;
 		border-radius: 5px;

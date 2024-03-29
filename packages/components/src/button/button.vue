@@ -6,12 +6,16 @@
 		:disabled="disabled"
 		class="ued-button"
 	>
+		<ued-icon v-if="icon">
+			<component :is="icon" />
+		</ued-icon>
 		<slot />
 	</component>
 </template>
 
 <script lang="ts" setup>
-import { computed } from 'vue'
+import { UedIcon } from '../icon'
+import { computed, ComponentCustomProps } from 'vue'
 import './styles/index.scss'
 
 defineOptions({ name: 'UedButton' })
@@ -27,6 +31,7 @@ type ButtonProps = {
 	bg?: boolean
 	size?: string
 	tag?: string
+	icon?: ComponentCustomProps
 }
 
 const buttonProps = defineProps<ButtonProps>()

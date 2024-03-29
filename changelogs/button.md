@@ -1,3 +1,12 @@
+### v1.1.3
+#### 2024-03-29 15:20:57 +0800
+
+### Features
+
+* **button:** 补充button icon 图标配置  ([7a3fd88](https://github.com/bin-K/ued-plus/commit/7a3fd88)) by: **kuangzhibin**
+
+---
+
 ### v1.1.2
 #### 2024-03-27 17:19:36 +0800
 

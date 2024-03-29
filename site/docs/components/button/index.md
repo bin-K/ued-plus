@@ -3,6 +3,7 @@
 常用的操作按钮
 
 <script setup>
+import { Plus } from "@ued-plus/components"
 import { ref } from 'vue'
 const buttonType = ref([
 	{ type: '', text: '默认按钮' },
@@ -23,6 +24,8 @@ const buttonType = ref([
 <!--@include: ./size/index.md-->
 
 <!--@include: ./tag/index.md-->
+
+<!--@include: ./button-icon/index.md-->
 
 <style>
 .button-content {

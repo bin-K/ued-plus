@@ -2,7 +2,8 @@
 
 .ued-button {
 	box-sizing: border-box;
-	display: inline-block;
+	display: inline-flex;
+	height: 32px;
 	padding: 8px 15px;
 	margin: 0 0 0 12px;
 	font-size: var(--ued-font-size-base);
@@ -26,7 +27,10 @@
 	&:hover {
 		color: var(--ued-button-hover-text-color);
 		background-color: var(--ued-button-hover-bg-color);
-		border-color: var(--ued-button-hover-border-color, var(--ued-button-hover-bg-color));
+		border-color: var(
+			--ued-button-hover-border-color,
+			var(--ued-button-hover-bg-color)
+		);
 	}
 
 	&:active {
@@ -156,6 +160,7 @@
 
 	// 圆形按钮
 	&.is-circle {
+		width: 32px;
 		padding: 8px;
 		border-radius: 50%;
 	}
@@ -329,11 +334,17 @@
 
 	// 按钮大小
 	&--large {
+		--ued-button-size: 40px;
+
+		height: var(--ued-button-size);
 		padding: 12px 19px;
 		font-size: var(--ued-font-size-base);
 	}
 
 	&--small {
+		--ued-button-size: 24px;
+
+		height: var(--ued-button-size);
 		padding: 5px 11px;
 		font-size: var(--ued-font-size-extra-small);
 	}

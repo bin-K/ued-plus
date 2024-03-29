@@ -86,14 +86,49 @@
     <ued-button type="info" round>信息按钮</ued-button>
   </div>
   <div>
-    <ued-button circle />
-    <ued-button type="primary" circle />
-    <ued-button type="success" circle />
-    <ued-button type="warning" circle />
-    <ued-button type="danger" circle />
-    <ued-button type="info" circle />
+    <ued-button :icon="Plus" circle />
+    <ued-button type="primary" :icon="Plus" circle />
+    <ued-button type="success" :icon="Plus" circle />
+    <ued-button type="warning" :icon="Plus" circle />
+    <ued-button type="danger" :icon="Plus" circle />
+    <ued-button type="info" :icon="Plus" circle />
+  </div>
+   <div>
+    <ued-button circle>
+      <ued-icon>
+        <Plus/>
+      </ued-icon>
+    </ued-button>
+    <ued-button type="primary" circle>
+      <ued-icon>
+        <Plus/>
+      </ued-icon>
+    </ued-button>
+    <ued-button type="success" circle>
+      <ued-icon>
+        <Plus/>
+      </ued-icon>
+    </ued-button>
+    <ued-button type="warning" circle>
+      <ued-icon>
+        <Plus/>
+      </ued-icon>
+    </ued-button>
+    <ued-button type="danger" circle>
+      <ued-icon>
+        <Plus/>
+      </ued-icon>
+    </ued-button>
+    <ued-button type="info" circle>
+      <ued-icon>
+        <Plus/>
+      </ued-icon>
+    </ued-button>
   </div>
 </template>
+<script lang="ts" setup>
+import { Plus } from '@ued-plus/components'
+</script>
 ```
 
 :::

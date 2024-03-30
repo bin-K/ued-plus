@@ -1,3 +1,12 @@
+### v1.2.3
+#### 2024-03-30 11:33:25 +0800
+
+### Features
+
+* **icon:** 补充常用icon 以及文档API  ([d83f99d](https://github.com/bin-K/ued-plus/commit/d83f99d)) by: **kuangzhibin**
+
+---
+
 ### v1.2.2
 #### 2024-03-29 10:41:42 +0800
 

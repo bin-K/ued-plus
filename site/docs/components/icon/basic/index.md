@@ -35,6 +35,7 @@
 <style>
 .icon-basic-first {
 	display: flex;
+	flex-wrap: wrap;
 }
 
 .icon-basic-item,

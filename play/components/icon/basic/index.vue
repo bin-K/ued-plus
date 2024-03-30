@@ -29,12 +29,24 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue'
-const iconName = ref(['Plus', 'Minus', 'CirclePlus', 'CircleMinus'])
+const iconName = ref([
+	'Plus',
+	'Minus',
+	'CirclePlus',
+	'CircleMinus',
+	'Loading',
+	'Message',
+	'Star',
+	'Search',
+	'Delete',
+	'Check',
+])
 </script>
 
 <style>
 .icon-basic-first {
 	display: flex;
+	flex-wrap: wrap;
 }
 .icon-basic-item,
 .icon-basic-second > div {

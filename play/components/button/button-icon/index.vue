@@ -13,7 +13,7 @@
 		</div>
 		<div class="button-icon-defalut">
 			<ued-button v-for="item in buttonType" :key="item.type" :type="item.type">
-				<ued-icon>
+				<ued-icon class="ued-icon--left">
 					<Plus />
 				</ued-icon>
 				{{ item.text }}

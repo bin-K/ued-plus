@@ -1,3 +1,12 @@
+### v1.1.5
+#### 2024-03-31 23:46:14 +0800
+
+### Documentation
+
+* **button:** 补充button loading文档  ([479da7b](https://github.com/bin-K/ued-plus/commit/479da7b)) by: **kuangzhibin**
+
+---
+
 ### v1.1.4
 #### 2024-03-31 23:29:35 +0800
 

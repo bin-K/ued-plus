@@ -3,7 +3,7 @@
 常用的操作按钮
 
 <script setup>
-import { Plus, Search, Minus } from "@ued-plus/components"
+import { Plus, Search, Minus, CirclePlus } from "@ued-plus/components"
 import { ref } from 'vue'
 const buttonType = ref([
 	{ type: '', text: '默认按钮' },
@@ -26,6 +26,8 @@ const buttonType = ref([
 <!--@include: ./tag/index.md-->
 
 <!--@include: ./button-icon/index.md-->
+
+<!--@include: ./loading/index.md-->
 
 <!--@include: ./button-group/index.md  -->
 
@@ -64,7 +66,7 @@ const buttonType = ref([
 | circle       |      是否为圆形按钮      |                   `boolean`                   | false  |
 | loading      |     是否为加载中状态     |                   `boolean`                   | false  |
 | loading-icon | 自定义加载中状态图标组件 |                  `Component`                  | false  |
-| disabled     |    按钮是否为禁用状态    |                  `component`                  | false  |
+| disabled     |    按钮是否为禁用状态    |                   `Boolean`                   | false  |
 | icon         |         图标组件         |                  `Component`                  | false  |
 | autofocus    |  原生 `autofocus` 属性   |                   `boolean`                   | false  |
 | tag          |      自定义元素标签      |             `String`/`Component`              | button |

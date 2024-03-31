@@ -1,3 +1,12 @@
+### v1.1.4
+#### 2024-03-31 23:29:35 +0800
+
+### Features
+
+* **button:** 补充button loading 状态和按钮组button-group  ([59eb0cb](https://github.com/bin-K/ued-plus/commit/59eb0cb)) by: **kuangzhibin**
+
+---
+
 ### v1.1.3
 #### 2024-03-29 15:20:57 +0800
 

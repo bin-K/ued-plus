@@ -14,7 +14,7 @@
   </div>
   <div class="button-icon-defalut">
    <ued-button type="primary">
-      <ued-icon>
+      <ued-icon class="ued-icon--left">
         <Plus />
       </ued-icon>
       主要按钮

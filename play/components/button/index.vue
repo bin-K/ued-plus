@@ -7,6 +7,8 @@
 		<button-size :button-type="buttonType" />
 		<button-tag :button-type="buttonType" />
 		<button-icon :button-type="buttonType" />
+		<button-loading />
+		<button-gruop />
 	</div>
 </template>
 
@@ -22,6 +24,10 @@ const ButtonText = defineAsyncComponent(() => import('./text/index.vue'))
 const ButtonSize = defineAsyncComponent(() => import('./size/index.vue'))
 const ButtonTag = defineAsyncComponent(() => import('./tag/index.vue'))
 const ButtonIcon = defineAsyncComponent(() => import('./button-icon/index.vue'))
+const ButtonLoading = defineAsyncComponent(() => import('./loading/index.vue'))
+const ButtonGruop = defineAsyncComponent(
+	() => import('./button-group/index.vue')
+)
 
 const buttonType = ref([
 	{ type: '', text: '默认按钮' },
@@ -37,7 +43,7 @@ const buttonType = ref([
 	&-content {
 		display: flex;
 		flex-direction: column;
-		width: 750px;
+		width: 800px;
 		border: 1px solid #e4e7ed;
 		padding: 30px;
 		border-radius: 5px;

@@ -2,21 +2,29 @@
 <template>
 	<component
 		:is="buttonTag"
+		ref="buttonRef"
 		:class="buttonStyle"
 		:disabled="disabled"
 		class="ued-button"
 	>
-		<ued-icon v-if="icon">
-			<component :is="icon" />
+		<ued-icon v-if="icon || $slots.icon" :class="loadingStyle">
+			<component :is="icon" v-if="icon" />
+			<slot v-else name="icon" />
 		</ued-icon>
-		<slot />
+		<span v-if="$slots.default">
+			<slot />
+		</span>
 	</component>
 </template>
 
 <script lang="ts" setup>
 import { UedIcon } from '../icon'
-import { computed, ComponentCustomProps } from 'vue'
+import { Loading } from '../icon/icon'
+import { computed, ComponentCustomProps, useSlots, ref, inject } from 'vue'
 import './styles/index.scss'
+
+const buttonType = inject('type', undefined)
+const buttonSize = inject('size', undefined)
 
 defineOptions({ name: 'UedButton' })
 
@@ -32,25 +40,59 @@ type ButtonProps = {
 	size?: string
 	tag?: string
 	icon?: ComponentCustomProps
+	loading?: boolean
+	loadingIcon?: ComponentCustomProps
 }
 
 const buttonProps = defineProps<ButtonProps>()
 
+const $slots = useSlots()
+
+const buttonRef = ref()
+
 const buttonStyle = computed(() => {
 	return {
-		[`ued-button--${buttonProps.type}`]: buttonProps.type,
-		[`ued-button--${buttonProps.size}`]: buttonProps.size,
+		[`ued-button--${buttonType ?? buttonProps.type}`]:
+			buttonType ?? buttonProps.type,
+		[`ued-button--${buttonSize ?? buttonProps.size}`]:
+			buttonSize ?? buttonProps.size,
 		'is-plain': buttonProps.plain,
 		'is-round': buttonProps.round,
 		'is-circle': buttonProps.circle,
-		'is-disabled': buttonProps.disabled,
+		'is-disabled': buttonProps.disabled || buttonProps.loading,
 		'is-link': buttonProps.link,
 		'is-text': buttonProps.text,
 		'is-has-bg': buttonProps.bg,
+		'is-loading': buttonProps.loading,
+	}
+})
+
+const loadingStyle = computed(() => {
+	return {
+		'is-loading': buttonProps.loading,
 	}
 })
 
 const buttonTag = computed(() => {
 	return buttonProps.tag ?? 'button'
+})
+
+const icon = computed(() => {
+	return buttonProps.loading
+		? $slots.icon
+			? undefined
+			: buttonProps.loadingIcon ?? Loading
+		: buttonProps.icon
+})
+
+defineExpose({
+	/** @description button html element */
+	ref: buttonRef,
+	/** @description button type */
+	type: buttonProps.type,
+	/** @description button disabled */
+	disabled: buttonProps.disabled,
+	/** @description button size */
+	size: buttonProps.size,
 })
 </script>

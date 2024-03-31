@@ -3,7 +3,7 @@
 常用的操作按钮
 
 <script setup>
-import { Plus } from "@ued-plus/components"
+import { Plus, Search, Minus } from "@ued-plus/components"
 import { ref } from 'vue'
 const buttonType = ref([
 	{ type: '', text: '默认按钮' },
@@ -27,6 +27,8 @@ const buttonType = ref([
 
 <!--@include: ./button-icon/index.md-->
 
+<!--@include: ./button-group/index.md  -->
+
 <style>
 .button-content {
 	display: flex;
@@ -45,3 +47,55 @@ const buttonType = ref([
 }
 
 </style>
+
+## Button API
+
+### 属性
+
+| 属性名       |           说明           |                     类型                      | 默认值 |
+| ------------ | :----------------------: | :-------------------------------------------: | ------ |
+| size         |           尺寸           |           `large`/`default`/`small`           | -      |
+| type         |           类型           | `default`/`success`/`warning`/`danger`/`info` | -      |
+| plain        |      是否为朴素按钮      |                   `boolean`                   | false  |
+| text         |      是否为文字按钮      |                   `boolean`                   | false  |
+| bg           | 是否显示文字按钮背景颜色 |                   `boolean`                   | false  |
+| link         |      是否为链接按钮      |                   `boolean`                   | false  |
+| round        |      是否为圆角按钮      |                   `boolean`                   | false  |
+| circle       |      是否为圆形按钮      |                   `boolean`                   | false  |
+| loading      |     是否为加载中状态     |                   `boolean`                   | false  |
+| loading-icon | 自定义加载中状态图标组件 |                  `Component`                  | false  |
+| disabled     |    按钮是否为禁用状态    |                  `component`                  | false  |
+| icon         |         图标组件         |                  `Component`                  | false  |
+| autofocus    |  原生 `autofocus` 属性   |                   `boolean`                   | false  |
+| tag          |      自定义元素标签      |             `String`/`Component`              | button |
+
+### 插槽
+
+| 插槽名  |      说明      |
+| ------- | :------------: |
+| defalut | 自定义默认内容 |
+| icon    | 自定义图标组件 |
+
+### 方法
+
+| 属性名   |      说明      | 类型 |
+| -------- | :------------: | ---- |
+| ref      | 按钮 html 元素 | 类型 |
+| size     |    按钮尺寸    | 类型 |
+| type     |    按钮类型    | 类型 |
+| disabled |   按钮已禁用   | 类型 |
+
+## ButtonGroup API
+
+### 属性
+
+| 属性名 |             说明             |                     类型                      | 默认值 |
+| ------ | :--------------------------: | :-------------------------------------------: | ------ |
+| size   | 用于控制该按钮组内按钮的大小 |           `large`/`default`/`small`           | -      |
+| type   | 用于控制该按钮组内按钮的类型 | `default`/`success`/`warning`/`danger`/`info` | -      |
+
+### 插槽
+
+| 插槽名  |      说明      | 子标签 |
+| ------- | :------------: | ------ |
+| defalut | 自定义默认内容 | Button |

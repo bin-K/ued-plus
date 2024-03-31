@@ -1,3 +1,13 @@
+@keyframes rotating {
+	0% {
+		transform: rotate(0);
+	}
+
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
 .ued-icon {
 	--color: inherit;
 	--ued-dot-color: var(--ued-color-white);
@@ -12,15 +22,10 @@
 	justify-content: center;
 	width: 1em;
 	height: 1em;
-	margin-right: 8px;
 	font-size: inherit;
 	line-height: 1em;
 	color: var(--color);
 	fill: currentColor;
-
-	&:last-child {
-		margin: 0;
-	}
 
 	& svg {
 		height: 1em;
@@ -50,5 +55,17 @@
 			background-color: var(--ued-dot-bg-color);
 			border-radius: 100%;
 		}
+	}
+
+	&--left {
+		margin-right: 6px;
+	}
+
+	&--right {
+		margin-left: 6px;
+	}
+
+	&.is-loading {
+		animation: rotating 2s linear infinite;
 	}
 }

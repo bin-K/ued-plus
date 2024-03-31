@@ -21,5 +21,6 @@ module.exports = {
 		'alpha-value-notation': null,
 		'color-hex-length': null,
 		'value-keyword-case': null,
+		'selector-not-notation': null,
 	},
 }

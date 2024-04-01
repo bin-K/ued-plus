@@ -1,0 +1,80 @@
+.ued-link {
+	--ued-link-font-size: var(--ued-font-size-base);
+	--ued-link-font-weight: var(--ued-font-weight-primary);
+	--ued-link-text-color: var(--ued-text-color-regular);
+	--ued-link-hover-text-color: var(--ued-color-primary);
+	--ued-link-disabled-text-color: var(--ued-text-color-placeholder);
+
+	position: relative;
+	display: inline-flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	padding: 0;
+	font-size: var(--ued-link-font-size);
+	font-weight: var(--ued-link-font-weight);
+	color: var(--ued-link-text-color);
+	text-decoration: none;
+	vertical-align: middle;
+	cursor: pointer;
+	outline: none;
+
+	& + & {
+		margin-left: 12px;
+	}
+
+	&:hover {
+		color: var(--ued-link-hover-text-color);
+	}
+
+	&.is-underline:hover::after {
+		position: absolute;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		height: 0;
+		content: '';
+		border-bottom: 1px solid var(--ued-link-hover-text-color);
+	}
+
+	&__inner {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	&--primary {
+		--ued-link-text-color: var(--ued-color-primary);
+		--ued-link-hover-text-color: var(--ued-color-primary-light-3);
+		--ued-link-disabled-text-color: var(--ued-color-primary-light-5);
+	}
+
+	&--success {
+		--ued-link-text-color: var(--ued-color-success);
+		--ued-link-hover-text-color: var(--ued-color-success-light-3);
+		--ued-link-disabled-text-color: var(--ued-color-success-light-5);
+	}
+
+	&--warning {
+		--ued-link-text-color: var(--ued-color-warning);
+		--ued-link-hover-text-color: var(--ued-color-warning-light-3);
+		--ued-link-disabled-text-color: var(--ued-color-warning-light-5);
+	}
+
+	&--danger {
+		--ued-link-text-color: var(--ued-color-danger);
+		--ued-link-hover-text-color: var(--ued-color-danger-light-3);
+		--ued-link-disabled-text-color: var(--ued-color-danger-light-5);
+	}
+
+	&--info {
+		--ued-link-text-color: var(--ued-color-info);
+		--ued-link-hover-text-color: var(--ued-color-info-light-3);
+		--ued-link-disabled-text-color: var(--ued-color-info-light-5);
+	}
+
+	&.is-disabled {
+		color: var(--ued-link-disabled-text-color);
+		cursor: not-allowed;
+	}
+}

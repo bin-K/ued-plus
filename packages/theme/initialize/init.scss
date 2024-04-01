@@ -44,15 +44,15 @@ abbr[title] {
 	border-bottom: none;
 }
 
-b,
-strong,
-i,
-ins,
-del,
-s,
-big,
-small,
-em {
+b:not(.ued-text),
+strong:not(.ued-text),
+i:not(.ued-text),
+ins:not(.ued-text),
+del:not(.ued-text),
+s:not(.ued-text),
+big:not(.ued-text),
+small:not(.ued-text),
+em:not(.ued-text) {
 	font-size: 16px;
 	font-style: normal;
 	font-weight: normal;

@@ -37,6 +37,10 @@ export default {
 							text: 'Icon',
 							link: '/components/icon/',
 						},
+						{
+							text: 'Text',
+							link: '/components/text/',
+						},
 					],
 				},
 			],

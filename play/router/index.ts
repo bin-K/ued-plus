@@ -10,6 +10,10 @@ const routes = [
 		path: '/icon',
 		component: () => import('../components/icon/index.vue'),
 	},
+	{
+		path: '/text',
+		component: () => import('../components/text/index.vue'),
+	},
 ]
 const router = createRouter({
 	history: createWebHistory(),

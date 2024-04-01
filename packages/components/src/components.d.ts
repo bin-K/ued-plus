@@ -5,6 +5,7 @@ declare module '@vue/runtime-core' {
 		UedButton: typeof components.UedButton
 		UedButtonGroup: typeof components.UedButtonGroup
 		UedIcon: typeof components.UedIcon
+		UedText: typeof components.UedText
 	}
 }
 export {}

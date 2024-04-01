@@ -41,6 +41,10 @@ export default {
 							text: 'Text',
 							link: '/components/text/',
 						},
+						{
+							text: 'Link',
+							link: '/components/link/',
+						},
 					],
 				},
 			],

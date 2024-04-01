@@ -14,6 +14,10 @@ const routes = [
 		path: '/text',
 		component: () => import('../components/text/index.vue'),
 	},
+	{
+		path: '/link',
+		component: () => import('../components/link/index.vue'),
+	},
 ]
 const router = createRouter({
 	history: createWebHistory(),

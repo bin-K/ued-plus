@@ -1,0 +1,15 @@
+.ued-header {
+	--ued-header-padding: 0 20px;
+	--ued-header-height: 60px;
+
+	box-sizing: border-box;
+	display: flex;
+	flex-shrink: 0;
+	align-items: center;
+	justify-content: center;
+	height: var(--ued-header-height);
+	padding: var(--ued-header-padding);
+	color: var(--ued-text-color-primary);
+	text-align: center;
+	background-color: var(--ued-color-primary-light-7);
+}

@@ -14,7 +14,7 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
 
-const link = ref(['Button', 'Icon', 'Text', 'Link'])
+const link = ref(['Button', 'Icon', 'Text', 'Link', 'Container'])
 </script>
 
 <style>

@@ -1,0 +1,18 @@
+.ued-main {
+	--ued-main-padding: 20px;
+	--ued-main-height: 150px;
+
+	box-sizing: border-box;
+	display: flex;
+	flex: 1;
+	flex-basis: auto;
+	flex-shrink: 0;
+	align-items: center;
+	justify-content: center;
+	height: var(--ued-main-height);
+	padding: var(--el-main-padding);
+	overflow: auto;
+	color: var(--ued-text-color-primary);
+	text-align: center;
+	background-color: var(--ued-color-primary-light-9);
+}

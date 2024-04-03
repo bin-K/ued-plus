@@ -1,5 +1,5 @@
 <template>
-	<section class="ued-contianer" :class="containerClass">
+	<section class="ued-container" :class="containerClass">
 		<slot />
 	</section>
 </template>

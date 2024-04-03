@@ -20,7 +20,7 @@ const headerStyle = computed(() => {
 	return {
 		height: Number.isNaN(Number(headerProps.height))
 			? undefined
-			: Number(headerProps.height),
+			: Number(headerProps.height) + 'px',
 	}
 })
 </script>

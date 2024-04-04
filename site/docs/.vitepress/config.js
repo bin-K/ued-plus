@@ -45,6 +45,10 @@ export default {
 							text: 'Link',
 							link: '/components/link/',
 						},
+						{
+							text: 'Container',
+							link: '/components/container/',
+						},
 					],
 				},
 			],

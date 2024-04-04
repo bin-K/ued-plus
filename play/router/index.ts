@@ -18,6 +18,10 @@ const routes = [
 		path: '/link',
 		component: () => import('../components/link/index.vue'),
 	},
+	{
+		path: '/container',
+		component: () => import('../components/container/index.vue'),
+	},
 ]
 const router = createRouter({
 	history: createWebHistory(),

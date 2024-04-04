@@ -1,0 +1,15 @@
+.ued-footer {
+	--ued-footer-padding: 0 20px;
+	--ued-footer-height: 60px;
+
+	box-sizing: border-box;
+	display: flex;
+	flex-shrink: 0;
+	align-items: center;
+	justify-content: center;
+	height: var(--ued-footer-height);
+	padding: var(--ued-footer-padding);
+	color: var(--ued-text-color-primary);
+	text-align: center;
+	background-color: var(--ued-color-primary-light-7);
+}

@@ -1,4 +1,4 @@
-## Link
+# Link
 
 文字超链接
 
@@ -28,7 +28,6 @@ const linkType = ref([
 .link-content {
   display: flex;
   flex-direction: column;
-  width: 800px;
   border: 1px solid #e4e7ed;
   padding: 30px;
   border-radius: 5px;

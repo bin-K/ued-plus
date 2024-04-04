@@ -7,6 +7,11 @@ declare module '@vue/runtime-core' {
 		UedIcon: typeof components.UedIcon
 		UedText: typeof components.UedText
 		UedLink: typeof components.UedLink
+		UedContainer: typeof components.UedContainer
+		UedHeader: typeof components.UedHeader
+		UedMain: typeof components.UedMain
+		UedFooter: typeof components.UedFooter
+		UedAside: typeof components.UedAside
 	}
 }
 export {}

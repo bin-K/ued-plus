@@ -17,10 +17,12 @@ type HeaderProps = {
 const headerProps = defineProps<HeaderProps>()
 
 const headerStyle = computed(() => {
+	const height =
+		typeof headerProps.height === 'string'
+			? headerProps.height.split('px')[0]
+			: headerProps.height
 	return {
-		height: Number.isNaN(Number(headerProps.height))
-			? undefined
-			: Number(headerProps.height) + 'px',
+		height: Number.isNaN(Number(height)) ? undefined : Number(height) + 'px',
 	}
 })
 </script>

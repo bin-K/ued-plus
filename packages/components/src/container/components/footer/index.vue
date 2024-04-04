@@ -17,10 +17,12 @@ type FooterProps = {
 const footerProps = defineProps<FooterProps>()
 
 const footerStyle = computed(() => {
+	const height =
+		typeof footerProps.height === 'string'
+			? footerProps.height.split('px')[0]
+			: footerProps.height
 	return {
-		height: Number.isNaN(Number(footerProps.height))
-			? undefined
-			: Number(footerProps.height) + 'px',
+		height: Number.isNaN(Number(height)) ? undefined : Number(height) + 'px',
 	}
 })
 </script>

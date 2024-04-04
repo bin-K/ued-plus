@@ -14,7 +14,6 @@ import ContainerBasic from './basic/index.vue'
 		display: flex;
 		flex-direction: column;
 		width: 800px;
-		border: 1px solid #e4e7ed;
 		padding: 30px;
 		border-radius: 5px;
 

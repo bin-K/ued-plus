@@ -9,7 +9,7 @@
 	flex-shrink: 0;
 	align-items: center;
 	justify-content: center;
-	height: var(--ued-main-height);
+	min-height: var(--ued-main-height);
 	padding: var(--el-main-padding);
 	overflow: auto;
 	color: var(--ued-text-color-primary);

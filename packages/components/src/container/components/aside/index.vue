@@ -17,10 +17,12 @@ type AsideProps = {
 const asideProps = defineProps<AsideProps>()
 
 const asideStyle = computed(() => {
+	const width =
+		typeof asideProps.width === 'string'
+			? asideProps.width.split('px')[0]
+			: asideProps.width
 	return {
-		width: Number.isNaN(Number(asideProps.width))
-			? undefined
-			: Number(asideProps.width) + 'px',
+		width: Number.isNaN(Number(width)) ? undefined : Number(width) + 'px',
 	}
 })
 </script>

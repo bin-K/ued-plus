@@ -1,0 +1,10 @@
+@use 'sass:math';
+
+.ued-col {
+	@for $i from 0 through 24 {
+		&-#{$i} {
+			flex: 0 0 (math.div(1, 24) * $i * 100) * 1%;
+			max-width: (math.div(1, 24) * $i * 100) * 1%;
+		}
+	}
+}

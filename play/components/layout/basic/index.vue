@@ -1,27 +1,63 @@
 <template>
+	<h2>基础布局</h2>
 	<div class="layout-content layout-basic">
 		<ued-row>
 			<ued-col :span="24">
 				<div class="grid-content" />
 			</ued-col>
 		</ued-row>
+		<ued-row>
+			<ued-col :span="12">
+				<div class="grid-content" />
+			</ued-col>
+			<ued-col :span="12">
+				<div class="grid-content-light" />
+			</ued-col>
+		</ued-row>
+		<ued-row>
+			<ued-col :span="8">
+				<div class="grid-content" />
+			</ued-col>
+			<ued-col :span="8">
+				<div class="grid-content-light" />
+			</ued-col>
+			<ued-col :span="8">
+				<div class="grid-content" />
+			</ued-col>
+		</ued-row>
+		<ued-row>
+			<ued-col :span="6">
+				<div class="grid-content" />
+			</ued-col>
+			<ued-col :span="6">
+				<div class="grid-content-light" />
+			</ued-col>
+			<ued-col :span="6">
+				<div class="grid-content" />
+			</ued-col>
+			<ued-col :span="6">
+				<div class="grid-content-light" />
+			</ued-col>
+		</ued-row>
+		<ued-row>
+			<ued-col :span="4">
+				<div class="grid-content" />
+			</ued-col>
+			<ued-col :span="4">
+				<div class="grid-content-light" />
+			</ued-col>
+			<ued-col :span="4">
+				<div class="grid-content" />
+			</ued-col>
+			<ued-col :span="4">
+				<div class="grid-content-light" />
+			</ued-col>
+			<ued-col :span="4">
+				<div class="grid-content" />
+			</ued-col>
+			<ued-col :span="4">
+				<div class="grid-content-light" />
+			</ued-col>
+		</ued-row>
 	</div>
 </template>
-
-<style lang="scss">
-.ued-row {
-	margin-bottom: 20px;
-}
-.ued-row:last-child {
-	margin-bottom: 0;
-}
-.ued-col {
-	border-radius: 4px;
-}
-
-.grid-content {
-	border-radius: 4px;
-	min-height: 36px;
-	background-color: var(--ued-color-primary-light-7);
-}
-</style>

@@ -3,4 +3,28 @@
 	box-sizing: border-box;
 	display: flex;
 	flex-wrap: wrap;
+
+	&.is-justify-start {
+		justify-content: flex-start;
+	}
+
+	&.is-justify-center {
+		justify-content: center;
+	}
+
+	&.is-justify-end {
+		justify-content: flex-end;
+	}
+
+	&.is-justify-space-between {
+		justify-content: space-between;
+	}
+
+	&.is-justify-space-arround {
+		justify-content: space-around;
+	}
+
+	&.is-justify-space-evenly {
+		justify-content: space-evenly;
+	}
 }

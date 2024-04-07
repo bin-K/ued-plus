@@ -7,4 +7,15 @@
 			max-width: math.div(1, 24) * $i * 100%;
 		}
 	}
+
+	@for $i from 0 through 24 {
+		&-offset-#{$i} {
+			margin-left: math.div(1, 24) * $i * 100%;
+		}
+	}
+
+	&.is-guttered {
+		display: block;
+		min-height: 1px;
+	}
 }

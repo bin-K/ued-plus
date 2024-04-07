@@ -1,11 +1,21 @@
 <template>
 	<div class="layout">
 		<layout-basic />
+		<layout-gutter />
+		<layout-mixin />
+		<layout-offset />
+		<layout-justify />
+		<layout-bootstrap />
 	</div>
 </template>
 
 <script lang="ts" setup>
 import LayoutBasic from './basic/index.vue'
+import LayoutGutter from './gutter/index.vue'
+import LayoutMixin from './mixin/index.vue'
+import LayoutOffset from './offset/index.vue'
+import LayoutJustify from './justify/index.vue'
+import LayoutBootstrap from './bootstrap/index.vue'
 </script>
 
 <style lang="scss">

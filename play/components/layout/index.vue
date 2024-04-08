@@ -4,7 +4,8 @@
 		<layout-gutter />
 		<layout-mixin />
 		<layout-offset />
-		<layout-justify />
+		<layout-pull-push />
+		<layout-justify-align />
 		<layout-bootstrap />
 	</div>
 </template>
@@ -14,7 +15,8 @@ import LayoutBasic from './basic/index.vue'
 import LayoutGutter from './gutter/index.vue'
 import LayoutMixin from './mixin/index.vue'
 import LayoutOffset from './offset/index.vue'
-import LayoutJustify from './justify/index.vue'
+import LayoutPullPush from './pull-push/index.vue'
+import LayoutJustifyAlign from './justify-align/index.vue'
 import LayoutBootstrap from './bootstrap/index.vue'
 </script>
 

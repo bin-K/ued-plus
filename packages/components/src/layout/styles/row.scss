@@ -27,4 +27,16 @@
 	&.is-justify-space-evenly {
 		justify-content: space-evenly;
 	}
+
+	&.is-align-top {
+		align-items: flex-start;
+	}
+
+	&.is-align-center {
+		align-items: center;
+	}
+
+	&.is-align-bottom {
+		align-items: flex-end;
+	}
 }

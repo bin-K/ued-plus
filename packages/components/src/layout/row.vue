@@ -1,7 +1,7 @@
 <template>
-	<div class="ued-row" :style="rowStyle" :class="rowClass">
+	<component :is="rowTag" class="ued-row" :style="rowStyle" :class="rowClass">
 		<slot />
-	</div>
+	</component>
 </template>
 
 <script lang="ts" setup>
@@ -19,6 +19,14 @@ const rowProps = defineProps({
 		type: String,
 		default: undefined,
 	},
+	align: {
+		type: String,
+		default: undefined,
+	},
+	tag: {
+		type: String,
+		default: undefined,
+	},
 })
 
 provide(
@@ -31,6 +39,7 @@ provide(
 const rowClass = computed(() => {
 	return {
 		[`is-justify-${rowProps.justify}`]: rowProps.justify,
+		[`is-align-${rowProps.align}`]: rowProps.align,
 	}
 })
 
@@ -43,5 +52,9 @@ const rowStyle = computed(() => {
 		'margin-left': marginNum,
 		'margin-right': marginNum,
 	}
+})
+
+const rowTag = computed(() => {
+	return rowProps.tag ?? 'div'
 })
 </script>

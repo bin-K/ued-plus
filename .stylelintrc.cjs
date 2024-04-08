@@ -22,5 +22,6 @@ module.exports = {
 		'color-hex-length': null,
 		'value-keyword-case': null,
 		'selector-not-notation': null,
+		'media-feature-range-notation': null,
 	},
 }

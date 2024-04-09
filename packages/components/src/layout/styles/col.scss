@@ -1,0 +1,77 @@
+@use 'sass:math';
+
+@mixin colSize {
+	@for $i from 0 through 24 {
+		&-#{$i} {
+			flex: 0 0 math.div(1, 24) * $i * 100%;
+			max-width: math.div(1, 24) * $i * 100%;
+		}
+	}
+
+	@for $i from 0 through 24 {
+		&-offset-#{$i} {
+			margin-left: math.div(1, 24) * $i * 100%;
+		}
+	}
+
+	@for $i from 0 through 24 {
+		&-push-#{$i} {
+			position: relative;
+			right: math.div(1, 24) * $i * 100%;
+		}
+	}
+
+	@for $i from 0 through 24 {
+		&-pull-#{$i} {
+			position: relative;
+			left: math.div(1, 24) * $i * 100%;
+		}
+	}
+
+	&-0 {
+		display: none;
+
+		&.is-guttered {
+			display: none;
+		}
+	}
+
+	&.is-guttered {
+		display: block;
+		min-height: 1px;
+	}
+}
+
+.ued-col {
+	@include colSize;
+}
+
+@media only screen and (max-width: 767px) {
+	.ued-col-xs {
+		@include colSize;
+	}
+}
+
+@media only screen and (min-width: 768px) {
+	.ued-col-sm {
+		@include colSize;
+	}
+}
+
+@media only screen and (min-width: 992px) {
+	.ued-col-md {
+		@include colSize;
+	}
+}
+
+@media only screen and (min-width: 1200px) {
+	.ued-col-lg {
+		@include colSize;
+	}
+}
+
+@media only screen and (min-width: 1920px) {
+	.ued-col-xl {
+		@include colSize;
+	}
+}

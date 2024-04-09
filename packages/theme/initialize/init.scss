@@ -25,9 +25,13 @@ hr {
 	overflow: visible;
 }
 
-a:not(.ued-link) {
+a:not(.ued-link, .ued-button) {
 	text-decoration: none;
 	background-color: transparent;
+}
+
+a.ued-button {
+	text-decoration: none;
 }
 
 a:focus:not(.ued-link),

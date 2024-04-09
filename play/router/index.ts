@@ -22,6 +22,10 @@ const routes = [
 		path: '/container',
 		component: () => import('../components/container/index.vue'),
 	},
+	{
+		path: '/layout',
+		component: () => import('../components/layout/index.vue'),
+	},
 ]
 const router = createRouter({
 	history: createWebHistory(),

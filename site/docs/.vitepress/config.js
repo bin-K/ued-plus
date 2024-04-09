@@ -49,6 +49,10 @@ export default {
 							text: 'Container',
 							link: '/components/container/',
 						},
+						{
+							text: 'Layout',
+							link: '/components/layout/',
+						},
 					],
 				},
 			],

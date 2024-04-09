@@ -26,6 +26,10 @@ const routes = [
 		path: '/layout',
 		component: () => import('../components/layout/index.vue'),
 	},
+	{
+		path: '/scrollbar',
+		component: () => import('../components/scrollbar/index.vue'),
+	},
 ]
 const router = createRouter({
 	history: createWebHistory(),

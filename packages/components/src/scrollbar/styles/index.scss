@@ -1,0 +1,10 @@
+.ued-scrollbar {
+	--ued-scrollbar-opacity: 0.3;
+	--ued-scrollbar-bg-color: var(--ued-text-color-secondary);
+	--ued-scrollbar-hover-opacity: 0.5;
+	--ued-scrollbar-hover-bg-color: var(--ued-text-color-secondary);
+
+	position: relative;
+	height: 100%;
+	overflow: hidden;
+}

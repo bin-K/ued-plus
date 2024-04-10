@@ -1,7 +1,7 @@
 <template>
 	<h2>基础用法</h2>
 	<div class="scrollbar-content scrollbar-basic">
-		<ued-scrollbar>
+		<ued-scrollbar height="400px">
 			<p v-for="item in 20" :key="item" class="scrollbar-demo-item">
 				{{ item }}
 			</p>

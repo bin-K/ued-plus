@@ -1,9 +1,11 @@
 <template>
 	<scrollbar-basic />
+	<scrollbar-horizontal />
 </template>
 
 <script lang="ts" setup>
 import ScrollbarBasic from './basic/index.vue'
+import ScrollbarHorizontal from './horizontal/index.vue'
 </script>
 
 <style lang="scss">

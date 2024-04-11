@@ -61,5 +61,26 @@
 		border-radius: inherit;
 		opacity: var(--ued-scrollbar-opacity, 0.3);
 		transition: var(--ued-transition-duration) background-color;
+
+		&:hover {
+			background-color: var(
+				--ued-scrollbar-hover-bg-color,
+				var(--ued-text-color-secondary)
+			);
+			opacity: var(--el-scrollbar-hover-opacity, 0.5);
+		}
+	}
+
+	&-fade-enter-active {
+		transition: opacity 0.34s ease-out;
+	}
+
+	&-fade-leave-active {
+		transition: opacity 0.12s ease-out;
+	}
+
+	&-fade-enter-from,
+	&-leave-active {
+		opacity: 0;
 	}
 }

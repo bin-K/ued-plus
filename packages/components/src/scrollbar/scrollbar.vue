@@ -6,7 +6,12 @@
 			:class="scrollbarWrapClass"
 			:style="scrollbarWrapStyle"
 		>
-			<component :is="scrollbarTag" class="ued-scrollbar__view">
+			<component
+				:is="scrollbarTag"
+				class="ued-scrollbar__view"
+				:class="scrollbarViewClass"
+				:style="scrollbarViewStyle"
+			>
 				<slot />
 			</component>
 
@@ -50,8 +55,13 @@ type Overflow = {
 type ScrollBarProps = {
 	tag?: string
 	height?: string | number
+	maxHeight?: string | number
 	native?: boolean
 	always?: boolean
+	wrapStyle?: CSSProperties | CSSProperties[] | string[]
+	wrapClass?: string
+	viewStyle?: CSSProperties | CSSProperties[] | string[]
+	viewClass?: string
 }
 
 const scrollBarProps = defineProps<ScrollBarProps>()
@@ -61,14 +71,45 @@ const scrollbarWrapStyle = computed(() => {
 		typeof scrollBarProps.height === 'string'
 			? scrollBarProps.height.split('px')[0]
 			: scrollBarProps.height
+	const maxHeight =
+		typeof scrollBarProps.maxHeight === 'string'
+			? scrollBarProps.maxHeight.split('px')[0]
+			: scrollBarProps.maxHeight
 	return {
 		height: Number.isNaN(Number(height)) ? undefined : Number(height) + 'px',
+		'max-height': Number.isNaN(Number(maxHeight))
+			? undefined
+			: Number(maxHeight) + 'px',
+		...scrollBarProps.wrapStyle,
 	}
 })
 
 const scrollbarWrapClass = computed(() => {
+	const wrapClass = scrollBarProps.wrapClass
+		? {
+				[scrollBarProps.wrapClass]: true,
+			}
+		: {}
 	return {
 		'ued-scrollbar__wrap--hidden-default': !scrollBarProps.native,
+		...wrapClass,
+	}
+})
+
+const scrollbarViewStyle = computed(() => {
+	return {
+		...scrollBarProps.wrapStyle,
+	}
+})
+
+const scrollbarViewClass = computed(() => {
+	const viewClass = scrollBarProps.viewClass
+		? {
+				[scrollBarProps.viewClass]: true,
+			}
+		: {}
+	return {
+		...viewClass,
 	}
 })
 

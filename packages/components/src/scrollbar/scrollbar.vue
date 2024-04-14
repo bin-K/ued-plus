@@ -1,5 +1,5 @@
 <template>
-	<div class="ued-scrollbar">
+	<div ref="scrollbarRef" class="ued-scrollbar">
 		<div
 			ref="wrapRef"
 			class="ued-scrollbar__wrap"
@@ -9,6 +9,7 @@
 		>
 			<component
 				:is="tag"
+				ref="resideRef"
 				class="ued-scrollbar__view"
 				:class="scrollbarViewClass"
 				:style="scrollbarViewStyle"
@@ -20,26 +21,32 @@
 				<transition name="ued-scrollbar-fade">
 					<div
 						v-show="always || visible"
-						ref="barHorizontalRef"
+						:ref="barRef.horizontal"
 						class="ued-scrollbar__bar is-horizontal"
 						:style="barHorizontalStyle"
+						@mousedown="clickTrackHandler($event, 'horizontal')"
 					>
 						<div
+							:ref="barThumbRef.horizontal"
 							class="ued-scrollbar__thumb"
 							:style="barHorizontalThumbStyle"
+							@mousedown="clickThumbHandler($event, 'horizontal')"
 						></div>
 					</div>
 				</transition>
 				<transition name="ued-scrollbar-fade">
 					<div
 						v-show="always || visible"
-						ref="barVerticalRef"
+						:ref="barRef.vertical"
 						class="ued-scrollbar__bar is-vertical"
 						:style="barVerticalStyle"
+						@mousedown="clickTrackHandler($event, 'vertical')"
 					>
 						<div
+							:ref="barThumbRef.vertical"
 							class="ued-scrollbar__thumb"
 							:style="barVerticalThumbStyle"
+							@mousedown="clickThumbHandler($event, 'vertical')"
 						></div>
 					</div>
 				</transition>
@@ -66,6 +73,32 @@ type Overflow = {
 	horizontal: boolean
 	vertical: boolean
 }
+const BAR_MAP = {
+	vertical: {
+		offset: 'offsetHeight',
+		scroll: 'scrollTop',
+		scrollSize: 'scrollHeight',
+		size: 'height',
+		key: 'vertical',
+		axis: 'Y',
+		client: 'clientY',
+		direction: 'top',
+	},
+	horizontal: {
+		offset: 'offsetWidth',
+		scroll: 'scrollLeft',
+		scrollSize: 'scrollWidth',
+		size: 'width',
+		key: 'horizontal',
+		axis: 'X',
+		client: 'clientX',
+		direction: 'left',
+	},
+} as const
+type Direction =
+	| keyof typeof BAR_MAP
+	| keyof typeof barRef
+	| keyof typeof barThumbRef
 
 defineOptions({ name: 'UedScrollbar' })
 
@@ -114,9 +147,14 @@ const scrollBarProps = defineProps({
 		type: Number,
 		default: 20,
 	},
+	noresize: {
+		type: Boolean,
+		default: false,
+	},
 })
 const emits = defineEmits(['scroll'])
 
+const scrollbarRef = ref()
 const scrollbarWrapStyle = computed(() => {
 	const height =
 		typeof scrollBarProps.height === 'string'
@@ -157,15 +195,26 @@ const scrollbarViewClass = computed(() => {
 const wrapRef = ref<HTMLDivElement>()
 
 const GAP = 4
-const moveX = ref(0)
-const moveY = ref(0)
-const ratioX = ref(1)
-const ratioY = ref(1)
+const move = {
+	X: ref(0),
+	Y: ref(0),
+}
+const ratio = {
+	X: ref(1),
+	Y: ref(1),
+}
 const sizeWidth = ref('')
 const sizeHeight = ref('')
 
-const barHorizontalRef = ref<HTMLDivElement>()
-const barVerticalRef = ref<HTMLDivElement>()
+const barRef = {
+	horizontal: ref<HTMLDivElement>(),
+	vertical: ref<HTMLDivElement>(),
+}
+const barThumbRef = {
+	horizontal: ref<HTMLDivElement>(),
+	vertical: ref<HTMLDivElement>(),
+}
+
 const barHorizontalStyle = ref<CSSProperties>({
 	display: 'none',
 })
@@ -177,21 +226,21 @@ const barVerticalStyle = ref<CSSProperties>({
 const barHorizontalThumbStyle = computed<CSSProperties>(() => {
 	return {
 		width: sizeWidth.value,
-		transform: `translateX(${moveX.value})`,
+		transform: `translateX(${move.X.value}%)`,
 	}
 })
 const barVerticalThumbStyle = computed<CSSProperties>(() => {
 	return {
 		height: sizeHeight.value,
-		transform: `translateY(${moveY.value})`,
+		transform: `translateY(${move.Y.value}%)`,
 	}
 })
 
 const handleScroll = () => {
 	if (wrapRef.value) {
 		const { offsetHeight, offsetWidth, scrollTop, scrollLeft } = wrapRef.value
-		moveY.value = ((scrollTop * 100) / (offsetHeight - GAP)) * ratioY.value
-		moveX.value = ((scrollLeft * 100) / (offsetWidth - GAP)) * ratioX.value
+		move.Y.value = ((scrollTop * 100) / (offsetHeight - GAP)) * ratio.Y.value
+		move.X.value = ((scrollLeft * 100) / (offsetWidth - GAP)) * ratio.X.value
 		emits('scroll', {
 			scrollTop: wrapRef.value.scrollTop,
 			scrollLeft: wrapRef.value.scrollLeft,
@@ -207,11 +256,11 @@ const update = () => {
 	const height = Math.max(originalHeight, scrollBarProps.minSize)
 	const width = Math.max(originalWidth, scrollBarProps.minSize)
 
-	ratioY.value =
+	ratio.Y.value =
 		originalHeight /
 		(offsetHeight - originalHeight) /
 		(height / (offsetHeight - height))
-	ratioX.value =
+	ratio.X.value =
 		originalWidth /
 		(offsetWidth - originalWidth) /
 		(width / (offsetWidth - width))
@@ -230,6 +279,129 @@ watch(
 	}
 )
 
+const resideRef = ref<HTMLDivElement>()
+watch(
+	() => scrollBarProps.noresize,
+	(noresize) => {
+		if (noresize) {
+			window.removeEventListener('resize', update)
+		} else {
+			window.addEventListener('resize', update)
+		}
+	},
+	{
+		immediate: true,
+	}
+)
+
+const thumbState = ref<Partial<Record<'X' | 'Y', number>>>({})
+let cursorDown = false
+let cursorLeave = false
+let originalOnSelectStart: any
+
+const offsetRatio = computed(() => {
+	return (direction: Direction) =>
+		// offsetRatioX = original width of thumb / current width of thumb / ratioX
+		// offsetRatioY = original height of thumb / current height of thumb / ratioY
+		// instance height = wrap height - GAP
+		barRef[direction].value![BAR_MAP[direction].offset] ** 2 /
+		wrapRef.value![BAR_MAP[direction].scrollSize] /
+		ratio[BAR_MAP[direction].axis].value /
+		barThumbRef[direction].value![BAR_MAP[direction].offset]
+})
+
+const clickTrackHandler = (e: MouseEvent, direction: Direction) => {
+	if (
+		barThumbRef[direction].value &&
+		barRef[direction].value &&
+		wrapRef.value
+	) {
+		const offset = Math.abs(
+			(e.target as HTMLElement).getBoundingClientRect()[
+				BAR_MAP[direction].direction
+			] - e[BAR_MAP[direction].client]
+		)
+		const thumbHalf =
+			barThumbRef[direction].value![BAR_MAP[direction].offset] / 2
+		const thumbPositionPercentage =
+			((offset - thumbHalf) * 100 * offsetRatio.value(direction)) /
+			barRef[direction].value![BAR_MAP[direction].offset]
+		wrapRef.value[BAR_MAP[direction].scroll] =
+			(thumbPositionPercentage * wrapRef.value[BAR_MAP[direction].scrollSize]) /
+			100
+	}
+}
+
+const clickThumbHandler = (e: MouseEvent, direction: Direction) => {
+	e.stopPropagation()
+	if (e.ctrlKey || [1, 2].includes(e.button)) return
+	window.getSelection()?.removeAllRanges()
+	startDrag(e, direction)
+
+	const el = e.currentTarget as HTMLDivElement
+	if (!el) return
+
+	thumbState.value[BAR_MAP[direction].axis] =
+		el[BAR_MAP[direction].offset] -
+		(e[BAR_MAP[direction].client] -
+			el.getBoundingClientRect()[BAR_MAP[direction].direction])
+}
+
+const startDrag = (e: MouseEvent, direction: Direction) => {
+	e.stopImmediatePropagation()
+	cursorDown = true
+	document.addEventListener('mousemove', (e) =>
+		mouseMoveDocumentHandler(e, direction)
+	)
+	document.addEventListener('mouseup', (e) =>
+		mouseUpDocumentHandler(e, direction)
+	)
+	originalOnSelectStart = document.onselectstart
+	document.onselectstart = () => false
+}
+
+const mouseMoveDocumentHandler = (e: MouseEvent, direction: Direction) => {
+	if (cursorDown === false) return
+	if (barRef[direction].value && barThumbRef[direction].value) {
+		const prevPage = thumbState.value[BAR_MAP[direction].axis]
+		if (!prevPage) return
+		const offset =
+			(barRef[direction].value!.getBoundingClientRect()[
+				BAR_MAP[direction].direction
+			] -
+				e[BAR_MAP[direction].client]) *
+			-1
+		const thumbClickPosition =
+			barThumbRef[direction].value![BAR_MAP[direction].offset] - prevPage
+		const thumbPositionPercentage =
+			((offset - thumbClickPosition) * 100 * offsetRatio.value(direction)) /
+			barRef[direction].value![BAR_MAP[direction].offset]
+		wrapRef.value![BAR_MAP[direction].scroll] =
+			(thumbPositionPercentage *
+				wrapRef.value![BAR_MAP[direction].scrollSize]) /
+			100
+	}
+}
+
+const mouseUpDocumentHandler = (e: MouseEvent, direction: Direction) => {
+	cursorDown = false
+	thumbState.value[BAR_MAP[direction].axis] = 0
+	document.removeEventListener('mousemove', (e) =>
+		mouseMoveDocumentHandler(e, direction)
+	)
+	document.removeEventListener('mouseup', (e) =>
+		mouseUpDocumentHandler(e, direction)
+	)
+	restoreOnselectstart()
+	if (cursorLeave) visible.value = false
+}
+
+const restoreOnselectstart = () => {
+	if (document.onselectstart !== originalOnSelectStart) {
+		document.onselectstart = originalOnSelectStart
+	}
+}
+
 const visible = ref(false)
 const judgeOverflow = (): Overflow => {
 	if (wrapRef.value) {
@@ -245,18 +417,22 @@ const judgeOverflow = (): Overflow => {
 		vertical: false,
 	}
 }
-const mouseenter = () => {
+const mousemove = () => {
 	if (!scrollBarProps.always) {
 		visible.value = true
+		cursorLeave = false
 		judgeOverflow().horizontal && (barHorizontalStyle.value.display = undefined)
 		judgeOverflow().vertical && (barVerticalStyle.value.display = undefined)
 	}
 }
 const mouseleave = () => {
 	if (!scrollBarProps.always) {
-		visible.value = false
-		barHorizontalStyle.value.display = 'none'
-		barVerticalStyle.value.display = 'none'
+		visible.value = cursorDown
+		cursorLeave = true
+		judgeOverflow().horizontal &&
+			(barHorizontalStyle.value.display = cursorDown ? undefined : 'none')
+		judgeOverflow().vertical &&
+			(barVerticalStyle.value.display = cursorDown ? undefined : 'none')
 	}
 }
 
@@ -268,19 +444,20 @@ onMounted(() => {
 				scrollBarProps.always && judgeOverflow().horizontal ? undefined : 'none'
 			barVerticalStyle.value.display =
 				scrollBarProps.always && judgeOverflow().vertical ? undefined : 'none'
-			wrapRef.value?.addEventListener('mouseenter', mouseenter)
+			wrapRef.value?.addEventListener('mousemove', mousemove)
 			wrapRef.value?.addEventListener('mouseleave', mouseleave)
 		})
 	}
 })
 onUpdated(() => update())
 onBeforeUnmount(() => {
-	wrapRef.value?.removeEventListener('mouseenter', mouseenter)
+	wrapRef.value?.removeEventListener('mousemove', mousemove)
 	wrapRef.value?.removeEventListener('mouseleave', mouseleave)
 })
 
 defineExpose({
 	handleScroll,
 	update,
+	wrapRef,
 })
 </script>

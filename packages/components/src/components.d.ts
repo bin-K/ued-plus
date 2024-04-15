@@ -14,6 +14,7 @@ declare module '@vue/runtime-core' {
 		UedAside: typeof components.UedAside
 		UedRow: typeof components.UedRow
 		UedCol: typeof components.UedCol
+		UedScrollBar: typeof components.UedScrollBar
 	}
 }
 export {}

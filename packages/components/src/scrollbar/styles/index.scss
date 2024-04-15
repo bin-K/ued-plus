@@ -1,0 +1,86 @@
+.ued-scrollbar {
+	--ued-scrollbar-opacity: 0.3;
+	--ued-scrollbar-bg-color: var(--ued-text-color-secondary);
+	--ued-scrollbar-hover-opacity: 0.5;
+	--ued-scrollbar-hover-bg-color: var(--ued-text-color-secondary);
+
+	position: relative;
+	height: 100%;
+	overflow: hidden;
+	scrollbar-color: var(--ued-scrollbar-bg-color) var(--ued-fill-color-light);
+
+	&__wrap {
+		height: 100%;
+		overflow: auto;
+
+		&--hidden-default {
+			scrollbar-width: none;
+
+			&::-webkit-scrollbar {
+				display: none;
+			}
+		}
+	}
+
+	&__bar {
+		position: absolute;
+		right: 2px;
+		bottom: 2px;
+		z-index: 1;
+		border-radius: 4px;
+
+		&.is-horizontal {
+			left: 2px;
+			height: 6px;
+
+			& > div {
+				height: 100%;
+			}
+		}
+
+		&.is-vertical {
+			top: 2px;
+			width: 6px;
+
+			& > div {
+				width: 100%;
+			}
+		}
+	}
+
+	&__thumb {
+		position: relative;
+		display: block;
+		width: 0;
+		height: 0;
+		cursor: pointer;
+		background-color: var(
+			--ued-scrollbar-bg-color,
+			var(--ued-text-color-secondary)
+		);
+		border-radius: inherit;
+		opacity: var(--ued-scrollbar-opacity, 0.3);
+		transition: var(--ued-transition-duration) background-color;
+
+		&:hover {
+			background-color: var(
+				--ued-scrollbar-hover-bg-color,
+				var(--ued-text-color-secondary)
+			);
+			opacity: var(--el-scrollbar-hover-opacity, 0.5);
+		}
+	}
+
+	&-fade-enter-active {
+		transition: opacity 0.34s ease-out;
+	}
+
+	&-fade-leave-active {
+		transition: opacity 0.12s ease-out;
+	}
+
+	&-fade-enter-from,
+	&-leave-active {
+		opacity: 0;
+	}
+}

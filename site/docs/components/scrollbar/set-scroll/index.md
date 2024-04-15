@@ -3,7 +3,7 @@
 通过使用 setScrollTop 与 setScrollLeft 方法，可以手动控制滚动条滚动。
 
 <div class="scrollbar-content scrollbar-set-scroll">
-  <ued-scrollbar ref="scrollbarRef" height="400px" always>
+  <ued-scrollbar ref="scrollbarRef" height="400px" always @scroll="handleScroll">
     <div ref="innerRef">
       <p v-for="item in 20" :key="item" class="scrollbar-demo-item">
         {{ item }}
@@ -25,7 +25,12 @@
 ```vue
 <template>
 	<div class="scrollbar-content scrollbar-set-scroll">
-		<ued-scrollbar ref="scrollbarRef" height="400px" always>
+		<ued-scrollbar
+			ref="scrollbarRef"
+			height="400px"
+			always
+			@scroll="handleScroll"
+		>
 			<div ref="innerRef">
 				<p v-for="item in 20" :key="item" class="scrollbar-demo-item">
 					{{ item }}
@@ -55,6 +60,9 @@ const down = () => {
 	value.value = value.value + 25
 	if (value.value >= max.value) value.value = max.value
 	scrollbarRef.value!.setScrollTop(value.value)
+}
+const handleScroll = ({ scrollTop }) => {
+	value.value = scrollTop
 }
 onMounted(() => {
 	max.value = innerRef.value!.clientHeight - 380

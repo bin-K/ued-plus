@@ -39,6 +39,9 @@ const down = () => {
 	if (value.value >= max.value) value.value = max.value
 	scrollbarRef.value!.setScrollTop(value.value)
 }
+const handleScroll = ({ scrollTop }) => {
+	value.value = scrollTop
+}
 onMounted(() => {
 	max.value = innerRef.value!.clientHeight - 380
 })

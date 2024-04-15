@@ -1,3 +1,12 @@
+### v1.7.1
+#### 2024-04-15 15:58:33 +0800
+
+### Bug Fixes
+
+* **scrollbar:** 解决组件库打包bug  ([c0a28d3](https://github.com/bin-K/ued-plus/commit/c0a28d3)) by: **kuangzhibin**
+
+---
+
 ### v1.7.0
 #### 2024-04-15 14:49:34 +0800
 

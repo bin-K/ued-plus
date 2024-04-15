@@ -53,6 +53,10 @@ export default {
 							text: 'Layout',
 							link: '/components/layout/',
 						},
+						{
+							text: 'Scrollbar',
+							link: '/components/scrollbar/',
+						},
 					],
 				},
 			],

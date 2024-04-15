@@ -402,6 +402,35 @@ const restoreOnselectstart = () => {
 	}
 }
 
+function scrollTo(arg1: unknown, arg2?: number) {
+	if (typeof arg1 === 'object' && arg1 !== null) {
+		wrapRef.value!.scrollTo(arg1)
+	} else if (
+		typeof arg1 === 'number' &&
+		!Number.isNaN(arg1) &&
+		typeof arg2 === 'number' &&
+		!Number.isNaN(arg2)
+	) {
+		wrapRef.value!.scrollTo(arg1, arg2)
+	}
+}
+
+const setScrollTop = (value: number) => {
+	if (typeof value !== 'number' || Number.isNaN(value)) {
+		console.warn('scrollbar', 'value must be a number')
+		return
+	}
+	wrapRef.value!.scrollTop = value
+}
+
+const setScrollLeft = (value: number) => {
+	if (typeof value !== 'number' || Number.isNaN(value)) {
+		console.warn('scrollbar', 'value must be a number')
+		return
+	}
+	wrapRef.value!.scrollLeft = value
+}
+
 const visible = ref(false)
 const judgeOverflow = (): Overflow => {
 	if (wrapRef.value) {
@@ -418,22 +447,18 @@ const judgeOverflow = (): Overflow => {
 	}
 }
 const mousemove = () => {
-	if (!scrollBarProps.always) {
-		visible.value = true
-		cursorLeave = false
-		judgeOverflow().horizontal && (barHorizontalStyle.value.display = undefined)
-		judgeOverflow().vertical && (barVerticalStyle.value.display = undefined)
-	}
+	visible.value = true
+	cursorLeave = false
+	judgeOverflow().horizontal && (barHorizontalStyle.value.display = undefined)
+	judgeOverflow().vertical && (barVerticalStyle.value.display = undefined)
 }
 const mouseleave = () => {
-	if (!scrollBarProps.always) {
-		visible.value = cursorDown
-		cursorLeave = true
-		judgeOverflow().horizontal &&
-			(barHorizontalStyle.value.display = cursorDown ? undefined : 'none')
-		judgeOverflow().vertical &&
-			(barVerticalStyle.value.display = cursorDown ? undefined : 'none')
-	}
+	visible.value = cursorDown
+	cursorLeave = true
+	judgeOverflow().horizontal &&
+		(barHorizontalStyle.value.display = cursorDown ? undefined : 'none')
+	judgeOverflow().vertical &&
+		(barVerticalStyle.value.display = cursorDown ? undefined : 'none')
 }
 
 onMounted(() => {
@@ -444,8 +469,10 @@ onMounted(() => {
 				scrollBarProps.always && judgeOverflow().horizontal ? undefined : 'none'
 			barVerticalStyle.value.display =
 				scrollBarProps.always && judgeOverflow().vertical ? undefined : 'none'
-			wrapRef.value?.addEventListener('mousemove', mousemove)
-			wrapRef.value?.addEventListener('mouseleave', mouseleave)
+			!scrollBarProps.always &&
+				wrapRef.value?.addEventListener('mousemove', mousemove)
+			!scrollBarProps.always &&
+				wrapRef.value?.addEventListener('mouseleave', mouseleave)
 		})
 	}
 })
@@ -457,6 +484,9 @@ onBeforeUnmount(() => {
 
 defineExpose({
 	handleScroll,
+	scrollTo,
+	setScrollTop,
+	setScrollLeft,
 	update,
 	wrapRef,
 })

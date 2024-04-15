@@ -284,9 +284,10 @@ watch(
 	() => scrollBarProps.noresize,
 	(noresize) => {
 		if (noresize) {
-			window.removeEventListener('resize', update)
+			typeof window !== 'undefined' &&
+				window.removeEventListener('resize', update)
 		} else {
-			window.addEventListener('resize', update)
+			typeof window !== 'undefined' && window.addEventListener('resize', update)
 		}
 	},
 	{

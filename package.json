@@ -94,5 +94,9 @@
 		"**/*.{css,less,scss}": [
 			"stylelint --fix \"**/*.{css,less}\""
 		]
+	},
+	"dependencies": {
+		"@ued-plus/components": "workspace:^",
+		"@ued-plus/utils": "workspace:^"
 	}
 }

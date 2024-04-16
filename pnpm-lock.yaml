@@ -7,6 +7,13 @@ settings:
 importers:
 
   .:
+    dependencies:
+      '@ued-plus/components':
+        specifier: workspace:^
+        version: link:packages/components
+      '@ued-plus/utils':
+        specifier: workspace:^
+        version: link:packages/utils
     devDependencies:
       '@commitlint/cli':
         specifier: ^19.2.1
@@ -171,9 +178,6 @@ importers:
 
   play:
     dependencies:
-      '@ued-plus/components':
-        specifier: workspace:^
-        version: link:../packages/components
       vue-router:
         specifier: ^4.3.0
         version: 4.3.0(vue@3.4.21)

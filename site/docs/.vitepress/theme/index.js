@@ -1,5 +1,6 @@
 import DefaultTheme from 'vitepress/theme'
 import ued from '@ued-plus/components'
+import './style/common.scss'
 export default {
 	...DefaultTheme,
 	enhanceApp: async ({ app }) => {

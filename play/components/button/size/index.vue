@@ -1,6 +1,6 @@
 <template>
 	<h2>按钮尺寸</h2>
-	<div class="button-content button-size">
+	<div class="common-content button-content button-size">
 		<div class="button-size-large">
 			<div style="margin-bottom: 15px">
 				<ued-button

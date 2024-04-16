@@ -1,6 +1,6 @@
 <template>
 	<h2>dot和badge的使用</h2>
-	<div class="icon-content icon-dot">
+	<div class="common-content icon-content icon-dot">
 		<div class="icon-dot-show">
 			<ued-icon :size="20" dot><Plus /></ued-icon>
 			<ued-icon :size="20" dot><Minus /></ued-icon>
@@ -14,16 +14,16 @@
 	</div>
 </template>
 
-<script lang="ts" setup></script>
-
-<style scoped>
+<style lang="scss" scoped>
 .icon-dot {
 	border: 1px solid #e4e7ed;
 	border-radius: 5px;
+
+	&-show {
+		display: flex;
+	}
 }
-.icon-dot-show {
-	display: flex;
-}
+
 .ued-icon {
 	margin-right: 36px;
 }

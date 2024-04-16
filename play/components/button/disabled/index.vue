@@ -1,6 +1,6 @@
 <template>
 	<h2>禁用状态</h2>
-	<div class="button-content button-disabled">
+	<div class="common-content button-content button-disabled">
 		<div class="button-disabled-defalut">
 			<ued-button
 				v-for="item in buttonType"

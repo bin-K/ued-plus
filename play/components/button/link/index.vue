@@ -1,6 +1,6 @@
 <template>
 	<h2>链接按钮</h2>
-	<div class="button-content button-link">
+	<div class="common-content button-content button-link">
 		<div class="button-link-defalut">
 			<ued-button
 				v-for="item in buttonType"

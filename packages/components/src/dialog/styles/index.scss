@@ -1,0 +1,7 @@
+.ued-overlay {
+	position: fixed;
+	z-index: 2000;
+	height: 100%;
+	overflow: auto;
+	background-color: var(--ued-overlay-color-lighter);
+}

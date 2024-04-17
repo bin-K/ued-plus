@@ -4,7 +4,7 @@
 
 您可以通过justify 属性来定义子元素的排版方式，其取值为start、center、end、space-between、space-around或space-evenly。
 
-<div class="layout-content">
+<div class="common-content layout-content">
   <div class="layout-justify">
     <ued-row>
       <ued-col :span="6">
@@ -114,11 +114,12 @@
   </div>
 </div>
 
-<style scoped>
-.layout-align > .ued-row {
-  margin-top: 10px;
-	height: 80px;
-	border: 1px solid #e4e7ed;
+<style lang="scss" scoped>
+.layout-align {
+	& > .ued-row {
+		height: 80px;
+		border: 1px solid #e4e7ed;
+	}
 }
 </style>
 
@@ -240,9 +241,9 @@
 <style lang="scss" scoped>
 .ued-row {
 	margin-bottom: 20px;
-}
-.ued-row:last-child {
-	margin-bottom: 0;
+	&:last-child {
+		margin-bottom: 0;
+	}
 }
 .ued-col {
 	border-radius: 4px;
@@ -259,10 +260,11 @@
 	}
 }
 
-.layout-align > .ued-row {
-	margin-top: 10px;
-	height: 80px;
-	border: 1px solid #e4e7ed;
+.layout-align {
+	& > .ued-row {
+		height: 80px;
+		border: 1px solid #e4e7ed;
+	}
 }
 </style>
 ```

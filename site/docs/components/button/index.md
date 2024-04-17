@@ -25,30 +25,13 @@ const buttonType = ref([
 
 <!--@include: ./tag/index.md-->
 
+<!-- @include: ./text/index.md   -->
+
 <!--@include: ./button-icon/index.md-->
 
 <!--@include: ./loading/index.md-->
 
 <!--@include: ./button-group/index.md  -->
-
-<style>
-.button-content {
-	display: flex;
-	flex-direction: column;
-  border: 1px solid #e4e7ed;
-	padding: 30px;
-	border-radius: 5px;
-}
-
-.button-content > div {
-	margin-bottom: 15px;
-}
-
-.button-content > div:last-child {
-	margin: 0;
-}
-
-</style>
 
 ## Button API
 

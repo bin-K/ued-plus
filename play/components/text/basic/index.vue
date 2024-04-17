@@ -1,6 +1,6 @@
 <template>
 	<h2>基本用法</h2>
-	<div class="text-content text-basic">
+	<div class="common-content text-content text-basic">
 		<div class="text-basic-default">
 			<ued-text
 				v-for="(item, index) in textType"

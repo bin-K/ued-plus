@@ -2,7 +2,7 @@
 
 通过 height 属性设置滚动条高度，若不设置则根据父容器高度自适应。
 
-<div class="scrollbar-content scrollbar-basic">
+<div class="common-content scrollbar-content scrollbar-basic">
   <ued-scrollbar height="400px">
     <p v-for="item in 20" :key="item" class="scrollbar-demo-item">
       {{ item }}

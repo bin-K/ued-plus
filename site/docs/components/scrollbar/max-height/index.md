@@ -2,7 +2,7 @@
 
 当元素高度超过最大高度，才会显示滚动条。
 
-<div class="scrollbar-content scrollbar-max-height">
+<div class="common-content scrollbar-content scrollbar-max-height">
   <ued-button @click="add">添加</ued-button>
   <ued-button @click="onDelete">删除</ued-button>
   <ued-scrollbar max-height="400px">
@@ -12,7 +12,7 @@
   </ued-scrollbar>
 </div>
 
-<style scoped>
+<style lang="scss" scoped>
 .scrollbar-content.scrollbar-max-height {
 	display: block;
 }

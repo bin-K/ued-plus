@@ -1,6 +1,6 @@
 <template>
 	<h2>响应式布局</h2>
-	<div class="layout-content layout-bootstrap">
+	<div class="common-content layout-content layout-bootstrap">
 		<ued-row :gutter="10">
 			<ued-col :xs="8" :sm="6" :md="4" :lg="3" :xl="1">
 				<div class="grid-content" />

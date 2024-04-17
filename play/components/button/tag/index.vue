@@ -1,6 +1,6 @@
 <template>
 	<h2>Tag</h2>
-	<div class="button-content button-tag">
+	<div class="common-content button-content button-tag">
 		<div class="button-tag-defalut">
 			<ued-button>默认按钮</ued-button>
 			<ued-button tag="div">div</ued-button>

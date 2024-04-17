@@ -17,8 +17,6 @@ import { computed, ComponentCustomProps, PropType, useSlots } from 'vue'
 
 defineOptions({ name: 'UedLink' })
 
-const $slots = useSlots()
-
 const linkProps = defineProps({
 	type: {
 		type: String,
@@ -37,6 +35,8 @@ const linkProps = defineProps({
 		default: undefined,
 	},
 })
+
+const $slots = useSlots()
 
 const linkClass = computed(() => {
 	return {

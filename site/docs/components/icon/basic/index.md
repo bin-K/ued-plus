@@ -7,7 +7,7 @@
 
 通过 size 可以设置图标大小， color 可以设置图标颜色
 
-<div class="icon-content icon-basic">
+<div class="common-content icon-content icon-basic">
   <div class="icon-basic-first">
     <div v-for="item in iconName" :key="item" class="icon-basic-item">
       <div>
@@ -32,12 +32,11 @@
   </div>
 </div>
 
-<style>
+<style lang="scss" scoped>
 .icon-basic-first {
 	display: flex;
 	flex-wrap: wrap;
 }
-
 .icon-basic-item,
 .icon-basic-second > div {
 	display: flex;
@@ -47,23 +46,23 @@
 	width: 114px;
 	height: 90px;
 	cursor: pointer;
+	.ued-icon {
+		margin: 0;
+	}
 }
-
-.icon-basic-item > div {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	padding: 0 20px;
-}
-
-.icon-basic-item .ued-icon {
-	margin: 0;
-}
-.icon-basic-item .icon-name {
-	margin-top: 8px;
-	font-size: 13px;
-}
+.icon-basic-item {
+	& > div {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		padding: 0 20px;
+	}
+	.icon-name {
+		margin-top: 8px;
+		font-size: 13px;
+	}
+} 
 
 .icon-basic-second {
 	display: flex;
@@ -74,14 +73,29 @@
 
 ```vue
 <template>
-	<div>
-		<ued-icon v-for="item in iconName" :key="item" :name="item" :size="20" />
-	</div>
-	<div>
-		<ued-icon :size="20" color="#409efc"><Plus /></ued-icon>
-		<ued-icon :size="20"><Minus /></ued-icon>
-		<ued-icon :size="20"><CirclePlus /></ued-icon>
-		<ued-icon :size="20"><CircleMinus /></ued-icon>
+	<div class="icon-content icon-basic">
+		<div class="icon-basic-first">
+			<div v-for="item in iconName" :key="item" class="icon-basic-item">
+				<div>
+					<ued-icon :name="item" :size="20" />
+					<span class="icon-name">{{ item }}</span>
+				</div>
+			</div>
+		</div>
+		<div class="icon-basic-second">
+			<div>
+				<ued-icon :size="20" color="#409efc"><Plus /></ued-icon>
+			</div>
+			<div>
+				<ued-icon :size="20"><Minus /></ued-icon>
+			</div>
+			<div>
+				<ued-icon :size="20"><CirclePlus /></ued-icon>
+			</div>
+			<div>
+				<ued-icon :size="20"><CircleMinus /></ued-icon>
+			</div>
+		</div>
 	</div>
 </template>
 

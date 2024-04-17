@@ -7,6 +7,7 @@
 <script lang="ts" setup>
 import '../../styles/aside.scss'
 import { computed } from 'vue'
+import { handleStringOrNumberPx } from '@ued-plus/utils'
 
 defineOptions({ name: 'UedAside' })
 
@@ -17,12 +18,8 @@ type AsideProps = {
 const asideProps = defineProps<AsideProps>()
 
 const asideStyle = computed(() => {
-	const width =
-		typeof asideProps.width === 'string'
-			? asideProps.width.split('px')[0]
-			: asideProps.width
 	return {
-		width: Number.isNaN(Number(width)) ? undefined : Number(width) + 'px',
+		width: handleStringOrNumberPx(asideProps.width),
 	}
 })
 </script>

@@ -18,13 +18,9 @@
 </template>
 
 <script lang="ts" setup>
-import { UedIcon } from '../icon'
-import { Loading } from '../icon/icon'
-import { computed, ComponentCustomProps, useSlots, ref, inject } from 'vue'
 import './styles/index.scss'
-
-const buttonType = inject('type', undefined)
-const buttonSize = inject('size', undefined)
+import { UedIcon, Loading } from '@ued-plus/components'
+import { computed, ComponentCustomProps, useSlots, ref, inject } from 'vue'
 
 defineOptions({ name: 'UedButton' })
 
@@ -45,6 +41,9 @@ type ButtonProps = {
 }
 
 const buttonProps = defineProps<ButtonProps>()
+
+const buttonType = inject('type', undefined)
+const buttonSize = inject('size', undefined)
 
 const $slots = useSlots()
 

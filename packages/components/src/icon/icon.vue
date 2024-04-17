@@ -5,17 +5,12 @@
 	</component>
 </template>
 <script lang="ts" setup>
-import { computed, onMounted } from 'vue'
 import './styles/index.scss'
-
+import { computed, onMounted } from 'vue'
+import { isNumber } from '@ued-plus/utils'
 import Common from './components/common/index.vue'
 
 defineOptions({ name: 'UedIcon' })
-
-onMounted(() => {
-	// 引入字体图标文件
-	import('./font/iconfont.js' as any)
-})
 
 type IconProps = {
 	name?: string
@@ -33,8 +28,7 @@ const iconName = computed(() => {
 
 const iconStyle = computed(() => {
 	return {
-		fontSize:
-			typeof iconProps.size === 'number' ? iconProps.size + 'px' : undefined,
+		fontSize: isNumber(iconProps.size) ? `${iconProps.size}px` : undefined,
 		color: iconProps.color,
 	}
 })
@@ -45,13 +39,18 @@ const iconClass = computed(() => {
 	}
 })
 const badge = computed(() => {
-	return typeof iconProps.badge === 'number'
-		? iconProps.badge >= 100
+	return isNumber(iconProps.badge)
+		? iconProps.badge && iconProps.badge >= 100
 			? '99+'
 			: iconProps.badge
 		: ''
 })
 const icon = computed(() => {
 	return iconProps.name ? Common : 'i'
+})
+
+onMounted(() => {
+	// 引入字体图标文件
+	import('./font/iconfont.js' as any)
 })
 </script>

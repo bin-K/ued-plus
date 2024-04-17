@@ -1,7 +1,7 @@
 export default {
 	base: process.env.NODE_ENV === 'production' ? '/ued-ui/' : '/',
 	themeConfig: {
-		siteTitle: 'vitepress',
+		siteTitle: 'Ued-Plus',
 		nav: [
 			{ text: '指南', link: '/guide/installation/' },
 			{ text: '组件', link: '/components/button/' },

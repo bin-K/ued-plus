@@ -2,7 +2,7 @@
 
 使用 type、plain、round 和 circle 来定义按钮的样式。
 
-<div class="button-content button-basic">
+<div class="common-content button-content button-basic">
   <div class="button-basic-defalut">
    <ued-button 
       v-for="item in buttonType" 
@@ -59,7 +59,7 @@
 
 ```vue
 <template>
-  <div>
+  <div class="button-basic-defalut">
     <ued-button>默认按钮</ued-button>
     <ued-button type="primary">主要按钮</ued-button>
     <ued-button type="success">成功按钮</ued-button>
@@ -68,7 +68,7 @@
     <ued-button type="info">信息按钮</ued-button>
   </div>
 
-  <div>
+  <div class="button-basic-plain">
     <ued-button plain>默认按钮</ued-button>
     <ued-button type="primary" plain>主要按钮</ued-button>
     <ued-button type="success" plain>成功按钮</ued-button>
@@ -77,7 +77,7 @@
     <ued-button type="info" plain>信息按钮</ued-button>
   <div>
 
-  <div>
+  <div class="button-basic-round">
     <ued-button round>默认按钮</ued-button>
     <ued-button type="primary" round>主要按钮</ued-button>
     <ued-button type="success" round>成功按钮</ued-button>
@@ -85,7 +85,7 @@
     <ued-button type="danger" round>危险按钮</ued-button>
     <ued-button type="info" round>信息按钮</ued-button>
   </div>
-  <div>
+  <div class="button-basic-circle">
     <ued-button :icon="Plus" circle />
     <ued-button type="primary" :icon="Plus" circle />
     <ued-button type="success" :icon="Plus" circle />
@@ -93,7 +93,7 @@
     <ued-button type="danger" :icon="Plus" circle />
     <ued-button type="info" :icon="Plus" circle />
   </div>
-   <div>
+   <div class="button-basic-icon">
     <ued-button circle>
       <ued-icon>
         <Plus/>

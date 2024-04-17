@@ -19,18 +19,7 @@
 
 <style>
 .container-content {
-	display: flex;
-	flex-direction: column;
-	padding: 30px;
-	border-radius: 5px;
-}
-
-.container-content > div {
-	margin-bottom: 15px;
-}
-
-.container-content > div:last-child {
-	margin: 0;
+	border: none;
 }
 
 </style>

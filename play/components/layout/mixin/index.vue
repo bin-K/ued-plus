@@ -1,6 +1,6 @@
 <template>
 	<h2>混合布局</h2>
-	<div class="layout-content layout-mixin">
+	<div class="common-content layout-content layout-mixin">
 		<ued-row :gutter="20">
 			<ued-col :span="16">
 				<div class="grid-content" />

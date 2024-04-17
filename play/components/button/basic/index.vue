@@ -1,6 +1,6 @@
 <template>
 	<h2>基础用法</h2>
-	<div class="button-content button-basic">
+	<div class="common-content button-content button-basic">
 		<div class="button-basic-defalut">
 			<ued-button v-for="item in buttonType" :key="item.type" :type="item.type">
 				{{ item.text }}

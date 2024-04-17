@@ -1,6 +1,6 @@
 <template>
 	<h2>按钮组</h2>
-	<div class="button-content button-group">
+	<div class="common-content button-content button-group">
 		<div class="button-group-defalut">
 			<ued-button-group>
 				<ued-button type="primary" :icon="Minus">主要按钮</ued-button>

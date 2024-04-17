@@ -1,7 +1,7 @@
 <template>
 	<!-- https://www.cnblogs.com/joyce33/p/13396415.html 解决color不生效的方法 -->
 	<h2>基本用法</h2>
-	<div class="icon-content icon-basic">
+	<div class="common-content icon-content icon-basic">
 		<div class="icon-basic-first">
 			<div v-for="item in iconName" :key="item" class="icon-basic-item">
 				<div>
@@ -43,7 +43,7 @@ const iconName = ref([
 ])
 </script>
 
-<style>
+<style lang="scss" scoped>
 .icon-basic-first {
 	display: flex;
 	flex-wrap: wrap;

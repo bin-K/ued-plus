@@ -2,7 +2,7 @@
 
 通过使用 setScrollTop 与 setScrollLeft 方法，可以手动控制滚动条滚动。
 
-<div class="scrollbar-content scrollbar-set-scroll">
+<div class="common-content scrollbar-content scrollbar-set-scroll">
   <ued-scrollbar ref="scrollbarRef" height="400px" always @scroll="handleScroll">
     <div ref="innerRef">
       <p v-for="item in 20" :key="item" class="scrollbar-demo-item">
@@ -14,7 +14,7 @@
   <ued-button @click="down">下移</ued-button>
 </div>
 
-<style scoped>
+<style lang="scss" scoped>
 .scrollbar-content.scrollbar-set-scroll {
 	display: block;
 }

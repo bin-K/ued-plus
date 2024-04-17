@@ -1,6 +1,6 @@
 <template>
 	<h2>省略</h2>
-	<div class="text-content text-truncated">
+	<div class="common-content text-content text-truncated">
 		<div class="text-truncated-default">
 			<ued-text class="single-line" truncated>
 				默认文本默认文本默认文本默认文本
@@ -16,7 +16,7 @@
 	</div>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
 .single-line,
 .multiple-line {
 	width: 150px;

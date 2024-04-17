@@ -7,10 +7,9 @@
 <script lang="ts" setup>
 import './styles/col.scss'
 import { computed, inject, PropType } from 'vue'
+import { isPositiveNumber } from '@ued-plus/utils'
 
 defineOptions({ name: 'UedCol' })
-
-const rowGutter = inject('row-gutter', undefined)
 
 type ColProps = {
 	span?: number
@@ -62,24 +61,22 @@ const colProps = defineProps({
 	},
 })
 
-const judgeNumber = (num: number | undefined) => {
-	return typeof num === 'number' && num > 0
-}
+const rowGutter = inject('row-gutter', undefined)
 
 const handleBootstrap = (size: number | ColProps, sizeType: string) => {
-	if (typeof size === 'number') {
+	if (typeof size === 'object') {
 		return {
-			[`ued-col-${sizeType}-${size}`]: judgeNumber(size),
-		}
-	} else if (typeof size === 'object') {
-		return {
-			[`ued-col-${sizeType}-${size.span}`]: judgeNumber(size.span),
-			[`ued-col-offset-${sizeType}-${size.offset}`]: judgeNumber(size.offset),
-			[`ued-col-offset-${sizeType}-${size.pull}`]: judgeNumber(size.pull),
-			[`ued-col-offset-${sizeType}-${size.push}`]: judgeNumber(size.push),
+			[`ued-col-${sizeType}-${size.span}`]: isPositiveNumber(size.span),
+			[`ued-col-offset-${sizeType}-${size.offset}`]: isPositiveNumber(
+				size.offset
+			),
+			[`ued-col-offset-${sizeType}-${size.pull}`]: isPositiveNumber(size.pull),
+			[`ued-col-offset-${sizeType}-${size.push}`]: isPositiveNumber(size.push),
 		}
 	}
-	return {}
+	return {
+		[`ued-col-${sizeType}-${size}`]: isPositiveNumber(size),
+	}
 }
 
 const colClass = computed(() => {
@@ -90,10 +87,10 @@ const colClass = computed(() => {
 	const xlSize = colProps.xl && handleBootstrap(colProps.xl, 'xl')
 
 	return {
-		[`ued-col-${colProps.span}`]: judgeNumber(colProps.span),
-		[`ued-col-offset-${colProps.offset}`]: judgeNumber(colProps.offset),
-		[`ued-col-pull-${colProps.pull}`]: judgeNumber(colProps.pull),
-		[`ued-col-push-${colProps.push}`]: judgeNumber(colProps.push),
+		[`ued-col-${colProps.span}`]: isPositiveNumber(colProps.span),
+		[`ued-col-offset-${colProps.offset}`]: isPositiveNumber(colProps.offset),
+		[`ued-col-pull-${colProps.pull}`]: isPositiveNumber(colProps.pull),
+		[`ued-col-push-${colProps.push}`]: isPositiveNumber(colProps.push),
 		'is-guttered': rowGutter,
 		...xsSize,
 		...smSize,

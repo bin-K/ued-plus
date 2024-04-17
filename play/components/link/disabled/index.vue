@@ -1,6 +1,6 @@
 <template>
 	<h2>禁用状态</h2>
-	<div class="link-content link-disabled">
+	<div class="common-content link-content link-disabled">
 		<div class="link-disabled-default">
 			<ued-link
 				v-for="(item, index) in linkType"

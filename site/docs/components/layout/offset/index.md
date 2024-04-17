@@ -4,7 +4,7 @@
 
 通过制定 col 组件的 offset 属性可以指定分栏偏移的栏数。
 
-<div class="layout-content layout-offet">
+<div class="common-content layout-content layout-offet">
   <ued-row :gutter="20">
     <ued-col :span="6">
       <div class="grid-content" />
@@ -60,9 +60,9 @@
 <style lang="scss" scoped>
 .ued-row {
 	margin-bottom: 20px;
-}
-.ued-row:last-child {
-	margin-bottom: 0;
+	&:last-child {
+		margin-bottom: 0;
+	}
 }
 .ued-col {
 	border-radius: 4px;

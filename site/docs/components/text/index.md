@@ -26,25 +26,6 @@ const textType = ref([
 
 </script>
 
-<style>
-.text-content {
-	display: flex;
-	flex-direction: column;
-  border: 1px solid #e4e7ed;
-	padding: 30px;
-	border-radius: 5px;
-}
-
-.text-content > div {
-	margin-bottom: 15px;
-}
-
-.text-content > div:last-child {
-	margin: 0;
-}
-
-</style>
-
 ## API
 
 ### 属性

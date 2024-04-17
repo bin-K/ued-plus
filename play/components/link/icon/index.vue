@@ -1,6 +1,6 @@
 <template>
 	<h2>图标</h2>
-	<div class="link-content link-underline">
+	<div class="common-content link-content link-underline">
 		<div class="link-underline-default">
 			<ued-link :icon="Plus"> Plus</ued-link>
 			<ued-link>

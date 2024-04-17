@@ -4,7 +4,7 @@
 
 行提供 gutter 属性来指定列之间的间距，其默认值为0。
 
-<div class="layout-content layout-gutter">
+<div class="common-content layout-content layout-gutter">
   <ued-row :gutter="20">
     <ued-col :span="6">
       <div class="grid-content" />
@@ -46,9 +46,9 @@
 <style lang="scss" scoped>
 .ued-row {
 	margin-bottom: 20px;
-}
-.ued-row:last-child {
-	margin-bottom: 0;
+	&:last-child {
+		margin-bottom: 0;
+	}
 }
 .ued-col {
 	border-radius: 4px;

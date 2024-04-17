@@ -20,27 +20,12 @@
 
 <!--@include: ./bootstrap/index.md-->
 
-<style scoped>
-.text-content {
-	display: flex;
-	flex-direction: column;
-  border: 1px solid #e4e7ed;
-	padding: 30px;
-	border-radius: 5px;
-}
-
-.text-content > div {
-	margin-bottom: 15px;
-}
-
-.text-content > div:last-child {
-	margin: 0;
-}
+<style lang="scss" scoped>
 .ued-row {
 	margin-bottom: 20px;
-}
-.ued-row:last-child {
-	margin-bottom: 0;
+	&:last-child {
+		margin-bottom: 0;
+	}
 }
 .ued-col {
 	border-radius: 4px;
@@ -51,12 +36,11 @@
 	min-height: 36px;
 	background-color: var(--ued-color-primary-light-7);
 
-}
-
-.grid-content-light {
-  border-radius: 4px;
-  min-height: 36px;
-  background-color: var(--ued-color-primary-light-5);
+	&-light {
+		border-radius: 4px;
+		min-height: 36px;
+		background-color: var(--ued-color-primary-light-5);
+	}
 }
 </style>
 

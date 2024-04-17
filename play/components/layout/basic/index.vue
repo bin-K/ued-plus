@@ -1,6 +1,6 @@
 <template>
 	<h2>基础布局</h2>
-	<div class="layout-content layout-basic">
+	<div class="common-content layout-content layout-basic">
 		<ued-row>
 			<ued-col :span="24">
 				<div class="grid-content" />

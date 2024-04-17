@@ -47,22 +47,7 @@ onMounted(() => {
 })
 </script>
 
-<style>
-.scrollbar-content {
-  display: flex;
-  flex-direction: column;
-  border: 1px solid #e4e7ed;
-  padding: 30px;
-  border-radius: 5px;
-}
-
-.scrollbar-content > div {
-  margin-bottom: 15px;
-}
-
-.scrollbar-content > div:last-child {
-  margin: 0;
-}
+<style lang="scss">
 .scrollbar-demo-item {
   display: flex;
   align-items: center;
@@ -78,6 +63,8 @@ onMounted(() => {
 
 ## API
 
+### 属性
+
 | 属性名     |                                 说明                                 |                          类型                           | 默认值 |
 | ---------- | :------------------------------------------------------------------: | :-----------------------------------------------------: | ------ |
 | height     |                              滚动条高度                              |                    `number`/`string`                    | -      |
@@ -92,19 +79,19 @@ onMounted(() => {
 | always     |                            滚动条总是显示                            |                        `boolean`                        | false  |
 | min-size   |                            滚动条最小尺寸                            |                        `number`                         | 20     |
 
-## 插槽
+### 插槽
 
 | 插槽名  |      说明      |
 | ------- | :------------: |
 | defalut | 自定义默认内容 |
 
-## 事件
+### 事件
 
 | 插槽名 |               说明               | 类型                                                  |
 | ------ | :------------------------------: | ----------------------------------------------------- |
 | scroll | 当触发滚动事件时，返回滚动的距离 | `({ scrollLeft: number, scrollTop: number }) => void` |
 
-## 暴露
+### 暴露
 
 | 属性名        |          说明          |                              类型                               |
 | ------------- | :--------------------: | :-------------------------------------------------------------: |

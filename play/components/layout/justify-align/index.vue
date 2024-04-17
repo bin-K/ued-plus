@@ -1,6 +1,6 @@
 <template>
 	<h2>对齐方式</h2>
-	<div class="layout-content">
+	<div class="common-content layout-content">
 		<div class="layout-justify">
 			<ued-row>
 				<ued-col :span="6">
@@ -111,9 +111,11 @@
 	</div>
 </template>
 
-<style scoped>
-.layout-align > .ued-row {
-	height: 80px;
-	border: 1px solid #e4e7ed;
+<style lang="scss" scoped>
+.layout-align {
+	& > .ued-row {
+		height: 80px;
+		border: 1px solid #e4e7ed;
+	}
 }
 </style>

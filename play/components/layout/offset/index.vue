@@ -1,6 +1,6 @@
 <template>
 	<h2>列偏移</h2>
-	<div class="layout-content layout-offet">
+	<div class="common-content layout-content layout-offet">
 		<ued-row :gutter="20">
 			<ued-col :span="6">
 				<div class="grid-content" />

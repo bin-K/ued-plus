@@ -1,6 +1,6 @@
 <template>
 	<h2>手动滚动</h2>
-	<div class="scrollbar-content scrollbar-set-scroll">
+	<div class="common-content scrollbar-content scrollbar-set-scroll">
 		<ued-scrollbar
 			ref="scrollbarRef"
 			height="400px"
@@ -45,7 +45,7 @@ onMounted(() => {
 })
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .scrollbar-content {
 	display: block;
 }

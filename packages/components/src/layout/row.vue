@@ -7,6 +7,7 @@
 <script lang="ts" setup>
 import './styles/row.scss'
 import { computed, provide } from 'vue'
+import { isPositiveNumber } from '@ued-plus/utils'
 
 defineOptions({ name: 'UedRow' })
 
@@ -31,9 +32,7 @@ const rowProps = defineProps({
 
 provide(
 	'row-gutter',
-	typeof rowProps.gutter === 'number' && rowProps.gutter > 0
-		? Math.floor(rowProps.gutter)
-		: undefined
+	isPositiveNumber(rowProps.gutter) ? Math.floor(rowProps.gutter) : undefined
 )
 
 const rowClass = computed(() => {
@@ -44,10 +43,9 @@ const rowClass = computed(() => {
 })
 
 const rowStyle = computed(() => {
-	const marginNum =
-		typeof rowProps.gutter === 'number' && rowProps.gutter > 0
-			? `-${Math.floor(rowProps.gutter) / 2}px`
-			: undefined
+	const marginNum = isPositiveNumber(rowProps.gutter)
+		? `-${Math.floor(rowProps.gutter) / 2}px`
+		: undefined
 	return {
 		'margin-left': marginNum,
 		'margin-right': marginNum,

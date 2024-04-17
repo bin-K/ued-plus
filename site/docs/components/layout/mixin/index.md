@@ -2,7 +2,7 @@
 
 通过基础的 1/24 分栏任意扩展组合形成较为复杂的混合布局。
 
-<div class="layout-content layout-mixin">
+<div class="common-content layout-content layout-mixin">
   <ued-row :gutter="20">
     <ued-col :span="16">
       <div class="grid-content" />
@@ -82,9 +82,9 @@
 <style lang="scss" scoped>
 .ued-row {
 	margin-bottom: 20px;
-}
-.ued-row:last-child {
-	margin-bottom: 0;
+	&:last-child {
+		margin-bottom: 0;
+	}
 }
 .ued-col {
 	border-radius: 4px;

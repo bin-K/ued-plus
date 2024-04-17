@@ -2,7 +2,7 @@
 
 文字链接不可用状态。
 
-<div class="link-content link-disabled">
+<div class="common-content link-content link-disabled">
   <div class="link-disabled-default">
     <ued-link
       class="vp-raw"
@@ -20,15 +20,18 @@
 
 ```vue
 <template>
-	<div>
-		<ued-link
-			v-for="(item, index) in linkType"
-			:key="index"
-			:type="item.type"
-			disabled
-		>
-			{{ item.text }}
-		</ued-link>
+	<div class="link-content link-disabled">
+		<div class="link-disabled-default">
+			<ued-link
+				class="vp-raw"
+				v-for="(item, index) in linkType"
+				:key="index"
+				:type="item.type"
+				disabled
+			>
+				{{ item.text }}
+			</ued-link>
+		</div>
 	</div>
 </template>
 

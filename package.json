@@ -1,6 +1,6 @@
 {
 	"name": "ued-plus",
-	"version": "1.0.6",
+	"version": "1.0.7",
 	"description": "",
 	"main": "index.js",
 	"scripts": {
@@ -94,5 +94,9 @@
 		"**/*.{css,less,scss}": [
 			"stylelint --fix \"**/*.{css,less}\""
 		]
+	},
+	"dependencies": {
+		"@ued-plus/components": "workspace:^",
+		"@ued-plus/utils": "workspace:^"
 	}
 }

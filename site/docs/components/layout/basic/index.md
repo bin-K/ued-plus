@@ -4,7 +4,7 @@
 
 通过 row 和 col 组件，并通过 col 组件的 span 属性我们就可以自由地组合布局。
 
-<div class="layout-content layout-basic">
+<div class="common-content layout-content layout-basic">
   <ued-row>
     <ued-col :span="24">
       <div class="grid-content" />
@@ -134,9 +134,9 @@
 <style lang="scss" scoped>
 .ued-row {
 	margin-bottom: 20px;
-}
-.ued-row:last-child {
-	margin-bottom: 0;
+	&:last-child {
+		margin-bottom: 0;
+	}
 }
 .ued-col {
 	border-radius: 4px;

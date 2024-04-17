@@ -1,6 +1,6 @@
 <template>
 	<h2>混合使用</h2>
-	<div class="text-content text-mixin">
+	<div class="common-content text-content text-mixin">
 		<div class="text-mixin-button">
 			<ued-text>
 				<ued-icon>

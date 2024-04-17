@@ -1,6 +1,6 @@
 <template>
 	<h2>最大高度</h2>
-	<div class="scrollbar-content scrollbar-max-height">
+	<div class="common-content scrollbar-content scrollbar-max-height">
 		<ued-button @click="add">添加</ued-button>
 		<ued-button @click="onDelete">删除</ued-button>
 		<ued-scrollbar max-height="400px">
@@ -25,7 +25,7 @@ const onDelete = () => {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .scrollbar-content {
 	display: block;
 }

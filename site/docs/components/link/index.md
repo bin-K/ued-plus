@@ -24,24 +24,6 @@ const linkType = ref([
 ])
 </script>
 
-<style>
-.link-content {
-  display: flex;
-  flex-direction: column;
-  border: 1px solid #e4e7ed;
-  padding: 30px;
-  border-radius: 5px;
-}
-
-.link-content > div {
-  margin-bottom: 15px;
-}
-
-.link-content > div:last-child {
-  margin: 0;
-}
-</style>
-
 ## API
 
 ### 属性

@@ -1,6 +1,6 @@
 <template>
 	<h2>Icon用法</h2>
-	<div class="button-content button-icon">
+	<div class="common-content button-content button-icon">
 		<div class="button-icon-defalut">
 			<ued-button
 				v-for="item in buttonType"

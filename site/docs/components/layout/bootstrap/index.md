@@ -2,7 +2,7 @@
 
 参照了 Bootstrap 的 响应式设计，预设了五个响应尺寸：xs、sm、md、lg 和 xl。
 
-<div class="layout-content layout-bootstrap">
+<div class="common-content layout-content layout-bootstrap">
   <ued-row :gutter="10">
     <ued-col :xs="8" :sm="6" :md="4" :lg="3" :xl="1">
       <div class="grid-content" />
@@ -72,9 +72,9 @@
 <style lang="scss" scoped>
 .ued-row {
 	margin-bottom: 20px;
-}
-.ued-row:last-child {
-	margin-bottom: 0;
+	&:last-child {
+		margin-bottom: 0;
+	}
 }
 .ued-col {
 	border-radius: 4px;

@@ -6,7 +6,7 @@
 > [!TIP]
 > 不建议直接使用svg组件,这需要自己设置相关属性
 
-<div class="button-content button-icon">
+<div class="common-content button-content button-icon">
   <div class="button-icon-defalut">
     <ued-button type="primary" :icon="Plus">
       主要按钮
@@ -26,7 +26,7 @@
 
 ```vue
 <template>
-	<div>
+	<div class="button-icon-defalut">
 		<ued-button
 			v-for="item in buttonType"
 			:key="item.type"
@@ -36,7 +36,7 @@
 			{{ item.text }}
 		</ued-button>
 	</div>
-	<div>
+	<div class="button-icon-defalut">
 		<ued-button v-for="item in buttonType" :key="item.type" :type="item.type">
 			<ued-icon>
 				<Plus />

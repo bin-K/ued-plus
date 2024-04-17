@@ -2,7 +2,7 @@
 
 由 type 属性来选择 Text 的类型
 
-<div class="text-content text-basic">
+<div class="common-content text-content text-basic">
   <div class="text-basic-default">
     <ued-text
       v-for="(item, index) in textType"
@@ -18,10 +18,16 @@
 
 ```vue
 <template>
-	<div>
-		<ued-text v-for="(item, index) in textType" :key="index" :type="item.type">
-			{{ item.text }}
-		</ued-text>
+	<div class="text-content text-basic">
+		<div class="text-basic-default">
+			<ued-text
+				v-for="(item, index) in textType"
+				:key="index"
+				:type="item.type"
+			>
+				{{ item.text }}
+			</ued-text>
+		</div>
 	</div>
 </template>
 

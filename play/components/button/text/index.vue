@@ -1,6 +1,6 @@
 <template>
 	<h2>文字按钮</h2>
-	<div class="button-content button-text">
+	<div class="common-content button-content button-text">
 		<div class="button-text-defalut">
 			<ued-button
 				v-for="item in buttonType"

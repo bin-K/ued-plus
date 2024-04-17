@@ -1,6 +1,6 @@
 <template>
 	<h2>横向滚动</h2>
-	<div class="scrollbar-content scrollbar-horizontal">
+	<div class="common-content scrollbar-content scrollbar-horizontal">
 		<ued-scrollbar>
 			<div class="scrollbar-flex-content">
 				<p v-for="item in 20" :key="item" class="scrollbar-demo-item">
@@ -11,7 +11,7 @@
 	</div>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
 .scrollbar-flex-content {
 	display: flex;
 }

@@ -2,7 +2,7 @@
 
 由 type 属性来选择 Text 的类型
 
-<div class="link-content link-basic">
+<div class="common-content link-content link-basic">
   <div class="link-basic-default">
     <ued-link
     	class="vp-raw"
@@ -19,10 +19,17 @@
 
 ```vue
 <template>
-	<div>
-		<ued-link v-for="(item, index) in linkType" :key="index" :type="item.type">
-			{{ item.text }}
-		</ued-link>
+	<div class="link-content link-basic">
+		<div class="link-basic-default">
+			<ued-link
+				class="vp-raw"
+				v-for="(item, index) in linkType"
+				:key="index"
+				:type="item.type"
+			>
+				{{ item.text }}
+			</ued-link>
+		</div>
 	</div>
 </template>
 

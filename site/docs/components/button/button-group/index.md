@@ -6,7 +6,7 @@
 
 使用 size type 可以设置按钮组内按钮的 size 和 type,优先级高于原按钮的 size 和 type
 
-<div class="button-content button-group">
+<div class="common-content button-content button-group">
   <div class="button-group-defalut">
     <ued-button-group>
       <ued-button type="primary" :icon="Minus">主要按钮</ued-button>
@@ -61,7 +61,7 @@
 
 ```vue
 <template>
-	<div>
+	<div class="button-group-defalut">
 		<ued-button-group>
 			<ued-button type="primary" :icon="Minus">主要按钮</ued-button>
 			<ued-button type="primary">
@@ -75,7 +75,7 @@
 			</ued-button>
 		</ued-button-group>
 	</div>
-	<div>
+	<div class="button-group-round">
 		<ued-button-group type="warning">
 			<ued-button :icon="Minus" round> 警告按钮 </ued-button>
 			<ued-button round>
@@ -83,7 +83,7 @@
 			</ued-button>
 		</ued-button-group>
 	</div>
-	<div>
+	<div class="button-group-circle">
 		<ued-button-group type="danger">
 			<ued-button :icon="Search" circle />
 			<ued-button>
@@ -96,7 +96,7 @@
 			</ued-button>
 		</ued-button-group>
 	</div>
-	<div>
+	<div class="button-group-icon">
 		<ued-button-group type="info">
 			<ued-button :icon="Search" />
 			<ued-button>

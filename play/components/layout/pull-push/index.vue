@@ -1,6 +1,6 @@
 <template>
 	<h2>左右偏移</h2>
-	<div class="layout-content layout-push-pull">
+	<div class="common-content layout-content layout-push-pull">
 		<ued-row :gutter="20">
 			<ued-col :span="6" :pull="6">
 				<div class="grid-content-light" />

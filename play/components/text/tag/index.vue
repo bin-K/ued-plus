@@ -1,6 +1,6 @@
 <template>
 	<h2>Tag</h2>
-	<div class="text-content text-tag">
+	<div class="common-content text-content text-tag">
 		<div class="text-tag-span">
 			<ued-text>span</ued-text>
 		</div>

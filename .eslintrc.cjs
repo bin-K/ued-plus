@@ -17,7 +17,11 @@ module.exports = defineConfig({
 		},
 	},
 	// 启用的规则
-	extends: ['plugin:vue/vue3-recommended', 'plugin:@typescript-eslint/recommended', 'standard'],
+	extends: [
+		'plugin:vue/vue3-recommended',
+		'plugin:@typescript-eslint/recommended',
+		'standard',
+	],
 	rules: {
 		quotes: ['error', 'single'],
 		'@typescript-eslint/ban-ts-ignore': 'off',
@@ -46,6 +50,7 @@ module.exports = defineConfig({
 			},
 		],
 		'no-tabs': 'off',
+		'no-mixed-spaces-and-tabs': 'off',
 		indent: 'off',
 		'vue/custom-event-name-casing': 'off',
 		'vue/html-indent': 'off',

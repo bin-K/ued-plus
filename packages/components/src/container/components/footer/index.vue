@@ -7,6 +7,7 @@
 <script lang="ts" setup>
 import '../../styles/footer.scss'
 import { computed } from 'vue'
+import { handleStringOrNumberPx } from '@ued-plus/utils'
 
 defineOptions({ name: 'UedFooter' })
 
@@ -17,12 +18,8 @@ type FooterProps = {
 const footerProps = defineProps<FooterProps>()
 
 const footerStyle = computed(() => {
-	const height =
-		typeof footerProps.height === 'string'
-			? footerProps.height.split('px')[0]
-			: footerProps.height
 	return {
-		height: Number.isNaN(Number(height)) ? undefined : Number(height) + 'px',
+		height: handleStringOrNumberPx(footerProps.height),
 	}
 })
 </script>

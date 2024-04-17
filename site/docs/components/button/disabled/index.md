@@ -4,7 +4,7 @@
 
 使用 disabled 属性来控制按钮是否为禁用状态。 该属性接受一个 Boolean 类型的值。
 
-<div class="button-content button-disabled">
+<div class="common-content button-content button-disabled">
   <div class="button-disabled-defalut">
     <ued-button v-for="item in buttonType" :key="item.type" :type="item.type" disabled>
       {{ item.text }}
@@ -21,7 +21,7 @@
 
 ```vue
 <template>
-  <div>
+  <div class="button-disabled-defalut">
     <ued-button disabled>默认按钮</ued-button>
     <ued-button type="primary" disabled>主要按钮</ued-button>
     <ued-button type="success" disabled>成功按钮</ued-button>
@@ -30,7 +30,7 @@
     <ued-button type="info" disabled>信息按钮</ued-button>
   </div>
 
-  <div>
+  <div class="button-disabled-plain">
     <ued-button disabled plain>默认按钮</ued-button>
     <ued-button type="primary" disabled plain>主要按钮</ued-button>
     <ued-button type="success" disabled plain>成功按钮</ued-button>

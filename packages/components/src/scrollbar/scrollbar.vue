@@ -68,11 +68,13 @@ import {
 	onUpdated,
 	nextTick,
 } from 'vue'
+import { handleStringOrNumberPx, isNumber, isObject } from '@ued-plus/utils'
 
 type Overflow = {
 	horizontal: boolean
 	vertical: boolean
 }
+
 const BAR_MAP = {
 	vertical: {
 		offset: 'offsetHeight',
@@ -95,6 +97,7 @@ const BAR_MAP = {
 		direction: 'left',
 	},
 } as const
+
 type Direction =
 	| keyof typeof BAR_MAP
 	| keyof typeof barRef
@@ -152,23 +155,14 @@ const scrollBarProps = defineProps({
 		default: false,
 	},
 })
+
 const emits = defineEmits(['scroll'])
 
 const scrollbarRef = ref()
 const scrollbarWrapStyle = computed(() => {
-	const height =
-		typeof scrollBarProps.height === 'string'
-			? scrollBarProps.height.split('px')[0]
-			: scrollBarProps.height
-	const maxHeight =
-		typeof scrollBarProps.maxHeight === 'string'
-			? scrollBarProps.maxHeight.split('px')[0]
-			: scrollBarProps.maxHeight
 	return {
-		height: Number.isNaN(Number(height)) ? undefined : Number(height) + 'px',
-		'max-height': Number.isNaN(Number(maxHeight))
-			? undefined
-			: Number(maxHeight) + 'px',
+		height: handleStringOrNumberPx(scrollBarProps.height),
+		'max-height': handleStringOrNumberPx(scrollBarProps.maxHeight),
 		...scrollBarProps.wrapStyle,
 	}
 })
@@ -404,20 +398,15 @@ const restoreOnselectstart = () => {
 }
 
 function scrollTo(arg1: unknown, arg2?: number) {
-	if (typeof arg1 === 'object' && arg1 !== null) {
-		wrapRef.value!.scrollTo(arg1)
-	} else if (
-		typeof arg1 === 'number' &&
-		!Number.isNaN(arg1) &&
-		typeof arg2 === 'number' &&
-		!Number.isNaN(arg2)
-	) {
-		wrapRef.value!.scrollTo(arg1, arg2)
+	if (isObject(arg1)) {
+		wrapRef.value!.scrollTo(arg1 as object)
+	} else if (isNumber(arg1) && isNumber(arg2)) {
+		wrapRef.value!.scrollTo(arg1 as number, arg2 as number)
 	}
 }
 
 const setScrollTop = (value: number) => {
-	if (typeof value !== 'number' || Number.isNaN(value)) {
+	if (!isNumber(value)) {
 		console.warn('scrollbar', 'value must be a number')
 		return
 	}
@@ -425,7 +414,7 @@ const setScrollTop = (value: number) => {
 }
 
 const setScrollLeft = (value: number) => {
-	if (typeof value !== 'number' || Number.isNaN(value)) {
+	if (!isNumber(value)) {
 		console.warn('scrollbar', 'value must be a number')
 		return
 	}

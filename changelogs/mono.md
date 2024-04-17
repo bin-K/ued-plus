@@ -1,3 +1,12 @@
+### v1.0.7
+#### 2024-04-17 11:18:11 +0800
+
+### Code Refactoring
+
+* **mono:** 提取公共utils以及细节调整  ([eb4a433](https://github.com/bin-K/ued-plus/commit/eb4a433)) by: **kuangzhibin**
+
+---
+
 ### v1.0.6
 #### 2024-03-24 18:12:49 +0800
 

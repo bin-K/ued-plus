@@ -1,6 +1,6 @@
 <template>
 	<h2>基本用法</h2>
-	<div class="link-content link-basic">
+	<div class="common-content link-content link-basic">
 		<div class="link-basic-default">
 			<ued-link
 				v-for="(item, index) in linkType"

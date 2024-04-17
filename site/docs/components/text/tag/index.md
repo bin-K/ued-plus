@@ -2,7 +2,7 @@
 
 使用属性 tag 覆盖元素
 
-<div class="text-content text-tag">
+<div class="common-content text-content text-tag">
   <div class="text-tag-span">
     <ued-text>span</ued-text>
   </div>

@@ -8,7 +8,7 @@
 > 您可以使用icon插槽或 loadingIcon属性自定义您的loading图标
 > icon插槽优先级高于loadingIcon属性
 
-<div class="button-content button-loading">
+<div class="common-content button-content button-loading">
   <div class="button-loading-defalut">
     <ued-button type="primary" loading>加载中</ued-button>
     <ued-button type="primary" loading :loading-icon="Plus">
@@ -22,3 +22,30 @@
     </ued-button>
   </div>
 </div>
+
+::: details 显示代码
+
+```vue
+<template>
+	<div class="button-content button-loading">
+		<div class="button-loading-defalut">
+			<ued-button type="primary" loading>加载中</ued-button>
+			<ued-button type="primary" loading :loading-icon="Plus">
+				加载中
+			</ued-button>
+			<ued-button type="primary" loading>
+				<template #icon>
+					<CirclePlus />
+				</template>
+				加载中
+			</ued-button>
+		</div>
+	</div>
+</template>
+
+<script lang="ts" setup>
+import { CirclePlus, Plus } from '@ued-plus/components'
+</script>
+```
+
+:::

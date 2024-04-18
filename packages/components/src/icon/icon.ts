@@ -10,6 +10,7 @@ import _Star from './components/Star/index.vue'
 import _Search from './components/Search/index.vue'
 import _Delete from './components/Delete/index.vue'
 import _Check from './components/Check/index.vue'
+import _Close from './components/Close/index.vue'
 
 export const Plus = withInstall(_Plus)
 export const Minus = withInstall(_Minus)
@@ -21,3 +22,4 @@ export const Star = withInstall(_Star)
 export const Search = withInstall(_Search)
 export const Delete = withInstall(_Delete)
 export const Check = withInstall(_Check)
+export const Close = withInstall(_Close)

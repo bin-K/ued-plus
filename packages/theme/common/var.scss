@@ -66,6 +66,11 @@
 	--ued-fill-color-dark: #ebedf0;
 	--ued-fill-color-darker: #e6e8eb;
 	--ued-fill-color-blank: #fff;
+	--ued-overlay-color: rgba(0, 0, 0, 0.8);
+	--ued-overlay-color-light: rgba(0, 0, 0, 0.7);
+	--ued-overlay-color-lighter: rgba(0, 0, 0, 0.5);
+	--ued-mask-color: rgba(255, 255, 255, 0.9);
+	--ued-mask-color-extra-light: rgba(255, 255, 255, 0.3);
 	--ued-border-radius-base: 4px;
 	--ued-border-radius-small: 2px;
 	--ued-border-radius-round: 20px;
@@ -76,6 +81,8 @@
 	--ued-font-size-base: 14px;
 	--ued-font-size-small: 13px;
 	--ued-font-size-extra-small: 12px;
+	--ued-box-shadow: 0px 12px 32px 4px rgba(0, 0, 0, 0.04),
+		0px 8px 20px rgba(0, 0, 0, 0.08);
 	--ued-box-shadow-base: 0 2px 4px rgb(0 0 0 / 12%), 0 0 6px rgb(0 0 0 / 4%);
 	--ued-box-shadow-light: 0 2px 12px 0 rgb(0 0 0 / 10%);
 	--ued-disabled-bg-color: var(--ued-fill-color-light);

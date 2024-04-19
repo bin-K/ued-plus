@@ -6,7 +6,12 @@
 		<Transition name="dialog-fade">
 			<div v-show="visible" :class="overlayClass" @click="modalClose">
 				<div class="ued-overlay-dialog">
-					<div class="ued-dialog" :style="dialogStyle" :class="dialogClass">
+					<div
+						ref="dialogRef"
+						class="ued-dialog"
+						:style="dialogStyle"
+						:class="dialogClass"
+					>
 						<header class="ued-dialog__header" :class="dialogHeaderClass">
 							<slot
 								v-if="$slots.header"
@@ -37,8 +42,20 @@
 
 <script lang="ts" setup>
 import './styles/index.scss'
-import { ref, watch, computed, useSlots } from 'vue'
-import { handleStringOrNumberPx, handlePercentNumber } from '@ued-plus/utils'
+import {
+	ref,
+	watch,
+	computed,
+	useSlots,
+	onMounted,
+	nextTick,
+	onBeforeUnmount,
+} from 'vue'
+import {
+	handleStringOrNumberPx,
+	handlePercentNumber,
+	isNumber,
+} from '@ued-plus/utils'
 
 defineOptions({ name: 'UedDialog' })
 
@@ -87,24 +104,46 @@ const dialogProps = defineProps({
 		type: String,
 		default: undefined,
 	},
+	openDelay: {
+		type: Number,
+		default: 0,
+	},
+	closeDelay: {
+		type: Number,
+		default: 0,
+	},
+	closeOnPressEscape: {
+		type: Boolean,
+		default: true,
+	},
 })
 
 const dialogEmits = defineEmits(['update:modelValue'])
 
 const $slots = useSlots()
 
+const dialogRef = ref<HTMLDivElement>()
+
 const visible = ref(false)
 watch(
 	() => dialogProps.modelValue,
 	(newVal: boolean) => {
-		visible.value = newVal
+		setTimeout(
+			() => {
+				visible.value = newVal
+			},
+			isNumber(dialogProps.openDelay) ? dialogProps.openDelay : 0
+		)
 	}
 )
 
 const overlayClass = computed(() => {
-	return {
-		'ued-overlay': dialogProps.modal,
-	}
+	return [
+		dialogProps.modalClass,
+		{
+			'ued-overlay': dialogProps.modal,
+		},
+	]
 })
 
 const dialogStyle = computed(() => {
@@ -133,15 +172,36 @@ const dialogHeaderClass = computed(() => {
 })
 
 const doClose = () => {
-	visible.value = false
-	dialogEmits('update:modelValue', visible.value)
+	setTimeout(
+		() => {
+			visible.value = false
+			dialogEmits('update:modelValue', visible.value)
+		},
+		isNumber(dialogProps.closeDelay) ? dialogProps.closeDelay : 0
+	)
 }
 
 const modalClose = () => {
 	dialogProps.closeOnClickModal && doClose()
 }
 
+const escapeClose = () => {
+	dialogProps.closeOnPressEscape && doClose()
+}
+const keyup = (event: KeyboardEvent) => {
+	if (event.code === 'Escape') escapeClose()
+}
+
 const closeBtnClose = () => {
 	doClose()
 }
+
+onMounted(() => {
+	nextTick(() => {
+		document && document.addEventListener('keyup', keyup)
+	})
+})
+onBeforeUnmount(() => {
+	document.removeEventListener('keyup', keyup)
+})
 </script>

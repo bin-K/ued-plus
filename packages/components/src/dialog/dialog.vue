@@ -4,13 +4,14 @@
 		:disabled="appendTo !== 'body' ? false : !appendToBody"
 	>
 		<Transition name="dialog-fade">
-			<div v-show="visible" :class="overlayClass" @click="modalClose">
-				<div class="ued-overlay-dialog">
+			<div v-show="visible" :class="overlayClass" @click="modalClick">
+				<div class="ued-overlay-dialog" :style="overlayDialogStyle">
 					<div
 						ref="dialogRef"
 						class="ued-dialog"
 						:style="dialogStyle"
 						:class="dialogClass"
+						@click="dialogClick"
 					>
 						<header class="ued-dialog__header" :class="dialogHeaderClass">
 							<slot
@@ -50,12 +51,16 @@ import {
 	onMounted,
 	nextTick,
 	onBeforeUnmount,
+	PropType,
 } from 'vue'
 import {
 	handleStringOrNumberPx,
 	handlePercentNumber,
 	isNumber,
 } from '@ued-plus/utils'
+
+type DoneFn = (cancel?: boolean) => void
+type DialogBeforeCloseFn = (done: DoneFn) => void
 
 defineOptions({ name: 'UedDialog' })
 
@@ -116,6 +121,18 @@ const dialogProps = defineProps({
 		type: Boolean,
 		default: true,
 	},
+	beforeClose: {
+		type: Function as PropType<DialogBeforeCloseFn>,
+		default: undefined,
+	},
+	center: {
+		type: Boolean,
+		default: false,
+	},
+	alignCenter: {
+		type: Boolean,
+		default: false,
+	},
 })
 
 const dialogEmits = defineEmits(['update:modelValue'])
@@ -146,22 +163,31 @@ const overlayClass = computed(() => {
 	]
 })
 
+const overlayDialogStyle = computed(() => {
+	return {
+		display: dialogProps.alignCenter ? 'flex' : undefined,
+	}
+})
+
 const dialogStyle = computed(() => {
 	return {
 		'--ued-dialog-width': !dialogProps.fullscreen
 			? handleStringOrNumberPx(dialogProps.width) ??
 				handlePercentNumber(dialogProps.width)
 			: undefined,
-		'--ued-dialog-margin-top': !dialogProps.fullscreen
-			? handleStringOrNumberPx(dialogProps.top) ??
-				handlePercentNumber(dialogProps.top)
-			: undefined,
+		'--ued-dialog-margin-top':
+			!dialogProps.fullscreen && !dialogProps.alignCenter
+				? handleStringOrNumberPx(dialogProps.top) ??
+					handlePercentNumber(dialogProps.top)
+				: undefined,
 	}
 })
 
 const dialogClass = computed(() => {
 	return {
+		'ued-dialog--center': dialogProps.center,
 		'is-fullscreen': dialogProps.fullscreen,
+		'is-align-center': dialogProps.alignCenter,
 	}
 })
 
@@ -170,6 +196,14 @@ const dialogHeaderClass = computed(() => {
 		'show-close': dialogProps.showClose,
 	}
 })
+
+const modalClick = () => {
+	dialogProps.closeOnClickModal && handleBeforeCLose()
+}
+
+const dialogClick = (e: MouseEvent) => {
+	e.stopPropagation()
+}
 
 const doClose = () => {
 	setTimeout(
@@ -181,19 +215,28 @@ const doClose = () => {
 	)
 }
 
-const modalClose = () => {
-	dialogProps.closeOnClickModal && doClose()
+const handleBeforeCLose = () => {
+	function hide(shouldCancel?: boolean) {
+		if (shouldCancel) return
+		doClose()
+	}
+
+	if (dialogProps.beforeClose) {
+		dialogProps.beforeClose(hide)
+	} else {
+		doClose()
+	}
 }
 
 const escapeClose = () => {
-	dialogProps.closeOnPressEscape && doClose()
+	dialogProps.closeOnPressEscape && handleBeforeCLose()
 }
 const keyup = (event: KeyboardEvent) => {
 	if (event.code === 'Escape') escapeClose()
 }
 
 const closeBtnClose = () => {
-	doClose()
+	handleBeforeCLose()
 }
 
 onMounted(() => {

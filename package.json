@@ -97,6 +97,7 @@
 	},
 	"dependencies": {
 		"@ued-plus/components": "workspace:^",
+		"@ued-plus/hooks": "workspace:^",
 		"@ued-plus/utils": "workspace:^"
 	}
 }

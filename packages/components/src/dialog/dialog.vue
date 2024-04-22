@@ -133,6 +133,10 @@ const dialogProps = defineProps({
 		type: Boolean,
 		default: false,
 	},
+	draggable: {
+		type: Boolean,
+		default: false,
+	},
 })
 
 const dialogEmits = defineEmits(['update:modelValue'])
@@ -140,6 +144,10 @@ const dialogEmits = defineEmits(['update:modelValue'])
 const $slots = useSlots()
 
 const dialogRef = ref<HTMLDivElement>()
+
+const draggable = computed(
+	() => dialogProps.draggable && !dialogProps.fullscreen
+)
 
 const visible = ref(false)
 watch(
@@ -188,6 +196,7 @@ const dialogClass = computed(() => {
 		'ued-dialog--center': dialogProps.center,
 		'is-fullscreen': dialogProps.fullscreen,
 		'is-align-center': dialogProps.alignCenter,
+		'is-draggable': draggable.value,
 	}
 })
 

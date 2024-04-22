@@ -19,7 +19,7 @@
 </template>
 
 <script lang="ts" setup>
-import { UedScrollBar } from 'packages/components'
+import { UedScrollBar } from '@ued-plus/components'
 import { ref, onMounted } from 'vue'
 
 const value = ref(0)

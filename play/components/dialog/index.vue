@@ -6,6 +6,7 @@
 		<dialog-center />
 		<dialog-delay />
 		<dialog-draggable />
+		<dialog-close-icon />
 	</div>
 </template>
 
@@ -16,6 +17,7 @@ import DialogModal from './modal/index.vue'
 import DialogCenter from './center/index.vue'
 import DialogDelay from './delay/index.vue'
 import DialogDraggable from './draggable/index.vue'
+import DialogCloseIcon from './close-icon/index.vue'
 </script>
 
 <style lang="scss">

@@ -4,7 +4,13 @@
 		:disabled="appendTo !== 'body' ? false : !appendToBody"
 	>
 		<Transition name="dialog-fade">
-			<div v-show="visible" :class="overlayClass" @click="modalClick">
+			<div
+				v-show="visible"
+				ref="overlayRef"
+				:class="overlayClass"
+				:style="overlayStyle"
+				@click="modalClick"
+			>
 				<div class="ued-overlay-dialog" :style="overlayDialogStyle">
 					<div
 						ref="dialogRef"
@@ -13,19 +19,23 @@
 						:class="dialogClass"
 						@click="dialogClick"
 					>
-						<header class="ued-dialog__header" :class="dialogHeaderClass">
-							<slot
-								v-if="$slots.header"
-								class="ued-dialog__title"
-								name="header"
-							></slot>
-							<span v-else class="ued-dialog__title">{{ title }}</span>
+						<header
+							ref="headerRef"
+							class="ued-dialog__header"
+							:class="dialogHeaderClass"
+						>
+							<slot name="header" class="ued-dialog__title">
+								<span class="ued-dialog__title">{{ title }}</span>
+							</slot>
+
 							<button
 								type="button"
 								class="ued-dialog__headerbtn"
 								@click="closeBtnClose"
 							>
-								<ued-icon class="ued-dialog__close" name="Close" />
+								<ued-icon class="ued-dialog__close">
+									<component :is="closeIcon" />
+								</ued-icon>
 							</button>
 						</header>
 						<div class="ued-dialog__body">
@@ -58,6 +68,7 @@ import {
 	handlePercentNumber,
 	isNumber,
 } from '@ued-plus/utils'
+import { useDraggable } from '@ued-plus/hooks'
 
 type DoneFn = (cancel?: boolean) => void
 type DialogBeforeCloseFn = (done: DoneFn) => void
@@ -137,22 +148,49 @@ const dialogProps = defineProps({
 		type: Boolean,
 		default: false,
 	},
+	overflow: {
+		type: Boolean,
+		default: false,
+	},
+	closeIcon: {
+		type: [String, Object],
+		default: 'Close',
+	},
+	zIndex: {
+		type: Number,
+		default: 2000,
+	},
 })
 
 const dialogEmits = defineEmits(['update:modelValue'])
 
 const $slots = useSlots()
 
+const overlayRef = ref<HTMLDivElement>()
 const dialogRef = ref<HTMLDivElement>()
+const headerRef = ref<HTMLHeadElement>()
 
 const draggable = computed(
 	() => dialogProps.draggable && !dialogProps.fullscreen
 )
 
+useDraggable(dialogRef, headerRef, draggable, dialogProps.overflow)
+
 const visible = ref(false)
+const maxIndex = ref(dialogProps.zIndex)
 watch(
 	() => dialogProps.modelValue,
 	(newVal: boolean) => {
+		if (newVal) {
+			maxIndex.value =
+				Math.max.apply(
+					Math,
+					Array.from(
+						// eslint-disable-next-line no-undef
+						document.querySelectorAll('.ued-overlay') as NodeListOf<HTMLElement>
+					).map((element: HTMLElement) => Number(element.style.zIndex))
+				) + 1
+		}
 		setTimeout(
 			() => {
 				visible.value = newVal
@@ -162,6 +200,11 @@ watch(
 	}
 )
 
+const overlayStyle = computed(() => {
+	return {
+		'z-index': maxIndex.value,
+	}
+})
 const overlayClass = computed(() => {
 	return [
 		dialogProps.modalClass,
@@ -255,5 +298,10 @@ onMounted(() => {
 })
 onBeforeUnmount(() => {
 	document.removeEventListener('keyup', keyup)
+})
+
+defineExpose({
+	visible,
+	dialogRef,
 })
 </script>

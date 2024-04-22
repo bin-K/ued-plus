@@ -5,7 +5,7 @@ export const useDraggable = (
 	targetRef: Ref<HTMLElement | undefined>,
 	dragRef: Ref<HTMLElement | undefined>,
 	draggable: ComputedRef<boolean>,
-	overflow?: ComputedRef<boolean>
+	overflow?: boolean
 ) => {
 	let transform = {
 		offsetX: 0,
@@ -35,7 +35,7 @@ export const useDraggable = (
 			let moveX = offsetX + e.clientX - downX
 			let moveY = offsetY + e.clientY - downY
 
-			if (!overflow?.value) {
+			if (!overflow) {
 				moveX = Math.min(Math.max(moveX, minLeft), maxLeft)
 				moveY = Math.min(Math.max(moveY, minTop), maxTop)
 			}

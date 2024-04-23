@@ -30,6 +30,10 @@ const routes = [
 		path: '/scrollbar',
 		component: () => import('../components/scrollbar/index.vue'),
 	},
+	{
+		path: '/dialog',
+		component: () => import('../components/dialog/index.vue'),
+	},
 ]
 const router = createRouter({
 	history: createWebHistory(),

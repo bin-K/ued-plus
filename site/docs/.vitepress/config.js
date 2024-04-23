@@ -59,6 +59,15 @@ export default {
 						},
 					],
 				},
+				{
+					text: '反馈组件',
+					items: [
+						{
+							text: 'Dialog',
+							link: '/components/dialog/',
+						},
+					],
+				},
 			],
 		},
 	},

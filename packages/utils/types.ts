@@ -7,6 +7,8 @@ export const isString = (str: any) => typeof str === 'string'
 
 export const isPxString = (str: any) =>
 	isString(str) && str.match(/^(\d)+(px)$/g)
+export const isVhVwString = (str: any) =>
+	isString(str) && str.match(/^(\d)+(vh|vw)$/g)
 
 export const isStringNumber = (str: any) =>
 	isString(str) && str.match(/^(\d)+$/g)
@@ -14,3 +16,6 @@ export const isStringNumber = (str: any) =>
 export const isNull = (obj: any) => obj === null
 
 export const isObject = (obj: any) => typeof obj === 'object' && !isNull(obj)
+
+export const isPercentNumber = (str: any) =>
+	isString(str) && str.match(/^[0-9]*[1-9][0-9]%$/)

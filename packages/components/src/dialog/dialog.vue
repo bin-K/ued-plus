@@ -3,7 +3,12 @@
 		:to="appendTo"
 		:disabled="appendTo !== 'body' ? false : !appendToBody"
 	>
-		<Transition name="dialog-fade">
+		<Transition
+			name="dialog-fade"
+			@after-enter="opened"
+			@before-leave="close"
+			@after-leave="closed"
+		>
 			<div
 				v-show="visible"
 				ref="overlayRef"
@@ -24,11 +29,16 @@
 							class="ued-dialog__header"
 							:class="dialogHeaderClass"
 						>
-							<slot name="header" class="ued-dialog__title">
+							<slot
+								name="header"
+								title-class="ued-dialog__title"
+								:close="closeBtnClose"
+							>
 								<span class="ued-dialog__title">{{ title }}</span>
 							</slot>
 
 							<button
+								v-if="showClose"
 								type="button"
 								class="ued-dialog__headerbtn"
 								@click="closeBtnClose"
@@ -62,11 +72,13 @@ import {
 	nextTick,
 	onBeforeUnmount,
 	PropType,
+	CSSProperties,
 } from 'vue'
 import {
 	handleStringOrNumberPx,
 	handlePercentNumber,
 	isNumber,
+	isPositiveNumber,
 } from '@ued-plus/utils'
 import { useDraggable } from '@ued-plus/hooks'
 
@@ -120,6 +132,10 @@ const dialogProps = defineProps({
 		type: String,
 		default: undefined,
 	},
+	class: {
+		type: String,
+		default: undefined,
+	},
 	openDelay: {
 		type: Number,
 		default: 0,
@@ -160,9 +176,19 @@ const dialogProps = defineProps({
 		type: Number,
 		default: 2000,
 	},
+	lockScroll: {
+		type: Boolean,
+		default: true,
+	},
 })
 
-const dialogEmits = defineEmits(['update:modelValue'])
+const dialogEmits = defineEmits([
+	'update:modelValue',
+	'open',
+	'opened',
+	'close',
+	'closed',
+])
 
 const $slots = useSlots()
 
@@ -190,17 +216,17 @@ watch(
 						document.querySelectorAll('.ued-overlay') as NodeListOf<HTMLElement>
 					).map((element: HTMLElement) => Number(element.style.zIndex))
 				) + 1
+			doOpen()
+			nextTick(() => {
+				dialogEmits('open')
+			})
+		} else {
+			handleBeforeCLose()
 		}
-		setTimeout(
-			() => {
-				visible.value = newVal
-			},
-			isNumber(dialogProps.openDelay) ? dialogProps.openDelay : 0
-		)
 	}
 )
 
-const overlayStyle = computed(() => {
+const overlayStyle = computed<CSSProperties>(() => {
 	return {
 		'z-index': maxIndex.value,
 	}
@@ -214,13 +240,13 @@ const overlayClass = computed(() => {
 	]
 })
 
-const overlayDialogStyle = computed(() => {
+const overlayDialogStyle = computed<CSSProperties>(() => {
 	return {
 		display: dialogProps.alignCenter ? 'flex' : undefined,
 	}
 })
 
-const dialogStyle = computed(() => {
+const dialogStyle = computed<CSSProperties>(() => {
 	return {
 		'--ued-dialog-width': !dialogProps.fullscreen
 			? handleStringOrNumberPx(dialogProps.width) ??
@@ -235,12 +261,15 @@ const dialogStyle = computed(() => {
 })
 
 const dialogClass = computed(() => {
-	return {
-		'ued-dialog--center': dialogProps.center,
-		'is-fullscreen': dialogProps.fullscreen,
-		'is-align-center': dialogProps.alignCenter,
-		'is-draggable': draggable.value,
-	}
+	return [
+		dialogProps.class,
+		{
+			'ued-dialog--center': dialogProps.center,
+			'is-fullscreen': dialogProps.fullscreen,
+			'is-align-center': dialogProps.alignCenter,
+			'is-draggable': draggable.value,
+		},
+	]
 })
 
 const dialogHeaderClass = computed(() => {
@@ -257,14 +286,37 @@ const dialogClick = (e: MouseEvent) => {
 	e.stopPropagation()
 }
 
+const doOpen = () => {
+	setTimeout(
+		() => {
+			visible.value = true
+			dialogProps.lockScroll &&
+				document.querySelector('body')?.classList.add('ued-lock-scroll')
+		},
+		isPositiveNumber(dialogProps.openDelay) ? dialogProps.openDelay : 0
+	)
+}
+
 const doClose = () => {
 	setTimeout(
 		() => {
 			visible.value = false
 			dialogEmits('update:modelValue', visible.value)
+			dialogProps.lockScroll &&
+				document.querySelector('body')?.classList.remove('ued-lock-scroll')
 		},
 		isNumber(dialogProps.closeDelay) ? dialogProps.closeDelay : 0
 	)
+}
+
+const opened = () => {
+	dialogEmits('opened')
+}
+const close = () => {
+	dialogEmits('close')
+}
+const closed = () => {
+	dialogEmits('closed')
 }
 
 const handleBeforeCLose = () => {

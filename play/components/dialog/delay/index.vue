@@ -1,5 +1,5 @@
 <template>
-	<h2>关闭遮罩</h2>
+	<h2>延时弹窗</h2>
 	<div class="common-content dialog-content dialog-delay">
 		<ued-button @click="openDelayVisible = true">打开延迟弹窗</ued-button>
 		<ued-dialog

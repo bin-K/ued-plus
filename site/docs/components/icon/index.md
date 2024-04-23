@@ -15,6 +15,7 @@ const iconName = ref([
 	'Search',
 	'Delete',
 	'Check',
+	'Close'
 ])
 </script>
 

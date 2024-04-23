@@ -23,5 +23,6 @@ module.exports = {
 		'value-keyword-case': null,
 		'selector-not-notation': null,
 		'media-feature-range-notation': null,
+		'declaration-block-no-redundant-longhand-properties': null,
 	},
 }

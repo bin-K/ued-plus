@@ -11,6 +11,9 @@ importers:
       '@ued-plus/components':
         specifier: workspace:^
         version: link:packages/components
+      '@ued-plus/hooks':
+        specifier: workspace:^
+        version: link:packages/hooks
       '@ued-plus/utils':
         specifier: workspace:^
         version: link:packages/utils
@@ -173,6 +176,8 @@ importers:
         version: 3.4.21(typescript@5.4.2)
 
   packages/components: {}
+
+  packages/hooks: {}
 
   packages/utils: {}
 

@@ -23,6 +23,7 @@ const link = ref([
 	'Layout',
 	'Scrollbar',
 	'Dialog',
+	'Radio',
 ])
 </script>
 

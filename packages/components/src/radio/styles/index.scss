@@ -1,0 +1,93 @@
+.ued-radio {
+	--ued-radio-font-size: var(--ued-font-size-base);
+	--ued-radio-text-color: var(--ued-text-color-regular);
+	--ued-radio-font-weight: var(--ued-font-weight-primary);
+	--ued-radio-input-height: 14px;
+	--ued-radio-input-width: 14px;
+	--ued-radio-input-border-radius: var(--ued-border-radius-circle);
+	--ued-radio-input-bg-color: var(--ued-fill-color-blank);
+	--ued-radio-input-border: var(--ued-border);
+	--ued-radio-input-border-color: var(--ued-border-color);
+	--ued-radio-input-border-color-hover: var(--ued-color-primary);
+
+	position: relative;
+	display: inline-flex;
+	align-items: center;
+	height: 32px;
+	margin-right: 32px;
+	font-size: var(--ued-font-size-base);
+	font-weight: var(--ued-radio-font-weight);
+	color: var(--ued-radio-text-color);
+	white-space: nowrap;
+	cursor: pointer;
+	user-select: none;
+	outline: none;
+
+	&__label {
+		padding-left: 8px;
+		font-size: var(--ued-radio-font-size);
+	}
+
+	&__input {
+		position: relative;
+		display: inline-flex;
+		white-space: nowrap;
+		vertical-align: middle;
+		cursor: pointer;
+		outline: none;
+	}
+
+	&__original {
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		z-index: -1;
+		margin: 0;
+		outline: none;
+		opacity: 0;
+	}
+
+	&__inner {
+		position: relative;
+		box-sizing: border-box;
+		display: inline-block;
+		width: var(--ued-radio-input-width);
+		height: var(--ued-radio-input-height);
+		cursor: pointer;
+		background-color: var(--ued-radio-input-bg-color);
+		border: var(--ued-radio-input-border);
+		border-radius: var(--ued-radio-input-border-radius);
+
+		&::after {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			width: 4px;
+			height: 4px;
+			content: '';
+			background-color: var(--ued-color-white);
+			border-radius: var(--ued-radio-input-border-radius);
+			transition: transform 0.15s ease-in;
+			transform: translate(-50%, -50%) scale(0);
+		}
+
+		&:hover {
+			border-color: var(--ued-radio-input-border-color-hover);
+		}
+	}
+
+	&__input.is-checked + &__label {
+		color: var(--ued-color-primary);
+	}
+
+	&__input.is-checked &__inner {
+		background: var(--ued-color-primary);
+		border-color: var(--ued-color-primary);
+
+		&::after {
+			transform: translate(-50%, -50%) scale(1);
+		}
+	}
+}

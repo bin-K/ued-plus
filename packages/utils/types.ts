@@ -19,3 +19,4 @@ export const isObject = (obj: any) => typeof obj === 'object' && !isNull(obj)
 
 export const isPercentNumber = (str: any) =>
 	isString(str) && str.match(/^[0-9]*[1-9][0-9]%$/)
+export const isBoolean = (bol: any) => typeof bol === 'boolean'

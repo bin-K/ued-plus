@@ -6,7 +6,10 @@
 				class="ued-radio__original"
 				type="radio"
 				:value="value"
-				@click="radioClick"
+				:name="radioGroupInject?.name"
+				@change="handleChange"
+				@focus="handleFocus"
+				@click.stop
 			/>
 			<span class="ued-radio__inner" />
 		</span>
@@ -19,7 +22,9 @@
 
 <script lang="ts" setup>
 import './styles/index.scss'
-import { ref, computed, useSlots } from 'vue'
+import { ref, computed, useSlots, inject, nextTick } from 'vue'
+import { isBoolean, isNumber, isString } from '@ued-plus/utils'
+import { radioGroupKey } from './constant'
 
 defineOptions({ name: 'UedRadio' })
 
@@ -42,19 +47,48 @@ const raidoProps = defineProps({
 	},
 })
 
-const radioEmits = defineEmits(['update:modelValue'])
+const radioEmits = defineEmits({
+	change: (val: string | number | boolean | undefined) =>
+		isBoolean(val) || isNumber(val) || isString(val),
+	'update:modelValue': (val: string | number | boolean | undefined) =>
+		isBoolean(val) || isNumber(val) || isString(val),
+})
 
 const $slots = useSlots()
+const radioGroupInject = inject(radioGroupKey, undefined)
+
+const disabled = computed(
+	() => radioGroupInject?.disabled ?? raidoProps.disabled
+)
+const modelValue = computed({
+	get() {
+		return radioGroupInject?.modelValue ?? raidoProps.modelValue
+	},
+	set(val) {
+		if (radioGroupInject?.modelValue) {
+			radioGroupInject.changeEvent(val)
+		} else {
+			radioEmits('update:modelValue', val)
+		}
+	},
+})
 
 const radioClass = computed(() => {
 	return {
-		'is-disibled': raidoProps.disabled,
-		'is-checked': raidoProps.modelValue === raidoProps.value,
+		'is-disibled': disabled.value,
+		'is-checked': modelValue.value === raidoProps.value,
 	}
 })
 
 const radioOriginalRef = ref<HTMLInputElement>()
-const radioClick = () => {
-	radioEmits('update:modelValue', radioOriginalRef.value?.value)
+
+const handleFocus = (e: FocusEvent) => {
+	console.log(e)
+}
+
+const handleChange = () => {
+	nextTick(() => {
+		radioEmits('change', modelValue.value)
+	})
 }
 </script>

@@ -6,7 +6,7 @@
 
 <script lang="ts" setup>
 import './styles/radio-group.scss'
-import { provide, reactive, computed } from 'vue'
+import { provide, reactive, computed, nextTick, toRefs } from 'vue'
 import { useId } from '@ued-plus/hooks'
 import { radioGroupKey } from './constant'
 import { RadioGroupProps, RadioGroupPropsType } from './radio-group'
@@ -15,18 +15,21 @@ defineOptions({ name: 'UedRadioGroup' })
 
 const radioGroupProps = defineProps(RadioGroupProps)
 
+const radioGroupEmits = defineEmits(['update:modelValue', 'change'])
+
 const radioId = useId('ued-radio')
 
 const name = computed(() => radioGroupProps.name ?? radioId.value)
 
 const changeEvent = (val: RadioGroupPropsType['modelValue']) => {
-	console.log(val)
+	radioGroupEmits('update:modelValue', val)
+	nextTick(() => radioGroupEmits('change', val))
 }
 
 provide(
 	radioGroupKey,
 	reactive({
-		...radioGroupProps,
+		...toRefs(radioGroupProps),
 		name,
 		changeEvent,
 	})

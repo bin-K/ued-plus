@@ -23,6 +23,31 @@
 	user-select: none;
 	outline: none;
 
+	&:last-child {
+		margin-right: 0;
+	}
+
+	&.is-bordered {
+		box-sizing: border-box;
+		padding: 0 15px 0 9px;
+		border: var(--ued-border);
+		border-radius: var(--ued-border-radius-base);
+	}
+
+	&.is-bordered.is-checked {
+		border-color: var(--ued-color-primary);
+	}
+
+	&.is-bordered.is-disabled {
+		cursor: not-allowed;
+		border-color: var(--ued-border-color-lighter);
+	}
+
+	&.is-bordered.ued-radio--large {
+		padding: 0 19px 0 11px;
+		border-radius: var(--ued-border-radius-base);
+	}
+
 	&__label {
 		padding-left: 8px;
 		font-size: var(--ued-radio-font-size);
@@ -78,6 +103,10 @@
 		}
 	}
 
+	&_input.is-focus &__inner {
+		border-color: var(--ued-radio-input-border-color-hover);
+	}
+
 	&__input.is-checked + &__label {
 		color: var(--ued-color-primary);
 	}
@@ -89,5 +118,62 @@
 		&::after {
 			transform: translate(-50%, -50%) scale(1);
 		}
+	}
+
+	&__input.is-disabled + span.ued-radio__label {
+		color: var(--ued-text-color-placeholder);
+		cursor: not-allowed;
+	}
+
+	&__input.is-disabled &__inner {
+		cursor: not-allowed;
+		background-color: var(--ued-disabled-bg-color);
+		border-color: var(--ued-disabled-border-color);
+
+		&::after {
+			cursor: not-allowed;
+			background-color: var(--ued-disabled-bg-color);
+		}
+	}
+
+	&__input.is-disabled &__inner + &__label {
+		cursor: not-allowed;
+	}
+
+	&__input.is-disabled.is-checked &__inner {
+		background-color: var(--ued-disabled-bg-color);
+		border-color: var(--ued-disabled-border-color);
+
+		&::after {
+			background-color: var(--ued-text-color-placeholder);
+		}
+	}
+
+	&.is-bordered.ued-radio--large &__label {
+		font-size: var(--ued-font-size-base);
+	}
+
+	&.is-bordered.ued-radio--large &__inner {
+		width: 14px;
+		height: 14px;
+	}
+
+	&.is-bordered.ued-radio--small {
+		padding: 0 11px 0 7px;
+		border-radius: var(--ued-border-radius-base);
+	}
+
+	&.is-bordered.ued-radio--small &__label {
+		font-size: 12px;
+	}
+
+	&.is-bordered.ued-radio--small &__inner {
+		width: 12px;
+		height: 12px;
+	}
+
+	&:focus:not(:focus-visible):not(.is-focus):not(:active):not(.is-disabled)
+		&__inner {
+		box-shadow: 0 0 2px 2px var(--ued-radio-input-border-color-hover);
 	}
 }

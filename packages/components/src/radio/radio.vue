@@ -1,21 +1,24 @@
 <template>
-	<label class="ued-radio" :class="radioClass">
+	<label ref="radioRef" class="ued-radio" :class="radioClass">
 		<span class="ued-radio__input" :class="radioClass">
 			<input
 				ref="radioOriginalRef"
+				v-model="modelValue"
 				class="ued-radio__original"
 				type="radio"
 				:value="value"
-				:name="radioGroupInject?.name"
+				:name="name || radioGroupInject?.name"
+				:disabled="disabled"
 				@change="handleChange"
-				@focus="handleFocus"
+				@focus="focus = true"
+				@blur="focus = false"
 				@click.stop
 			/>
 			<span class="ued-radio__inner" />
 		</span>
 		<span class="ued-radio__label">
 			<slot v-if="$slots.default" />
-			<template v-else>{{ label }}</template>
+			<template v-else>{{ label ?? value }}</template>
 		</span>
 	</label>
 </template>
@@ -23,7 +26,6 @@
 <script lang="ts" setup>
 import './styles/index.scss'
 import { ref, computed, useSlots, inject, nextTick } from 'vue'
-import { isBoolean, isNumber, isString } from '@ued-plus/utils'
 import { radioGroupKey } from './constant'
 
 defineOptions({ name: 'UedRadio' })
@@ -45,14 +47,17 @@ const raidoProps = defineProps({
 		type: Boolean,
 		default: false,
 	},
+	border: {
+		type: Boolean,
+		default: false,
+	},
+	name: {
+		type: String,
+		default: undefined,
+	},
 })
 
-const radioEmits = defineEmits({
-	change: (val: string | number | boolean | undefined) =>
-		isBoolean(val) || isNumber(val) || isString(val),
-	'update:modelValue': (val: string | number | boolean | undefined) =>
-		isBoolean(val) || isNumber(val) || isString(val),
-})
+const radioEmits = defineEmits(['change', 'update:modelValue'])
 
 const $slots = useSlots()
 const radioGroupInject = inject(radioGroupKey, undefined)
@@ -60,12 +65,13 @@ const radioGroupInject = inject(radioGroupKey, undefined)
 const disabled = computed(
 	() => radioGroupInject?.disabled ?? raidoProps.disabled
 )
+
 const modelValue = computed({
 	get() {
 		return radioGroupInject?.modelValue ?? raidoProps.modelValue
 	},
 	set(val) {
-		if (radioGroupInject?.modelValue) {
+		if (radioGroupInject) {
 			radioGroupInject.changeEvent(val)
 		} else {
 			radioEmits('update:modelValue', val)
@@ -75,16 +81,16 @@ const modelValue = computed({
 
 const radioClass = computed(() => {
 	return {
-		'is-disibled': disabled.value,
+		'is-disabled': disabled.value,
 		'is-checked': modelValue.value === raidoProps.value,
+		'is-focus': focus.value,
+		'is-bordered': raidoProps.border,
 	}
 })
 
 const radioOriginalRef = ref<HTMLInputElement>()
 
-const handleFocus = (e: FocusEvent) => {
-	console.log(e)
-}
+const focus = ref(false)
 
 const handleChange = () => {
 	nextTick(() => {

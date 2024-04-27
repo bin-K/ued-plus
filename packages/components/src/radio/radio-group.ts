@@ -9,6 +9,10 @@ export const RadioGroupProps = {
 		type: Boolean,
 		default: false,
 	},
+	size: {
+		type: String,
+		default: undefined,
+	},
 	name: {
 		type: String,
 		default: undefined,

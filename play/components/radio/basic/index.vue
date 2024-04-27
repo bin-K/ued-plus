@@ -7,12 +7,6 @@
 		</div>
 		<div class="radio-basic-group">
 			<ued-radio-group v-model="radioGroup">
-				<ued-radio border :value="1" label="radio1" />
-				<ued-radio :value="2" label="radio2" />
-			</ued-radio-group>
-		</div>
-		<div class="radio-basic-group">
-			<ued-radio-group v-model="radioGroup" disabled>
 				<ued-radio :value="1" label="radio1" />
 				<ued-radio :value="2" label="radio2" />
 			</ued-radio-group>

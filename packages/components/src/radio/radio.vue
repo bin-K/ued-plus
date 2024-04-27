@@ -55,6 +55,10 @@ const raidoProps = defineProps({
 		type: String,
 		default: undefined,
 	},
+	size: {
+		type: String,
+		default: undefined,
+	},
 })
 
 const radioEmits = defineEmits(['change', 'update:modelValue'])
@@ -65,6 +69,8 @@ const radioGroupInject = inject(radioGroupKey, undefined)
 const disabled = computed(
 	() => radioGroupInject?.disabled ?? raidoProps.disabled
 )
+
+const size = computed(() => radioGroupInject?.size ?? raidoProps.size)
 
 const modelValue = computed({
 	get() {
@@ -85,6 +91,7 @@ const radioClass = computed(() => {
 		'is-checked': modelValue.value === raidoProps.value,
 		'is-focus': focus.value,
 		'is-bordered': raidoProps.border,
+		[`ued-radio--${size.value}`]: size.value,
 	}
 })
 

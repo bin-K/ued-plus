@@ -32,10 +32,10 @@ const packageJsonTempale = `{
   "license": "MIT",
   "main": "lib/components/index.js",
   "module": "es/components/index.mjs",
-  "types": "es/src/index.d.ts",
+  "types": "es/index.d.ts",
   "exports": {
     ".": {
-      "types": "./es/src/index.d.ts",
+      "types": "./es/index.d.ts",
       "import": "./es/components/index.mjs",
       "require": "./lib/components/index.js"
     },

@@ -34,6 +34,10 @@ const routes = [
 		path: '/dialog',
 		component: () => import('../components/dialog/index.vue'),
 	},
+	{
+		path: '/radio',
+		component: () => import('../components/radio/index.vue'),
+	},
 ]
 const router = createRouter({
 	history: createWebHistory(),

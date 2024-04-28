@@ -4,7 +4,7 @@
 
 使用 `show-close`关闭自带closeIcon，从 `header` slot 属性中取得 `close`方法，原closeIcon一样关闭弹窗的方法
 
-<div class="common-content dialog-content dialog-delay">
+<div class="common-content dialog-content dialog-header">
   <ued-button @click="headerVisible = true">打开自定义头部弹窗</ued-button>
   <ued-button @click="customHeaderVisible = true">
     打开全自定义头部弹窗
@@ -41,7 +41,7 @@
 
 ```vue
 <template>
-	<div class="dialog-content dialog-delay">
+	<div class="dialog-content dialog-header">
 		<ued-button @click="headerVisible = true">打开自定义头部弹窗</ued-button>
 		<ued-button @click="customHeaderVisible = true">
 			打开全自定义头部弹窗

@@ -6,7 +6,7 @@
 
 为保证 Dialog 出现时将 body 滚动锁定功能正常，嵌套的dialog需要设置`lock-scroll`为`false`
 
-<div class="common-content dialog-content dialog-modal">
+<div class="common-content dialog-content dialog-nested">
   <ued-button @click="outerVisible = true">打开嵌套弹窗</ued-button>
   <ued-dialog v-model="outerVisible" title="嵌套外弹窗" width="800">
     <span>嵌套外弹窗</span>
@@ -34,7 +34,7 @@
 
 ```vue
 <template>
-	<div class="dialog-content dialog-modal">
+	<div class="dialog-content dialog-nested">
 		<ued-button @click="outerVisible = true">打开嵌套弹窗</ued-button>
 		<ued-dialog v-model="outerVisible" title="嵌套外弹窗" width="800">
 			<span>嵌套外弹窗</span>

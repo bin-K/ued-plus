@@ -1,4 +1,4 @@
-import withInstall from '../../script/utils/install'
+import withInstall from '@ued-plus/utils/install'
 
 import _Plus from './components/Plus/index.vue'
 import _Minus from './components/Minus/index.vue'

@@ -40,11 +40,11 @@ const packageJsonTempale = `{
       "require": "./lib/components/index.js"
     },
     "./es": {
-      "types": "./es/src/index.d.ts",
+      "types": "./es/index.d.ts",
       "import": "./es/components/index.mjs"
     },
     "./lib": {
-      "types": "./lib/src/index.d.ts",
+      "types": "./lib/index.d.ts",
       "require": "./lib/components/index.js"
     }
   },

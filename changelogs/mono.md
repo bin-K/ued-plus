@@ -1,3 +1,17 @@
+### v1.0.8
+#### 2024-04-29 00:25:07 +0800
+
+### Code Refactoring
+
+* **mono:** 修改打包配置  ([e596fb4](https://github.com/bin-K/ued-plus/commit/e596fb4)) by: **Kuangzhibin**
+
+
+### Features
+
+* **mono:** 配置组件库打包并上传到npm私服  ([87d3f72](https://github.com/bin-K/ued-plus/commit/87d3f72)) by: **Kuangzhibin**
+
+---
+
 ### v1.0.7
 #### 2024-04-17 11:18:11 +0800
 

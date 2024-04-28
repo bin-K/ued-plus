@@ -5,7 +5,7 @@ import dts from 'vite-plugin-dts'
 export default defineConfig({
 	build: {
 		// 打包后文件目录
-		outDir: 'ued',
+		outDir: 'ued-plus',
 		// 压缩
 		minify: false,
 		rollupOptions: {
@@ -22,7 +22,7 @@ export default defineConfig({
 					preserveModules: true,
 					exports: 'named',
 					// 配置打包根目录
-					dir: '../ued/es',
+					dir: '../ued-plus/es',
 				},
 				{
 					// 打包格式
@@ -33,7 +33,7 @@ export default defineConfig({
 					preserveModules: true,
 					exports: 'named',
 					// 配置打包根目录
-					dir: '../ued/lib',
+					dir: '../ued-plus/lib',
 				},
 			],
 		},
@@ -44,8 +44,8 @@ export default defineConfig({
 	plugins: [
 		vue(),
 		dts({
-			entryRoot: './src',
-			outDir: ['../ued/es/src', '../ued/lib/src'],
+			entryRoot: '.',
+			outDir: ['../ued-plus/es', '../ued-plus/lib'],
 			// 指定使用的tsconfig.json为我们整个项目根目录下,如果不配置,你也可以在components下新建tsconfig.json
 			tsconfigPath: '../../tsconfig.json',
 		}),

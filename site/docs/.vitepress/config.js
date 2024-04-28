@@ -60,6 +60,15 @@ export default {
 					],
 				},
 				{
+					text: '表单组件',
+					items: [
+						{
+							text: 'Radio',
+							link: '/components/radio/',
+						},
+					],
+				},
+				{
 					text: '反馈组件',
 					items: [
 						{

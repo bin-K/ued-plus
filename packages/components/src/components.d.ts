@@ -18,6 +18,7 @@ declare module '@vue/runtime-core' {
 		UedDialog: typeof components.UedDialog
 		UedRadio: typeof components.UedRadio
 		UedRadio: typeof components.UedButtonGroup
+		UedRadioButton: typeof components.UedRadioButton
 	}
 }
 export {}

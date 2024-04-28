@@ -72,6 +72,8 @@ const disabled = computed(
 
 const size = computed(() => radioGroupInject?.size ?? raidoProps.size)
 
+const border = computed(() => radioGroupInject?.border ?? raidoProps.border)
+
 const modelValue = computed({
 	get() {
 		return radioGroupInject?.modelValue ?? raidoProps.modelValue
@@ -90,7 +92,7 @@ const radioClass = computed(() => {
 		'is-disabled': disabled.value,
 		'is-checked': modelValue.value === raidoProps.value,
 		'is-focus': focus.value,
-		'is-bordered': raidoProps.border,
+		'is-bordered': border.value,
 		[`ued-radio--${size.value}`]: size.value,
 	}
 })

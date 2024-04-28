@@ -9,6 +9,10 @@ export const RadioGroupProps = {
 		type: Boolean,
 		default: false,
 	},
+	border: {
+		type: Boolean,
+		default: undefined,
+	},
 	size: {
 		type: String,
 		default: undefined,
@@ -18,6 +22,14 @@ export const RadioGroupProps = {
 		default: undefined,
 	},
 	id: {
+		type: String,
+		default: undefined,
+	},
+	textColor: {
+		type: String,
+		default: undefined,
+	},
+	fill: {
 		type: String,
 		default: undefined,
 	},

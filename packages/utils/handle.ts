@@ -15,3 +15,11 @@ export const handleStringOrNumberPx = (num: any) =>
 
 export const handlePercentNumber = (str: any) =>
 	isPercentNumber(str) ? str : undefined
+
+export const handleValidColor = (color: string | undefined) => {
+	if (color === undefined) return color
+	const otpNode = new Option()
+	otpNode.style.color = color
+
+	return otpNode.style.color ? color : undefined
+}

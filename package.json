@@ -8,7 +8,8 @@
 		"lint-staged": "lint-staged",
 		"lint:script": "eslint --ext .js,.jsx,.vue,.ts,.tsx --fix ./",
 		"lint:style": "stylelint --fix \"**/*.{css,less,scss}\"",
-		"build:ued": "gulp -f packages/components/script/build/index.ts",
+		"build:ued-plus": "gulp -f packages/components/script/build/index.ts",
+		"publish:ued-plus": "cd packages/ued-plus && pnpm publish",
 		"prepare": "husky"
 	},
 	"keywords": [],

@@ -24,7 +24,7 @@ const delPath = async (path: string) => {
 			}
 		})
 
-		if (path !== `${pkgPath}/ued`) fs.rmdirSync(path)
+		if (path !== `${pkgPath}/ued-plus`) fs.rmdirSync(path)
 	}
 }
 export default delPath

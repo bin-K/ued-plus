@@ -1,4 +1,4 @@
-import _Container from './index.vue'
+import _Container from './container.vue'
 import _Header from './components/header/index.vue'
 import _Main from './components/main/index.vue'
 import _Footer from './components/footer/index.vue'

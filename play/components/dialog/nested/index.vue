@@ -1,6 +1,6 @@
 <template>
 	<h2>嵌套弹窗</h2>
-	<div class="common-content dialog-content dialog-modal">
+	<div class="common-content dialog-content dialog-nested">
 		<ued-button @click="outerVisible = true">打开嵌套弹窗</ued-button>
 		<ued-dialog v-model="outerVisible" title="嵌套外弹窗" width="800">
 			<span>嵌套外弹窗</span>

@@ -1,3 +1,12 @@
+### v1.0.9
+#### 2024-04-29 22:42:42 +0800
+
+### Bug Fixes
+
+* **mono:** 搭建npm 私服踩坑记录  ([75835f5](https://github.com/bin-K/ued-plus/commit/75835f5)) by: **kuangzhibin**
+
+---
+
 ### v1.0.8
 #### 2024-04-29 00:25:07 +0800
 

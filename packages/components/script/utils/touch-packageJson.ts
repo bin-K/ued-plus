@@ -14,6 +14,12 @@ try {
 
 const { version } = pkgJson
 
+// 踩坑：npm login 登录http://locahost:8081/repository/npm-hosted/ 时可能会出错，
+// 因为此时localhost 可能为::1，此时ping localhost 返回的是::1而不是127.0.0.1
+// 因此将localhost 统一为127.0.0.1
+// 具体参考：
+// https://github.com/node-fetch/node-fetch/issues/1624
+// https://superuser.com/questions/414050/why-is-there-a-difference-between-ping-localhost-and-ping-local-ip-address
 const packageJsonTempale = `{
   "name": "ued-plus",
   "version": "${version}",
@@ -53,7 +59,7 @@ const packageJsonTempale = `{
     "url": "git+https://github.com/bin-K/ued-plus.git"
   },
   "publishConfig": {
-    "registry": "http://localhost:8081/repository/npm-hosted/"
+    "registry": "http://127.0.0.1:8081/repository/npm-hosted/"
   },
   "browserslist": [
     "> 1%",

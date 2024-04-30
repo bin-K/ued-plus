@@ -4,6 +4,6 @@
 
 - 参考：https://github.com/bin-K/monorepo-pnpm-vue
 
-#### docs
+#### 组件库文档
 
-- https://bin-k.github.io/ued-ui/components/button/
+- https://bin-k.github.io/ued-ui/

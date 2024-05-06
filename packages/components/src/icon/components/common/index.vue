@@ -1,14 +1,16 @@
 <template>
-	<svg aria-hidden="true">
-		<use :xlink:href="name"></use>
-	</svg>
+	<component :is="iconSvg" :name="name" />
 </template>
 <script lang="ts" setup>
-defineOptions({ name: 'Common' })
+import { defineAsyncComponent } from 'vue'
+
+const iconSvg = defineAsyncComponent(
+	() => import(`../${iconProps.name}/index.vue`)
+)
 
 type IconProps = {
-	name: String
+	name: string
 }
 
-defineProps<IconProps>()
+const iconProps = defineProps<IconProps>()
 </script>

@@ -5,18 +5,19 @@
 </template>
 
 <script lang="ts" setup>
-import { provide } from 'vue'
 import './styles/button-group.scss'
+import { provide, reactive, toRefs } from 'vue'
+import { buttonGroupKey } from './constant'
+import { ButtonGroupProps } from './button-group'
 
 defineOptions({ name: 'UedButtonGroup' })
 
-type ButtonGroupProps = {
-	type?: string
-	size?: string
-}
+const buttonGroupProps = defineProps(ButtonGroupProps)
 
-const buttonGroupProps = defineProps<ButtonGroupProps>()
-
-buttonGroupProps.type && provide('type', buttonGroupProps.type)
-buttonGroupProps.size && provide('size', buttonGroupProps.size)
+provide(
+	buttonGroupKey,
+	reactive({
+		...toRefs(buttonGroupProps),
+	})
+)
 </script>

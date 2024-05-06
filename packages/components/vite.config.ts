@@ -2,6 +2,7 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import dts from 'vite-plugin-dts'
+import vueJsx from '@vitejs/plugin-vue-jsx'
 export default defineConfig({
 	build: {
 		// 打包后文件目录
@@ -43,6 +44,7 @@ export default defineConfig({
 	},
 	plugins: [
 		vue(),
+		vueJsx(),
 		dts({
 			entryRoot: '.',
 			outDir: ['../ued-plus/es', '../ued-plus/lib'],

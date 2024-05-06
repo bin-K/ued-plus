@@ -1,3 +1,12 @@
+### v1.1.6
+#### 2024-05-07 01:53:02 +0800
+
+### Features
+
+* **button:** button 补充测试用例  ([915878b](https://github.com/bin-K/ued-plus/commit/915878b)) by: **kuangzhibin**
+
+---
+
 ### v1.1.5
 #### 2024-03-31 23:46:14 +0800
 

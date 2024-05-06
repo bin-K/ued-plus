@@ -21,6 +21,7 @@
 import './styles/index.scss'
 import { UedIcon, Loading } from '@ued-plus/components'
 import { computed, ComponentCustomProps, useSlots, ref, inject } from 'vue'
+import { buttonGroupKey } from './constant'
 
 defineOptions({ name: 'UedButton' })
 
@@ -42,19 +43,17 @@ type ButtonProps = {
 
 const buttonProps = defineProps<ButtonProps>()
 
-const buttonType = inject('type', undefined)
-const buttonSize = inject('size', undefined)
-
 const $slots = useSlots()
+const buttonGroupInject = inject(buttonGroupKey, undefined)
 
 const buttonRef = ref()
 
 const buttonStyle = computed(() => {
 	return {
-		[`ued-button--${buttonType ?? buttonProps.type}`]:
-			buttonType ?? buttonProps.type,
-		[`ued-button--${buttonSize ?? buttonProps.size}`]:
-			buttonSize ?? buttonProps.size,
+		[`ued-button--${buttonGroupInject?.type ?? buttonProps.type}`]:
+			buttonGroupInject?.type ?? buttonProps.type,
+		[`ued-button--${buttonGroupInject?.size ?? buttonProps.size}`]:
+			buttonGroupInject?.size ?? buttonProps.size,
 		'is-plain': buttonProps.plain,
 		'is-round': buttonProps.round,
 		'is-circle': buttonProps.circle,

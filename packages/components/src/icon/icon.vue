@@ -1,12 +1,12 @@
 <template>
-	<component :is="icon" :style="iconStyle" :name="iconName" class="ued-icon">
+	<component :is="icon" :style="iconStyle" :name="name" class="ued-icon">
 		<slot />
 		<div v-if="dot" class="ued-icon-dot" :class="iconClass">{{ badge }}</div>
 	</component>
 </template>
 <script lang="ts" setup>
 import './styles/index.scss'
-import { computed, onMounted } from 'vue'
+import { computed } from 'vue'
 import { isNumber } from '@ued-plus/utils'
 import Common from './components/common/index.vue'
 
@@ -21,10 +21,6 @@ type IconProps = {
 }
 
 const iconProps = defineProps<IconProps>()
-
-const iconName = computed(() => {
-	return iconProps.name ? `#ued-${iconProps.name}` : undefined
-})
 
 const iconStyle = computed(() => {
 	return {
@@ -47,10 +43,5 @@ const badge = computed(() => {
 })
 const icon = computed(() => {
 	return iconProps.name ? Common : 'i'
-})
-
-onMounted(() => {
-	// 引入字体图标文件
-	import('./font/iconfont.js' as any)
 })
 </script>

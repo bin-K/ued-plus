@@ -221,4 +221,20 @@ describe('ButtonGroup.vue', () => {
 				.length
 		).toBe(2)
 	})
+
+	it('button group type', async () => {
+		const wrapper = mount({
+			setup: () => () => (
+				<UedButtonGroup type="warning">
+					<UedButton type="primary">Prev</UedButton>
+					<UedButton>Next</UedButton>
+				</UedButtonGroup>
+			),
+		})
+		expect(wrapper.classes()).toContain('ued-button-group')
+		expect(
+			wrapper.findAllComponents('.ued-button-group button.ued-button--warning')
+				.length
+		).toBe(2)
+	})
 })

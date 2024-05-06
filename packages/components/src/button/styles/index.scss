@@ -28,7 +28,6 @@
 		margin: 0;
 	}
 
-	&:focus,
 	&:hover {
 		color: var(--ued-button-hover-text-color);
 		background-color: var(--ued-button-hover-bg-color);
@@ -67,46 +66,46 @@
 	&--primary {
 		--ued-button-bg-color: var(--ued-color-primary);
 		--ued-button-border-color: var(--ued-color-primary);
-		--ued-button-hover-bg-color: var(--ued-color-primary-dark-2);
-		--ued-button-hover-border-color: var(--ued-color-primary-dark-2);
-		--ued-button-active-bg-color: var(--ued-color-primary-light-3);
-		--ued-button-active-border-color: var(--ued-color-primary-light-3);
+		--ued-button-hover-bg-color: var(--ued-color-primary-light-3);
+		--ued-button-hover-border-color: var(--ued-color-primary-light-3);
+		--ued-button-active-bg-color: var(--ued-color-primary-dark-2);
+		--ued-button-active-border-color: var(--ued-color-primary-dark-2);
 	}
 
 	&--success {
 		--ued-button-bg-color: var(--ued-color-success);
 		--ued-button-border-color: var(--ued-color-success);
-		--ued-button-hover-bg-color: var(--ued-color-success-dark-2);
-		--ued-button-hover-border-color: var(--ued-color-success-dark-2);
-		--ued-button-active-bg-color: var(--ued-color-success-light-3);
-		--ued-button-active-border-color: var(--ued-color-success-light-3);
+		--ued-button-hover-bg-color: var(--ued-color-success-light-3);
+		--ued-button-hover-border-color: var(--ued-color-success-light-3);
+		--ued-button-active-bg-color: var(--ued-color-success-dark-2);
+		--ued-button-active-border-color: var(--ued-color-success-dark-2);
 	}
 
 	&--warning {
 		--ued-button-bg-color: var(--ued-color-warning);
 		--ued-button-border-color: var(--ued-color-warning);
-		--ued-button-hover-bg-color: var(--ued-color-warning-dark-2);
-		--ued-button-hover-border-color: var(--ued-color-warning-dark-2);
-		--ued-button-active-bg-color: var(--ued-color-warning-light-3);
-		--ued-button-active-border-color: var(--ued-color-warning-light-3);
+		--ued-button-hover-bg-color: var(--ued-color-warning-light-3);
+		--ued-button-hover-border-color: var(--ued-color-warning-light-3);
+		--ued-button-active-bg-color: var(--ued-color-warning-dark-2);
+		--ued-button-active-border-color: var(--ued-color-warning-dark-2);
 	}
 
 	&--danger {
 		--ued-button-bg-color: var(--ued-color-danger);
 		--ued-button-border-color: var(--ued-color-danger);
-		--ued-button-hover-bg-color: var(--ued-color-danger-dark-2);
-		--ued-button-hover-border-color: var(--ued-color-danger-dark-2);
-		--ued-button-active-bg-color: var(--ued-color-danger-light-3);
-		--ued-button-active-border-color: var(--ued-color-danger-light-3);
+		--ued-button-hover-bg-color: var(--ued-color-danger-light-3);
+		--ued-button-hover-border-color: var(--ued-color-danger-light-3);
+		--ued-button-active-bg-color: var(--ued-color-danger-dark-2);
+		--ued-button-active-border-color: var(--ued-color-danger-dark-2);
 	}
 
 	&--info {
 		--ued-button-bg-color: var(--ued-color-info);
 		--ued-button-border-color: var(--ued-color-info);
-		--ued-button-hover-bg-color: var(--ued-color-info-dark-2);
-		--ued-button-hover-border-color: var(--ued-color-info-dark-2);
-		--ued-button-active-bg-color: var(--ued-color-info-light-3);
-		--ued-button-active-border-color: var(--ued-color-info-light-3);
+		--ued-button-hover-bg-color: var(--ued-color-info-light-3);
+		--ued-button-hover-border-color: var(--ued-color-info-light-3);
+		--ued-button-active-bg-color: var(--ued-color-info-dark-2);
+		--ued-button-active-border-color: var(--ued-color-info-dark-2);
 	}
 
 	&.is-plain {
@@ -124,6 +123,9 @@
 		--ued-button-border-color: var(--ued-color-primary-light-5);
 		--ued-button-hover-bg-color: var(--ued-color-primary);
 		--ued-button-hover-border-color: var(--ued-color-primary);
+		--ued-button-active-text-color: var(--ued-color-white);
+		--ued-button-active-bg-color: var(--ued-color-primary-dark-2);
+		--ued-button-active-border-color: var(--ued-color-primary-dark-2);
 	}
 
 	&--success.is-plain {
@@ -132,6 +134,9 @@
 		--ued-button-border-color: var(--ued-color-success-light-5);
 		--ued-button-hover-bg-color: var(--ued-color-success);
 		--ued-button-hover-border-color: var(--ued-color-success);
+		--ued-button-active-text-color: var(--ued-color-white);
+		--ued-button-active-bg-color: var(--ued-color-success-dark-2);
+		--ued-button-active-border-color: var(--ued-color-success-dark-2);
 	}
 
 	&--warning.is-plain {
@@ -140,6 +145,9 @@
 		--ued-button-border-color: var(--ued-color-warning-light-5);
 		--ued-button-hover-bg-color: var(--ued-color-warning);
 		--ued-button-hover-border-color: var(--ued-color-warning);
+		--ued-button-active-text-color: var(--ued-color-white);
+		--ued-button-active-bg-color: var(--ued-color-warning-dark-2);
+		--ued-button-active-border-color: var(--ued-color-warning-dark-2);
 	}
 
 	&--danger.is-plain {
@@ -148,6 +156,9 @@
 		--ued-button-border-color: var(--ued-color-danger-light-5);
 		--ued-button-hover-bg-color: var(--ued-color-danger);
 		--ued-button-hover-border-color: var(--ued-color-danger);
+		--ued-button-active-text-color: var(--ued-color-white);
+		--ued-button-active-bg-color: var(--ued-color-danger-dark-2);
+		--ued-button-active-border-color: var(--ued-color-danger-dark-2);
 	}
 
 	&--info.is-plain {
@@ -156,6 +167,9 @@
 		--ued-button-border-color: var(--ued-color-info-light-5);
 		--ued-button-hover-bg-color: var(--ued-color-info);
 		--ued-button-hover-border-color: var(--ued-color-info);
+		--ued-button-active-text-color: var(--ued-color-white);
+		--ued-button-active-bg-color: var(--ued-color-info-dark-2);
+		--ued-button-active-border-color: var(--ued-color-info-dark-2);
 	}
 
 	// 圆角按钮

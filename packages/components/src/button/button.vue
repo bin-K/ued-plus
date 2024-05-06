@@ -4,7 +4,7 @@
 		:is="buttonTag"
 		ref="buttonRef"
 		:class="buttonStyle"
-		:disabled="disabled"
+		:disabled="disabled || loading"
 		class="ued-button"
 	>
 		<ued-icon v-if="icon || $slots.icon" :class="loadingStyle">

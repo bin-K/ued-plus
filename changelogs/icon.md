@@ -1,3 +1,12 @@
+### v1.2.4
+#### 2024-05-07 02:00:59 +0800
+
+### Features
+
+* **icon:** 修改Icon组件引入方式以及添加Icon组件测试用例  ([427d8f3](https://github.com/bin-K/ued-plus/commit/427d8f3)) by: **Kuangzhibin**
+
+---
+
 ### v1.2.3
 #### 2024-03-30 11:33:25 +0800
 

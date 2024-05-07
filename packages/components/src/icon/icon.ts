@@ -23,3 +23,17 @@ export const Search = withInstall(_Search)
 export const Delete = withInstall(_Delete)
 export const Check = withInstall(_Check)
 export const Close = withInstall(_Close)
+
+export default {
+	Plus,
+	Minus,
+	CirclePlus,
+	CircleMinus,
+	Loading,
+	Message,
+	Star,
+	Search,
+	Delete,
+	Check,
+	Close,
+}

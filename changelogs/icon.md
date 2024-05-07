@@ -1,3 +1,12 @@
+### v1.2.5
+#### 2024-05-07 14:54:55 +0800
+
+### Code Refactoring
+
+* **icon:** 调整Icon组件引入，避免重复引入  ([0873cc3](https://github.com/bin-K/ued-plus/commit/0873cc3)) by: **kuangzhibin**
+
+---
+
 ### v1.2.4
 #### 2024-05-07 02:00:59 +0800
 

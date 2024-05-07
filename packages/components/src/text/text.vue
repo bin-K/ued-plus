@@ -12,7 +12,7 @@
 <script lang="ts" setup>
 import './styles/index.scss'
 import { computed } from 'vue'
-import { isStringNumber } from '@ued-plus/utils'
+import { isNumber, isStringNumber } from '@ued-plus/utils'
 
 defineOptions({ name: 'UedText' })
 
@@ -31,15 +31,17 @@ const textClass = computed(() => {
 		[`ued-text--${textProps.type}`]: textProps.type,
 		[`ued-text--${textProps.size}`]: textProps.size,
 		'is-truncated': textProps.truncated,
-		'is-line-clamp': isStringNumber(textProps.lineClamp),
+		'is-line-clamp':
+			isNumber(textProps.lineClamp) || isStringNumber(textProps.lineClamp),
 	}
 })
 
 const textStyle = computed(() => {
 	return {
-		'-webkit-line-clamp': isStringNumber(textProps.lineClamp)
-			? textProps.lineClamp
-			: undefined,
+		'-webkit-line-clamp':
+			isNumber(textProps.lineClamp) || isStringNumber(textProps.lineClamp)
+				? textProps.lineClamp
+				: undefined,
 	}
 })
 

@@ -8,6 +8,7 @@
 import './styles/col.scss'
 import { computed, inject, PropType } from 'vue'
 import { isPositiveNumber } from '@ued-plus/utils'
+import { rowpKey } from './contant'
 
 defineOptions({ name: 'UedCol' })
 
@@ -61,7 +62,16 @@ const colProps = defineProps({
 	},
 })
 
-const rowGutter = inject('row-gutter', undefined)
+const rowInject = inject(rowpKey, undefined)
+
+const gutter = computed(() => {
+	if (rowInject?.gutter) {
+		return isPositiveNumber(rowInject.gutter)
+			? Math.floor(rowInject.gutter)
+			: undefined
+	}
+	return undefined
+})
 
 const handleBootstrap = (size: number | ColProps, sizeType: string) => {
 	if (typeof size === 'object') {
@@ -91,7 +101,7 @@ const colClass = computed(() => {
 		[`ued-col-offset-${colProps.offset}`]: isPositiveNumber(colProps.offset),
 		[`ued-col-pull-${colProps.pull}`]: isPositiveNumber(colProps.pull),
 		[`ued-col-push-${colProps.push}`]: isPositiveNumber(colProps.push),
-		'is-guttered': rowGutter,
+		'is-guttered': gutter.value,
 		...xsSize,
 		...smSize,
 		...mdSize,
@@ -101,7 +111,7 @@ const colClass = computed(() => {
 })
 
 const colStyle = computed(() => {
-	const paddingNum = rowGutter ? rowGutter / 2 : undefined
+	const paddingNum = gutter.value ? gutter.value / 2 : undefined
 	return {
 		'padding-left': `${paddingNum}px`,
 		'padding-right': `${paddingNum}px`,

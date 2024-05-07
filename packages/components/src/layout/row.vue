@@ -6,33 +6,20 @@
 
 <script lang="ts" setup>
 import './styles/row.scss'
-import { computed, provide } from 'vue'
+import { computed, provide, reactive, toRefs } from 'vue'
 import { isPositiveNumber } from '@ued-plus/utils'
+import { rowpKey } from './contant'
+import { RowProps } from './row'
 
 defineOptions({ name: 'UedRow' })
 
-const rowProps = defineProps({
-	gutter: {
-		type: Number,
-		default: 0,
-	},
-	justify: {
-		type: String,
-		default: undefined,
-	},
-	align: {
-		type: String,
-		default: undefined,
-	},
-	tag: {
-		type: String,
-		default: undefined,
-	},
-})
+const rowProps = defineProps(RowProps)
 
 provide(
-	'row-gutter',
-	isPositiveNumber(rowProps.gutter) ? Math.floor(rowProps.gutter) : undefined
+	rowpKey,
+	reactive({
+		...toRefs(rowProps),
+	})
 )
 
 const rowClass = computed(() => {

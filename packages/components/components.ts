@@ -3,7 +3,7 @@ import { UedIcon } from '@ued-plus/components/src/icon'
 import { UedText } from '@ued-plus/components/src/text'
 import { UedLink } from '@ued-plus/components/src/link'
 import { UedRow, UedCol } from '@ued-plus/components/src/layout'
-import { UedScrollBar } from '@ued-plus/components/src/scrollbar'
+import { UedScrollbar } from '@ued-plus/components/src/scrollbar'
 import { UedDialog } from '@ued-plus/components/src/dialog'
 import {
 	UedRadio,
@@ -49,7 +49,7 @@ export default [
 	UedAside,
 	UedRow,
 	UedCol,
-	UedScrollBar,
+	UedScrollbar,
 	UedDialog,
 	UedRadio,
 	UedRadioGroup,

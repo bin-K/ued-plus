@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import { mount } from '@vue/test-utils'
 import { UedLink, Plus } from '@ued-plus/components'
+import { markRaw } from 'vue'
 
 describe('Link.vue', () => {
 	it('render text', () => {
@@ -40,7 +41,7 @@ describe('Link.vue', () => {
 	it('icon', () => {
 		const wrapper = mount(UedLink, {
 			props: {
-				icon: Plus,
+				icon: markRaw(Plus),
 			},
 		})
 		expect(wrapper.findComponent(Plus).exists()).toBeTruthy()
@@ -49,7 +50,7 @@ describe('Link.vue', () => {
 	it('icon slot', () => {
 		const wrapper = mount(UedLink, {
 			slots: {
-				icon: Plus,
+				icon: markRaw(Plus),
 			},
 		})
 		expect(wrapper.findComponent(Plus).exists()).toBeTruthy()

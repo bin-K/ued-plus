@@ -1,3 +1,12 @@
+### v1.7.2
+#### 2024-05-08 17:24:05 +0800
+
+### Features
+
+* **scrollbar:** scrollbar 补充测试用例  ([f8a660e](https://github.com/bin-K/ued-plus/commit/f8a660e)) by: **kuangzhibin**
+
+---
+
 ### v1.7.1
 #### 2024-04-15 15:58:33 +0800
 

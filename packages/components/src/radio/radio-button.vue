@@ -87,7 +87,7 @@ const modelValue = computed({
 const radioButtonClass = computed(() => {
 	return {
 		'is-disabled': disabled.value,
-		'is-checked': modelValue.value === radioButtonProps.value,
+		'is-active': modelValue.value === radioButtonProps.value,
 		'is-focus': focus.value,
 		[`ued-radio-button--${size.value}`]: size.value,
 	}

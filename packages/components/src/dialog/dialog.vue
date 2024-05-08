@@ -81,6 +81,7 @@ import {
 	isPositiveNumber,
 } from '@ued-plus/utils'
 import { useDraggable } from '@ued-plus/hooks'
+import { UedIcon } from '@ued-plus/components'
 
 type DoneFn = (cancel?: boolean) => void
 type DialogBeforeCloseFn = (done: DoneFn) => void
@@ -204,27 +205,6 @@ useDraggable(dialogRef, headerRef, draggable, dialogProps.overflow)
 
 const visible = ref(false)
 const maxIndex = ref(dialogProps.zIndex)
-watch(
-	() => dialogProps.modelValue,
-	(newVal: boolean) => {
-		if (newVal) {
-			maxIndex.value =
-				Math.max.apply(
-					Math,
-					Array.from(
-						// eslint-disable-next-line no-undef
-						document.querySelectorAll('.ued-overlay') as NodeListOf<HTMLElement>
-					).map((element: HTMLElement) => Number(element.style.zIndex))
-				) + 1
-			doOpen()
-			nextTick(() => {
-				dialogEmits('open')
-			})
-		} else {
-			handleBeforeCLose()
-		}
-	}
-)
 
 const overlayStyle = computed<CSSProperties>(() => {
 	return {
@@ -342,6 +322,31 @@ const keyup = (event: KeyboardEvent) => {
 const closeBtnClose = () => {
 	handleBeforeCLose()
 }
+
+watch(
+	() => dialogProps.modelValue,
+	(newVal: boolean) => {
+		if (newVal) {
+			maxIndex.value =
+				Math.max.apply(
+					Math,
+					Array.from(
+						// eslint-disable-next-line no-undef
+						document.querySelectorAll('.ued-overlay') as NodeListOf<HTMLElement>
+					).map((element: HTMLElement) => Number(element.style.zIndex))
+				) + 1
+			doOpen()
+			nextTick(() => {
+				dialogEmits('open')
+			})
+		} else {
+			handleBeforeCLose()
+		}
+	},
+	{
+		immediate: true,
+	}
+)
 
 onMounted(() => {
 	nextTick(() => {

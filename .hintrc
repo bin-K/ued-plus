@@ -4,6 +4,13 @@
   ],
   "hints": {
     "typescript-config/consistent-casing": "off",
-    "compat-api/css": "off"
+    "compat-api/css": "off",
+    "button-type": "off",
+    "axe/name-role-value": [
+      "default",
+      {
+        "button-name": "off"
+      }
+    ]
   }
 }

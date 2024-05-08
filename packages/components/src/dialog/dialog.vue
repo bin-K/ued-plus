@@ -340,7 +340,7 @@ watch(
 				dialogEmits('open')
 			})
 		} else {
-			handleBeforeCLose()
+			visible.value && handleBeforeCLose()
 		}
 	},
 	{

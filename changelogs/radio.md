@@ -1,3 +1,12 @@
+### v1.9.1
+#### 2024-05-09 01:42:55 +0800
+
+### Features
+
+* **radio:** radio 组件补充测试用例  ([b64c7b7](https://github.com/bin-K/ued-plus/commit/b64c7b7)) by: **Kuangzhibin**
+
+---
+
 ### v1.9.0
 #### 2024-04-28 11:17:54 +0800
 

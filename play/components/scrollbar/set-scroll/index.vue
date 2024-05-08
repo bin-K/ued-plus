@@ -19,13 +19,13 @@
 </template>
 
 <script lang="ts" setup>
-import { UedScrollBar } from '@ued-plus/components'
+import { UedScrollbar } from '@ued-plus/components'
 import { ref, onMounted } from 'vue'
 
 const value = ref(0)
 const max = ref(0)
 const innerRef = ref<HTMLDivElement>()
-const scrollbarRef = ref<InstanceType<typeof UedScrollBar>>()
+const scrollbarRef = ref<InstanceType<typeof UedScrollbar>>()
 const up = () => {
 	value.value = value.value - 25
 	if (value.value <= 0) value.value = 0

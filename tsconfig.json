@@ -9,6 +9,7 @@
 		"esModuleInterop": true,
 		"moduleResolution": "Node",
 		"types": ["vite/client"],
-		"lib": ["esnext", "dom"]
+		"lib": ["esnext", "dom"],
+		"noImplicitAny": false
 	}
 }

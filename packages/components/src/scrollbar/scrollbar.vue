@@ -178,7 +178,7 @@ const scrollbarWrapClass = computed(() => {
 
 const scrollbarViewStyle = computed(() => {
 	return {
-		...scrollBarProps.wrapStyle,
+		...scrollBarProps.viewStyle,
 	}
 })
 

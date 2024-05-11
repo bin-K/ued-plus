@@ -1,3 +1,12 @@
+### v1.0.11
+#### 2024-05-11 10:20:13 +0800
+
+### Bug Fixes
+
+* **mono:** eslint stylelint 问题修复  ([6ae6199](https://github.com/bin-K/ued-plus/commit/6ae6199)) by: **kuangzhibin**
+
+---
+
 ### v1.0.10
 #### 2024-04-30 16:19:19 +0800
 

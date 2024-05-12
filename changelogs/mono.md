@@ -1,3 +1,12 @@
+### v1.0.12
+#### 2024-05-12 22:58:32 +0800
+
+### Bug Fixes
+
+* **mono:** 解决组件打包问题  ([a1c220e](https://github.com/bin-K/ued-plus/commit/a1c220e)) by: **Kuangzhibin**
+
+---
+
 ### v1.0.11
 #### 2024-05-11 10:20:13 +0800
 

@@ -1,4 +1,12 @@
 import { series, src, dest, parallel } from 'gulp'
+/* script/build/index.ts:42:1 - error TS2742:
+	The inferred type of 'default' cannot be named without a reference to
+	'.pnpm/@types+undertaker@1.2.11/node_modules/@types/undertaker'.
+	This is likely not portable. A type annotation is necessary.
+*/
+// pnpm i @types/undertaker -D -w
+// 解决上述问题，参考链接：https://github.com/microsoft/TypeScript/issues/47663#issuecomment-1519138189
+import 'undertaker'
 import autoprefixer from 'gulp-autoprefixer'
 import gulpSass from 'gulp-sass'
 import sass from 'sass'

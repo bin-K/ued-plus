@@ -1,6 +1,6 @@
 {
 	"name": "ued-plus",
-	"version": "1.0.11",
+	"version": "1.0.12",
 	"description": "",
 	"main": "index.js",
 	"scripts": {
@@ -9,7 +9,7 @@
 		"lint:script": "eslint --ext .js,.jsx,.cjs,.vue,.ts,.tsx --fix ./",
 		"lint:style": "stylelint --fix \"**/*.{css,less,scss}\"",
 		"build:ued-plus": "gulp -f packages/components/script/build/index.ts",
-		"publish:ued-plus": "cd packages/ued-plus && pnpm publish",
+		"publish:ued-plus": "pnpm build:ued-plus && cd packages/ued-plus && pnpm publish",
 		"prepare": "husky"
 	},
 	"keywords": [],
@@ -22,6 +22,7 @@
 		"@types/gulp-autoprefixer": "^0.0.37",
 		"@types/gulp-sass": "^5.0.4",
 		"@types/node": "^20.11.30",
+		"@types/undertaker": "^1.2.11",
 		"@typescript-eslint/eslint-plugin": "^7.3.1",
 		"@typescript-eslint/parser": "^7.3.1",
 		"@vitejs/plugin-vue": "^5.0.4",

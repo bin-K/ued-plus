@@ -21,7 +21,7 @@ const { version } = pkgJson
 // https://github.com/node-fetch/node-fetch/issues/1624
 // https://superuser.com/questions/414050/why-is-there-a-difference-between-ping-localhost-and-ping-local-ip-address
 const packageJsonTempale = `{
-  "name": "ued-plus",
+  "name": "@ued/ued-plus",
   "version": "${version}",
   "description": "A Component Library for Vue 3",
   "keywords": [

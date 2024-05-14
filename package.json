@@ -1,5 +1,5 @@
 {
-	"name": "ued-plus",
+	"name": "@ued/ued-plus",
 	"version": "1.0.12",
 	"description": "",
 	"main": "index.js",

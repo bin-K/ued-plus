@@ -17,6 +17,7 @@ import {
 	UedFooter,
 	UedAside,
 } from '@ued-plus/components/src/container'
+import { UedForm, UedFormItem } from '@ued-plus/components/src/form'
 
 // Icon
 import {
@@ -54,6 +55,8 @@ export default [
 	UedRadio,
 	UedRadioGroup,
 	UedRadioButton,
+	UedForm,
+	UedFormItem,
 	// Icon
 	Plus,
 	Minus,

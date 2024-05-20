@@ -6,6 +6,7 @@ import '../theme/common/var.scss'
 import '../theme/initialize/init.scss'
 
 export * from './src/index'
+export * from './src/types'
 
 export default ((components: Plugin[] = []) => {
 	const install = (app: App) => {

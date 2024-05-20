@@ -18,14 +18,15 @@ provide(
 	formInjectKey,
 	reactive({
 		...toRefs(formProps),
+		labelWidthArr: [] as Array<number>,
 	})
 )
 
 const formClass = computed(() => {
 	return {
-		[`ued-form-${formProps.size}`]: formProps.size,
-		[`ued-form--label-${formProps.labelPoisition}`]: formProps.labelPoisition,
-		'ued-form-inline': formProps.inline,
+		[`ued-form--${formProps.size}`]: formProps.size,
+		[`ued-form--label-${formProps.labelPosition}`]: formProps.labelPosition,
+		'ued-form--inline': formProps.inline,
 	}
 })
 </script>

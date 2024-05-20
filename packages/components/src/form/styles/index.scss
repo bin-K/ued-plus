@@ -37,6 +37,10 @@
 		}
 	}
 
+	&--large {
+		--ued-form-label-font-size: var(--ued-font-size-large);
+	}
+
 	&--large.ued-form--label-top &-item &-item__label {
 		margin-bottom: 12px;
 		line-height: 22px;
@@ -45,6 +49,10 @@
 	&--default.ued-form--label-top &-item &-item__label {
 		margin-bottom: 8px;
 		line-height: 22px;
+	}
+
+	&--small {
+		--ued-form-label-font-size: var(--ued-font-size-small);
 	}
 
 	&--small.ued-form--label-top &-item &-item__label {

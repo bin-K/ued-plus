@@ -17,8 +17,9 @@ export const FormProps = {
 		type: Boolean,
 		default: false,
 	},
-	labelPoisition: {
+	labelPosition: {
 		type: String,
+		values: ['left', 'right', 'top'],
 		default: 'right',
 	},
 	labelWidth: {
@@ -28,3 +29,7 @@ export const FormProps = {
 }
 
 export type FormPropsType = ExtractPropTypes<typeof FormProps>
+
+export interface FormContext extends FormPropsType {
+	labelWidthArr: Array<number> | undefined
+}

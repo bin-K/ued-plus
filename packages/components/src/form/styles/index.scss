@@ -38,7 +38,7 @@
 	}
 
 	&--large {
-		--ued-form-label-font-size: var(--ued-font-size-large);
+		--ued-form-label-font-size: var(--ued-font-size-medium);
 	}
 
 	&--large.ued-form--label-top &-item &-item__label {
@@ -52,7 +52,7 @@
 	}
 
 	&--small {
-		--ued-form-label-font-size: var(--ued-font-size-small);
+		--ued-form-label-font-size: var(--ued-font-size-extra-small);
 	}
 
 	&--small.ued-form--label-top &-item &-item__label {

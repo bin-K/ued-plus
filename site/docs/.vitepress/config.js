@@ -140,6 +140,10 @@ export default {
 					text: '表单组件',
 					items: [
 						{
+							text: 'Form',
+							link: '/components/form/',
+						},
+						{
 							text: 'Radio',
 							link: '/components/radio/',
 						},

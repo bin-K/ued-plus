@@ -65,7 +65,10 @@ const packageJsonTempale = `{
     "> 1%",
     "not ie 11",
     "not op_mini all"
-  ]
+  ],
+  "dependencies": {
+		"@vueuse/core": "^10.9.0"
+	}
 }`
 
 export default () => {

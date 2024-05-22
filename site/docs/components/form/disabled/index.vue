@@ -1,12 +1,3 @@
-## 禁用全部
-
-使用`disabled`属性禁用表单，表单自身的禁用属性优先级高于`Form`的
-
-<Disabled />
-
-::: details 显示代码
-
-```vue
 <template>
 	<div class="common-content form-content form-disabled">
 		<ued-form :model="formDisabled" :disabled="true">
@@ -35,6 +26,3 @@ const formDisabled = reactive({
 	radioButton: 'button1',
 })
 </script>
-```
-
-:::

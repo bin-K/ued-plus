@@ -1,12 +1,3 @@
-## 对齐方式
-
-通过设置 `label-position` 属性可以改变表单域标签的位置，可选值为 `top`、`left`、`right`， 当设为 `top` 时标签会置于表单域的顶部
-
-<LabelPosition />
-
-::: details 显示代码
-
-```vue
 <template>
 	<div class="common-content form-content form-label-position">
 		<ued-radio-group v-model="labelPosition" aria-label="label position">
@@ -46,6 +37,3 @@ const formLabelPosition = reactive({
 	radioButton: 'button1',
 })
 </script>
-```
-
-:::

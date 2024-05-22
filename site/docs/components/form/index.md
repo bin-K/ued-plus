@@ -15,35 +15,11 @@
 <!--@include: ./size/index.md-->
 
 <script lang="ts" setup>
-import { reactive, ref } from 'vue'
-import type { FormPropsType } from '@ued-plus/components'
-
-const formBasic = reactive({
-	radio: 1,
-	radioButton: 'button1',
-})
-
-const formDisabled = reactive({
-	radio: 1,
-	radioButton: 'button1',
-})
-
-const formInline = reactive({
-	radio: 1,
-	radioButton: 'button1',
-})
-
-const labelPosition = ref<FormPropsType['labelPosition']>('right')
-const formLabelPosition = reactive({
-	radio: 1,
-	radioButton: 'button1',
-})
-
-const size = ref<FormPropsType['size']>('default')
-const formSize = reactive({
-	radio: 1,
-	radioButton: 'button1',
-})
+import Basic from './basic/index.vue'
+import Disabled from './disabled/index.vue'
+import Inline from './inline/index.vue'
+import LabelPosition from './label-position/index.vue'
+import Size from './size/index.vue'
 </script>
 
 ## Form API

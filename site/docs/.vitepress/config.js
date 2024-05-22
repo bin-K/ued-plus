@@ -72,6 +72,10 @@ export default {
 					text: '表单组件日志',
 					items: [
 						{
+							text: 'Form',
+							link: '/changelogs/form/',
+						},
+						{
 							text: 'Radio',
 							link: '/changelogs/radio/',
 						},

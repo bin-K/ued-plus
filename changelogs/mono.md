@@ -1,3 +1,12 @@
+### v1.0.15
+#### 2024-05-22 19:33:03 +0800
+
+### Bug Fixes
+
+* **mono:** 1.引入运行时依赖,配置preserveModulesRoot解决打包产物入口问题 2.解决打包删除node_modules引发依赖被删除问题  ([c96c49b](https://github.com/bin-K/ued-plus/commit/c96c49b)) by: **kuangzhibin**
+
+---
+
 ### v1.0.14
 #### 2024-05-22 11:09:57 +0800
 

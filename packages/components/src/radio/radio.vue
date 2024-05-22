@@ -27,6 +27,7 @@
 import './styles/index.scss'
 import { ref, computed, useSlots, inject, nextTick } from 'vue'
 import { radioGroupKey } from './constant'
+import { formInjectKey } from '../form/constant'
 
 defineOptions({ name: 'UedRadio' })
 
@@ -45,7 +46,7 @@ const raidoProps = defineProps({
 	},
 	disabled: {
 		type: Boolean,
-		default: false,
+		default: undefined,
 	},
 	border: {
 		type: Boolean,
@@ -65,12 +66,16 @@ const radioEmits = defineEmits(['change', 'update:modelValue'])
 
 const $slots = useSlots()
 const radioGroupInject = inject(radioGroupKey, undefined)
+const formInject = inject(formInjectKey, undefined)
 
 const disabled = computed(
-	() => radioGroupInject?.disabled ?? raidoProps.disabled
+	() =>
+		raidoProps.disabled ?? radioGroupInject?.disabled ?? formInject?.disabled
 )
 
-const size = computed(() => radioGroupInject?.size ?? raidoProps.size)
+const size = computed(
+	() => raidoProps.size ?? radioGroupInject?.size ?? formInject?.size
+)
 
 const border = computed(() => radioGroupInject?.border ?? raidoProps.border)
 

@@ -38,6 +38,10 @@ const routes = [
 		path: '/radio',
 		component: () => import('../components/radio/index.vue'),
 	},
+	{
+		path: '/form',
+		component: () => import('../components/form/index.vue'),
+	},
 ]
 const router = createRouter({
 	history: createWebHistory(),

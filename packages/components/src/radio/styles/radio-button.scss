@@ -50,13 +50,13 @@
 
 	&--large &__inner {
 		padding: 12px 19px;
-		font-size: var(--ued-font-size-base);
+		font-size: var(--ued-font-size-medium);
 		border-radius: 0;
 	}
 
 	&--small &__inner {
 		padding: 5px 11px;
-		font-size: 12px;
+		font-size: var(--ued-font-size-extra-small);
 		border-radius: 0;
 	}
 

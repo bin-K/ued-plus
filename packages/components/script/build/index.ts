@@ -28,8 +28,8 @@ export const buildThemeStyle = () => {
 	return src(`${pkgPath}/theme/**/**.scss`)
 		.pipe(gulpSass(sass)())
 		.pipe(autoprefixer())
-		.pipe(dest(`${pkgPath}/ued-plus/lib/theme`))
-		.pipe(dest(`${pkgPath}/ued-plus/es/theme`))
+		.pipe(dest(`${pkgPath}/ued-plus/lib/packages/theme`))
+		.pipe(dest(`${pkgPath}/ued-plus/es/packages/theme`))
 }
 
 // 打包组件样式
@@ -37,8 +37,8 @@ export const buildStyle = () => {
 	return src(`${componentPath}/src/**/styles/**.scss`)
 		.pipe(gulpSass(sass)())
 		.pipe(autoprefixer())
-		.pipe(dest(`${pkgPath}/ued-plus/lib/components/src`))
-		.pipe(dest(`${pkgPath}/ued-plus/es/components/src`))
+		.pipe(dest(`${pkgPath}/ued-plus/lib/packages/components/src`))
+		.pipe(dest(`${pkgPath}/ued-plus/es/packages/components/src`))
 }
 
 // 打包组件

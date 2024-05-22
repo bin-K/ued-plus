@@ -21,6 +21,8 @@ export default defineConfig({
 					entryFileNames: '[name].mjs',
 					// 让打包目录和我们目录对应
 					preserveModules: true,
+					// https://cn.rollupjs.org/configuration-options/#output-preservemodulesroot
+					preserveModulesRoot: '..',
 					exports: 'named',
 					// 配置打包根目录
 					dir: '../ued-plus/es',
@@ -32,6 +34,8 @@ export default defineConfig({
 					entryFileNames: '[name].js',
 					// 让打包目录和我们目录对应
 					preserveModules: true,
+					// https://cn.rollupjs.org/configuration-options/#output-preservemodulesroot
+					preserveModulesRoot: '..',
 					exports: 'named',
 					// 配置打包根目录
 					dir: '../ued-plus/lib',

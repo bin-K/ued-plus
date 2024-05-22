@@ -103,6 +103,7 @@
 	"dependencies": {
 		"@ued-plus/components": "workspace:^",
 		"@ued-plus/hooks": "workspace:^",
-		"@ued-plus/utils": "workspace:^"
+		"@ued-plus/utils": "workspace:^",
+		"@vueuse/core": "^10.9.0"
 	}
 }

@@ -14,7 +14,8 @@ const delPath = async (path: string) => {
 			const curPath = resolve(path, file)
 			if (fs.statSync(curPath).isDirectory()) {
 				// recurse
-				await delPath(curPath)
+				// 排除node_modules目录,node_modules中的文件是软连接,删除会把源文件删掉
+				if (!path.includes('node_modules')) await delPath(curPath)
 			} else {
 				// delete file
 				if (!stayFile.includes(file)) {
@@ -22,8 +23,15 @@ const delPath = async (path: string) => {
 				}
 			}
 		})
-
-		if (path !== `${pkgPath}/ued-plus`) fs.rmdirSync(path)
+		// 由于不删除node_modules, 根目录es lib文件夹不为空,排除
+		if (
+			!path.includes('node_modules') &&
+			path !== `${pkgPath}/ued-plus` &&
+			path !== `${pkgPath}\\ued-plus\\es` &&
+			path !== `${pkgPath}\\ued-plus\\lib`
+		) {
+			fs.rmdirSync(path)
+		}
 	}
 }
 export default delPath

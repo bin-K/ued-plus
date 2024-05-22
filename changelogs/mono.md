@@ -1,3 +1,12 @@
+### v1.0.14
+#### 2024-05-22 11:09:57 +0800
+
+### Bug Fixes
+
+* **mono:** 解决组件打包问题(node_modules文件夹未删除问题)  ([28725af](https://github.com/bin-K/ued-plus/commit/28725af)) by: **kuangzhibin**
+
+---
+
 ### v1.0.13
 #### 2024-05-14 11:04:25 +0800
 

@@ -1,0 +1,35 @@
+.ued-form-item {
+	--font-size: 14px;
+
+	display: flex;
+	align-items: center;
+	margin-bottom: 18px;
+
+	&__label-wrap {
+		display: flex;
+	}
+
+	&__label {
+		box-sizing: border-box;
+		display: inline-flex;
+		flex: 0 0 auto;
+		align-items: flex-start;
+		justify-content: flex-end;
+		height: 32px;
+		padding: 0 12px 0 0;
+		font-size: var(--ued-form-label-font-size);
+		line-height: 32px;
+		color: var(--ued-text-color-regular);
+	}
+
+	&__content {
+		position: relative;
+		display: flex;
+		flex: 1;
+		flex-wrap: wrap;
+		align-items: center;
+		min-width: 0;
+		font-size: var(--font-size);
+		line-height: 32px;
+	}
+}

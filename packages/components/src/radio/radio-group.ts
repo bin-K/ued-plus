@@ -7,7 +7,7 @@ export const RadioGroupProps = {
 	},
 	disabled: {
 		type: Boolean,
-		default: false,
+		default: undefined,
 	},
 	border: {
 		type: Boolean,

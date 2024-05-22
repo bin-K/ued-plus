@@ -29,6 +29,7 @@
 import './styles/radio-button.scss'
 import { useSlots, inject, computed, nextTick, ref } from 'vue'
 import { radioGroupKey } from './constant'
+import { formInjectKey } from '../form/constant'
 import { handleValidColor } from '@ued-plus/utils'
 
 defineOptions({ name: 'UedRadioButton' })
@@ -52,7 +53,7 @@ const radioButtonProps = defineProps({
 	},
 	disabled: {
 		type: Boolean,
-		default: false,
+		default: undefined,
 	},
 	size: {
 		type: String,
@@ -64,12 +65,18 @@ const radioButtonEmits = defineEmits(['change', 'update:modelValue'])
 
 const $slots = useSlots()
 const radioGroupInject = inject(radioGroupKey, undefined)
+const formInject = inject(formInjectKey, undefined)
 
 const disabled = computed(
-	() => radioGroupInject?.disabled ?? radioButtonProps.disabled
+	() =>
+		radioButtonProps.disabled ??
+		radioGroupInject?.disabled ??
+		formInject?.disabled
 )
 
-const size = computed(() => radioGroupInject?.size ?? radioButtonProps.size)
+const size = computed(
+	() => radioButtonProps.size ?? radioGroupInject?.size ?? formInject?.size
+)
 
 const modelValue = computed({
 	get() {

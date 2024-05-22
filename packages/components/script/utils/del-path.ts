@@ -12,10 +12,9 @@ const delPath = async (path: string) => {
 
 		files.forEach(async (file) => {
 			const curPath = resolve(path, file)
-
 			if (fs.statSync(curPath).isDirectory()) {
 				// recurse
-				if (file !== 'node_modules') await delPath(curPath)
+				await delPath(curPath)
 			} else {
 				// delete file
 				if (!stayFile.includes(file)) {

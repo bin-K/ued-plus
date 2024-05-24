@@ -1,3 +1,12 @@
+### v1.8.2
+#### 2024-05-24 11:01:19 +0800
+
+### Features
+
+* **dialog:** 拓展 dialog 弹窗拖拽position版本拓展  ([baaca90](https://github.com/bin-K/ued-plus/commit/baaca90)) by: **kuangzhibin**
+
+---
+
 ### v1.8.1
 #### 2024-05-09 00:32:10 +0800
 

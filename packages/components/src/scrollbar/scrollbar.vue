@@ -62,13 +62,13 @@ import {
 	ref,
 	watch,
 	CSSProperties,
-	PropType,
 	onBeforeUnmount,
 	onMounted,
 	onUpdated,
 	nextTick,
 } from 'vue'
 import { handleStringOrNumberPx, isNumber, isObject } from '@ued-plus/utils'
+import { ScrollBarProps } from './scrollbar'
 
 type Overflow = {
 	horizontal: boolean
@@ -105,56 +105,7 @@ type Direction =
 
 defineOptions({ name: 'UedScrollbar' })
 
-const scrollBarProps = defineProps({
-	tag: {
-		type: String,
-		default: 'div',
-	},
-	height: {
-		type: [String, Number],
-		default: undefined,
-	},
-	maxHeight: {
-		type: [String, Number],
-		default: undefined,
-	},
-	native: {
-		type: Boolean,
-		default: false,
-	},
-	always: {
-		type: Boolean,
-		default: false,
-	},
-	wrapStyle: {
-		type: [Array, Object] as PropType<
-			CSSProperties | CSSProperties[] | string[]
-		>,
-		default: undefined,
-	},
-	wrapClass: {
-		type: String,
-		default: undefined,
-	},
-	viewStyle: {
-		type: [Array, Object] as PropType<
-			CSSProperties | CSSProperties[] | string[]
-		>,
-		default: undefined,
-	},
-	viewClass: {
-		type: String,
-		default: undefined,
-	},
-	minSize: {
-		type: Number,
-		default: 20,
-	},
-	noresize: {
-		type: Boolean,
-		default: false,
-	},
-})
+const scrollBarProps = defineProps(ScrollBarProps)
 
 const emits = defineEmits(['scroll'])
 

@@ -1,3 +1,12 @@
+### v1.7.3
+#### 2024-05-27 13:49:36 +0800
+
+### Code Refactoring
+
+* **scrollbar:** 优化scrollbar结构  ([cd6e106](https://github.com/bin-K/ued-plus/commit/cd6e106)) by: **kuangzhibin**
+
+---
+
 ### v1.7.2
 #### 2024-05-08 17:24:05 +0800
 

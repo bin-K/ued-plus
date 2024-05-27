@@ -16,49 +16,65 @@ import {
 	DirectionRef,
 } from '@ued-plus/components'
 
+/**
+ * @description 滚动处理
+ * @param { ScrollBarPropsType } scrollBarProps prop对象
+ * @returns { Object }
+ */
 export function useScroll(scrollBarProps: ScrollBarPropsType) {
 	const emits = defineEmits(['scroll'])
 
 	const GAP = 4
 
+	// 移动距离
 	const move = {
 		X: ref(0),
 		Y: ref(0),
 	}
+
+	// 缩放比例
 	const ratio = {
 		X: ref(1),
 		Y: ref(1),
 	}
 
+	// 是否可视
 	const visible = ref(false)
 
+	// 滚动条宽度
 	const sizeWidth = ref('')
+	// 滚动条高度
 	const sizeHeight = ref('')
 
+	// 内容容器元素对象
 	const wrapRef = ref<HTMLDivElement>()
+	// 滚动条容器元素对象
 	const barRef: DirectionRef = {
 		horizontal: ref(),
 		vertical: ref(),
 	}
+	// 滚动条元素对象
 	const barThumbRef: DirectionRef = {
 		horizontal: ref(),
 		vertical: ref(),
 	}
 
+	// 水平滚动条容器样式，控制滚动条是否展示
 	const barHorizontalStyle = ref<CSSProperties>({
 		display: 'none',
 	})
-
+	// 垂直滚动条容器样式，控制滚动条是否展示
 	const barVerticalStyle = ref<CSSProperties>({
 		display: 'none',
 	})
-
+	// 水平滚动条样式，控制滚动条宽度以及移动距离
 	const barHorizontalThumbStyle = computed<CSSProperties>(() => {
 		return {
 			width: sizeWidth.value,
 			transform: `translateX(${move.X.value}%)`,
 		}
 	})
+	// 垂直滚动条样式，控制滚动条高度以及移动距离
 	const barVerticalThumbStyle = computed<CSSProperties>(() => {
 		return {
 			height: sizeHeight.value,
@@ -262,6 +278,12 @@ export function useScroll(scrollBarProps: ScrollBarPropsType) {
 	})
 
 	return {
+		visible,
+		wrapRef,
+		barRef,
+		barThumbRef,
+		barHorizontalStyle,
+		barVerticalStyle,
 		barHorizontalThumbStyle,
 		barVerticalThumbStyle,
 		clickTrackHandler,

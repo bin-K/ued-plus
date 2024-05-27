@@ -1,12 +1,12 @@
 import {
 	ref,
 	computed,
-	CSSProperties,
 	onMounted,
 	onUpdated,
 	onBeforeUnmount,
 	nextTick,
 	defineEmits,
+	CSSProperties,
 } from 'vue'
 import {
 	ScrollBarPropsType,
@@ -16,12 +16,13 @@ import {
 	DirectionRef,
 } from '@ued-plus/components'
 
+import type * as CSS from 'csstype'
+
 /**
  * @description 滚动处理
  * @param { ScrollBarPropsType } scrollBarProps prop对象
- * @returns { Object }
  */
-export function useScroll(scrollBarProps: ScrollBarPropsType) {
+export const useScroll = (scrollBarProps: ScrollBarPropsType) => {
 	const emits = defineEmits(['scroll'])
 
 	const GAP = 4
@@ -60,11 +61,11 @@ export function useScroll(scrollBarProps: ScrollBarPropsType) {
 	}
 
 	// 水平滚动条容器样式，控制滚动条是否展示
-	const barHorizontalStyle = ref<CSSProperties>({
+	const barHorizontalStyle = ref<CSS.Properties>({
 		display: 'none',
 	})
 	// 垂直滚动条容器样式，控制滚动条是否展示
-	const barVerticalStyle = ref<CSSProperties>({
+	const barVerticalStyle = ref<CSS.Properties>({
 		display: 'none',
 	})
 	// 水平滚动条样式，控制滚动条宽度以及移动距离

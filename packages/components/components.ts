@@ -6,6 +6,10 @@ import { UedRow, UedCol } from '@ued-plus/components/src/layout'
 import { UedScrollbar } from '@ued-plus/components/src/scrollbar'
 import { UedDialog } from '@ued-plus/components/src/dialog'
 import {
+	UedCheckbox,
+	UedCheckboxGroup,
+} from '@ued-plus/components/src/checkbox'
+import {
 	UedRadio,
 	UedRadioGroup,
 	UedRadioButton,
@@ -55,6 +59,8 @@ export default [
 	UedRadio,
 	UedRadioGroup,
 	UedRadioButton,
+	UedCheckbox,
+	UedCheckboxGroup,
 	UedForm,
 	UedFormItem,
 	// Icon

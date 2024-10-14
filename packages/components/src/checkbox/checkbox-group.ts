@@ -16,10 +16,18 @@ export const CheckboxGroupProps = {
 		type: Boolean,
 		default: undefined,
 	},
+	name: {
+		type: String,
+		default: undefined,
+	},
+	id: {
+		type: String,
+		default: undefined,
+	},
 }
 
 export type CheckboxGroupPropsType = ExtractPropTypes<typeof CheckboxGroupProps>
 
 export interface CheckboxGroupContext extends CheckboxGroupPropsType {
-	changeEvent: (val: CheckboxGroupPropsType['modelValue']) => void
+	// changeEvent: (val: CheckboxGroupPropsType['modelValue']) => void
 }

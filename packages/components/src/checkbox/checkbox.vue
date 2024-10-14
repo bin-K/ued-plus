@@ -22,17 +22,17 @@
 <script lang="ts" setup>
 import './styles/index.scss'
 import { computed, useSlots, inject } from 'vue'
-import { checkboxGroupKey } from './constant.ts'
+import { checkboxGroupKey } from './constant'
 import { isString, isNumber, isBoolean } from '@ued-plus/utils'
-import { CheckboxValueType } from './checkbox-group.ts'
+// import { CheckboxValueType } from './checkbox-group'
 
 defineOptions({ name: 'UedCheckbox' })
 
 const checkboxEmits = defineEmits({
-	'update:modelValue': (val: CheckboxValueType) =>
+	'update:modelValue': (val) =>
 		isString(val) || isNumber(val) || isBoolean(val),
-	change: (val: CheckboxValueType) =>
-		isString(val) || isNumber(val) || isBoolean(val),
+	// change: (val: CheckboxValueType) =>
+	// 	isString(val) || isNumber(val) || isBoolean(val),
 })
 
 const checkboxProps = defineProps({
@@ -71,7 +71,7 @@ const modelValue = computed({
 	},
 	set(val) {
 		if (checkoutGroupInject) {
-			checkoutGroupInject.changeEvent(val)
+			// checkoutGroupInject.changeEvent(val)
 		} else {
 			checkboxEmits('update:modelValue', val)
 		}

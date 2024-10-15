@@ -5,12 +5,6 @@
 			<ued-checkbox v-model="checked" label="Option 1" />
 			<ued-checkbox v-model="checked1" label="Option 2" />
 		</div>
-		<!-- <div class="checkbox-basic-group">
-			<ued-checkbox-group v-model="checkList">
-				<ued-checkbox value="Value A" label="Option 1" />
-				<ued-checkbox value="Value B" label="Option 2" />
-			</ued-checkbox-group>
-		</div> -->
 	</div>
 </template>
 
@@ -19,5 +13,4 @@ import { ref } from 'vue'
 
 const checked = ref(true)
 const checked1 = ref(false)
-// const checkList = ref(['Value A'])
 </script>

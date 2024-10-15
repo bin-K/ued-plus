@@ -5,15 +5,15 @@ export type CheckboxGroupValueType = Exclude<CheckboxValueType, boolean>[]
 
 export const CheckboxGroupProps = {
 	modelValue: {
-		type: Array as PropType<string[] | number[]>,
-		default: [],
+		type: Array as PropType<CheckboxGroupValueType>,
+		default: () => [],
 	},
 	disabled: {
 		type: Boolean,
 		default: undefined,
 	},
 	size: {
-		type: Boolean,
+		type: String,
 		default: undefined,
 	},
 	name: {
@@ -24,10 +24,22 @@ export const CheckboxGroupProps = {
 		type: String,
 		default: undefined,
 	},
+	border: {
+		type: Boolean,
+		default: undefined,
+	},
+	textColor: {
+		type: String,
+		default: undefined,
+	},
+	fill: {
+		type: String,
+		default: undefined,
+	},
 }
 
 export type CheckboxGroupPropsType = ExtractPropTypes<typeof CheckboxGroupProps>
 
 export interface CheckboxGroupContext extends CheckboxGroupPropsType {
-	// changeEvent: (val: CheckboxGroupPropsType['modelValue']) => void
+	changeEvent: (val: CheckboxGroupValueType) => void
 }

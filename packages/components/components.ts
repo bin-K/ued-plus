@@ -8,6 +8,7 @@ import { UedDialog } from '@ued-plus/components/src/dialog'
 import {
 	UedCheckbox,
 	UedCheckboxGroup,
+	UedCheckboxButton,
 } from '@ued-plus/components/src/checkbox'
 import {
 	UedRadio,
@@ -61,6 +62,7 @@ export default [
 	UedRadioButton,
 	UedCheckbox,
 	UedCheckboxGroup,
+	UedCheckboxButton,
 	UedForm,
 	UedFormItem,
 	// Icon

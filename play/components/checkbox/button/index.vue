@@ -6,28 +6,28 @@
 			<ued-checkbox-button v-model="button2" value="button2" />
 			<ued-checkbox-button v-model="button3" value="button3" />
 		</div>
-		<div class="checkbox-group-basic">
+		<div class="checkbox-button-group">
 			<ued-checkbox-group v-model="buttonGroup">
 				<ued-checkbox-button value="button1" />
 				<ued-checkbox-button value="button2" />
 				<ued-checkbox-button value="button3" />
 			</ued-checkbox-group>
 		</div>
-		<div class="checkbox-size-basic">
+		<div class="checkbox-button-size-basic">
 			<ued-checkbox-group v-model="large" size="large">
 				<ued-checkbox-button value="button1" />
 				<ued-checkbox-button value="button2" />
 				<ued-checkbox-button value="button3" />
 			</ued-checkbox-group>
 		</div>
-		<div class="checkbox-size-basic">
+		<div class="checkbox-button-size-basic">
 			<ued-checkbox-group v-model="small" size="small">
 				<ued-checkbox-button value="button1" />
 				<ued-checkbox-button value="button2" disabled />
 				<ued-checkbox-button value="button3" />
 			</ued-checkbox-group>
 		</div>
-		<div class="checkbox-size-basic">
+		<div class="checkbox-button-size-basic">
 			<ued-checkbox-group
 				v-model="style"
 				fill="#67c23a"

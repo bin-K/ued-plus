@@ -6,7 +6,8 @@
 				v-model="modelValue"
 				type="checkbox"
 				class="ued-checkbox__original"
-				:disabled="disabled"
+				:indeterminate="indeterminate"
+				:disabled="isDisabled"
 				:value="value"
 				:name="name || checkboxGroupInject?.name"
 				@focus="focus = true"
@@ -76,6 +77,10 @@ const checkboxProps = defineProps({
 		type: Boolean,
 		default: false,
 	},
+	indeterminate: {
+		type: Boolean,
+		default: false,
+	},
 })
 
 const $slots = useSlots()
@@ -112,7 +117,7 @@ const border = computed(
 )
 
 const selfModel = ref<unknown>(false)
-const isChecked = () => {
+const isChecked = computed(() => {
 	const value =
 		checkboxGroupInject?.modelValue ?? modelValue.value ?? selfModel.value
 	if (isBoolean(value)) {
@@ -126,14 +131,27 @@ const isChecked = () => {
 	} else {
 		return !!value
 	}
-}
+})
+
+const limitDisabled = computed(() => {
+	const value = checkboxGroupInject?.modelValue as CheckboxGroupValueType
+	const max = checkboxGroupInject?.max
+	const min = checkboxGroupInject?.min
+	return (
+		(max !== undefined && value.length >= max && !isChecked.value) ||
+		(min !== undefined && value.length <= min && isChecked.value)
+	)
+})
+
+const isDisabled = computed(() => disabled.value ?? limitDisabled.value)
 
 const checkboxClass = computed(() => {
 	return {
-		'is-checked': isChecked(),
-		'is-disabled': disabled.value,
+		'is-checked': isChecked.value,
+		'is-disabled': isDisabled.value,
 		'is-bordered': border.value,
 		'is-focus': focus.value,
+		'is-indeterminate': checkboxProps.indeterminate,
 		[`ued-checkbox--${size.value}`]: size.value,
 	}
 })

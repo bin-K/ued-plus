@@ -36,6 +36,14 @@ export const CheckboxGroupProps = {
 		type: String,
 		default: undefined,
 	},
+	max: {
+		type: Number,
+		default: undefined,
+	},
+	min: {
+		type: Number,
+		default: undefined,
+	},
 }
 
 export type CheckboxGroupPropsType = ExtractPropTypes<typeof CheckboxGroupProps>

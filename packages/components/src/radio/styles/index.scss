@@ -150,12 +150,12 @@
 
 	&__input.is-disabled &__inner {
 		cursor: not-allowed;
-		background-color: var(--ued-disabled-bg-color);
-		border-color: var(--ued-disabled-border-color);
+		background-color: var(--ued-fill-color-light);
+		border-color: var(--ued-border-color);
 
 		&::after {
 			cursor: not-allowed;
-			background-color: var(--ued-disabled-bg-color);
+			background-color: var(--ued-fill-color-light);
 		}
 	}
 
@@ -192,8 +192,8 @@
 	}
 
 	&__input.is-disabled.is-checked &__inner {
-		background-color: var(--ued-disabled-bg-color);
-		border-color: var(--ued-disabled-border-color);
+		background-color: var(--ued-fill-color-light);
+		border-color: var(--ued-border-color);
 
 		&::after {
 			background-color: var(--ued-text-color-placeholder);

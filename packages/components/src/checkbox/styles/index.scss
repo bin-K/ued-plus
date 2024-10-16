@@ -155,12 +155,33 @@
 
 	&__input.is-disabled &__inner {
 		cursor: not-allowed;
-		background-color: var(--ued-disabled-bg-color);
-		border-color: var(--ued-disabled-border-color);
+		background-color: var(--ued-fill-color-light);
+		border-color: var(--ued-border-color);
 
 		&::after {
 			cursor: not-allowed;
-			background-color: var(--ued-disabled-bg-color);
+			border-color: var(--ued-text-color-placeholder);
+		}
+	}
+
+	&__input.is-indeterminate &__inner {
+		background-color: var(--ued-color-primary);
+		border-color: var(--ued-color-primary);
+
+		&::before {
+			position: absolute;
+			top: 5px;
+			right: 0;
+			left: 0;
+			display: block;
+			height: 2px;
+			content: '';
+			background-color: var(--ued-color-white);
+			transform: scale(0.5);
+		}
+
+		&::after {
+			display: none;
 		}
 	}
 
@@ -193,13 +214,21 @@
 	}
 
 	&__input.is-disabled.is-checked &__inner {
+		cursor: not-allowed;
+		background-color: var(--ued-border-color-extra-light);
+		border-color: var(--ued-border-color);
+
 		&::after {
 			border-color: var(--ued-text-color-placeholder);
 		}
 	}
 
+	&__input.is-focus:not(.is-checked) &__original:not(:focus-visible) {
+		border-color: var(--ued-checkbox-border-color-hover);
+	}
+
 	&:focus:not(:focus-visible):not(.is-focus):not(:active):not(.is-disabled)
 		&__inner {
-		box-shadow: 0 0 2px 2px var(--ued-checkout-border-color-hover);
+		box-shadow: 0 0 2px 2px var(--ued-checkbox-border-color-hover);
 	}
 }

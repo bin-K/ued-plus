@@ -1,3 +1,12 @@
+### v1.7.4
+#### 2024-10-16 17:30:06 +0800
+
+### Bug Fixes
+
+* **scrollbar:** 修复scrollbar 测试用例bug  ([0054c2b](https://github.com/bin-K/ued-plus/commit/0054c2b)) by: **KuangZhiBin**
+
+---
+
 ### v1.7.3
 #### 2024-05-27 13:49:36 +0800
 

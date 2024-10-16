@@ -59,12 +59,14 @@
 import './styles/index.scss'
 import { computed, ref, watch } from 'vue'
 import { handleStringOrNumberPx, isNumber, isObject } from '@ued-plus/utils'
-import { ScrollBarProps } from './scrollbar'
+import { ScrollBarProps, ScrollBarEmits } from './scrollbar'
 import { useScroll } from '@ued-plus/hooks'
 
 defineOptions({ name: 'UedScrollbar' })
 
 const scrollBarProps = defineProps(ScrollBarProps)
+
+const scrollBarEmits = defineEmits(ScrollBarEmits)
 
 const {
 	visible,
@@ -79,7 +81,12 @@ const {
 	update,
 	clickTrackHandler,
 	clickThumbHandler,
-} = useScroll(scrollBarProps)
+} = useScroll(scrollBarProps, (scrollTop: number, scrollLeft: number) => {
+	scrollBarEmits('scroll', {
+		scrollTop,
+		scrollLeft,
+	})
+})
 
 const scrollbarRef = ref()
 const scrollbarWrapStyle = computed(() => {

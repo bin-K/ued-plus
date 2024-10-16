@@ -1,4 +1,5 @@
 import { ExtractPropTypes, PropType, CSSProperties, Ref } from 'vue'
+import { isNumber } from '@ued-plus/utils'
 
 export const ScrollBarProps = {
 	tag: {
@@ -51,7 +52,19 @@ export const ScrollBarProps = {
 	},
 }
 
+export const ScrollBarEmits = {
+	scroll: ({
+		scrollTop,
+		scrollLeft,
+	}: {
+		scrollTop: number
+		scrollLeft: number
+	}) => [scrollTop, scrollLeft].every(isNumber),
+}
+
 export type ScrollBarPropsType = ExtractPropTypes<typeof ScrollBarProps>
+
+export type ScrollBarEmitsType = typeof ScrollBarEmits
 
 export const BAR_MAP = {
 	vertical: {

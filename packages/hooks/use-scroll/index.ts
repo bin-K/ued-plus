@@ -5,7 +5,6 @@ import {
 	onUpdated,
 	onBeforeUnmount,
 	nextTick,
-	defineEmits,
 	CSSProperties,
 } from 'vue'
 import {
@@ -22,9 +21,10 @@ import type * as CSS from 'csstype'
  * @description 滚动处理
  * @param { ScrollBarPropsType } scrollBarProps prop对象
  */
-export const useScroll = (scrollBarProps: ScrollBarPropsType) => {
-	const emits = defineEmits(['scroll'])
-
+export const useScroll = (
+	scrollBarProps: ScrollBarPropsType,
+	emitScroll: (scrollTop: number, scrollLeft: number) => void
+) => {
 	const GAP = 4
 
 	// 移动距离
@@ -248,10 +248,8 @@ export const useScroll = (scrollBarProps: ScrollBarPropsType) => {
 			const { offsetHeight, offsetWidth, scrollTop, scrollLeft } = wrapRef.value
 			move.Y.value = ((scrollTop * 100) / (offsetHeight - GAP)) * ratio.Y.value
 			move.X.value = ((scrollLeft * 100) / (offsetWidth - GAP)) * ratio.X.value
-			emits('scroll', {
-				scrollTop: wrapRef.value.scrollTop,
-				scrollLeft: wrapRef.value.scrollLeft,
-			})
+
+			emitScroll(wrapRef.value.scrollTop, wrapRef.value.scrollLeft)
 		}
 	}
 

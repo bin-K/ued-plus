@@ -39,6 +39,10 @@ const routes = [
 		component: () => import('../components/radio/index.vue'),
 	},
 	{
+		path: '/checkbox',
+		component: () => import('../components/checkbox/index.vue'),
+	},
+	{
 		path: '/form',
 		component: () => import('../components/form/index.vue'),
 	},

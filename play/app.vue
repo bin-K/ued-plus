@@ -24,6 +24,7 @@ const link = ref([
 	'Scrollbar',
 	'Dialog',
 	'Radio',
+	'Checkbox',
 	'Form',
 ])
 </script>

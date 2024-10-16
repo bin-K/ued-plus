@@ -3,7 +3,7 @@
 ## clone 组件库代码
 
 ```shell
-git clone git@github.com:bin-K/ued-plus.git
+git clone https://github.com/bin-K/ued-plus.git
 ```
 
 ## 进入组件库并执行依赖安装

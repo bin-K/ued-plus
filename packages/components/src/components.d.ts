@@ -19,6 +19,9 @@ declare module '@vue/runtime-core' {
 		UedRadio: typeof components.UedRadio
 		UedRadioGroup: typeof components.UedRadioGroup
 		UedRadioButton: typeof components.UedRadioButton
+		UedCheckbox: typeof components.UedCheckbox
+		UedCheckboxGroup: typeof components.UedCheckboxGroup
+		UedCheckboxButton: typeof components.UedCheckboxButton
 		UedForm: typeof components.UedForm
 		UedFormItem: typeof components.UedFormItem
 	}

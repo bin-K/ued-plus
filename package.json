@@ -104,6 +104,7 @@
 		"@ued-plus/components": "workspace:^",
 		"@ued-plus/hooks": "workspace:^",
 		"@ued-plus/utils": "workspace:^",
-		"@vueuse/core": "^10.9.0"
+		"@vueuse/core": "^10.9.0",
+		"lodash-unified": "^1.0.3"
 	}
 }

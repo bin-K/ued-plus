@@ -79,6 +79,10 @@ export default {
 							text: 'Radio',
 							link: '/changelogs/radio/',
 						},
+						{
+							text: 'Checkbox',
+							link: '/changelogs/checkbox/',
+						},
 					],
 				},
 				{
@@ -150,6 +154,10 @@ export default {
 						{
 							text: 'Radio',
 							link: '/components/radio/',
+						},
+						{
+							text: 'Checkbox',
+							link: '/components/checkbox/',
 						},
 					],
 				},

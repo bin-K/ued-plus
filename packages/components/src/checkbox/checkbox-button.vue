@@ -96,9 +96,7 @@ const modelValue = computed({
 
 const size = computed(() => {
 	return (
-		checkboxButtonProps.size ??
-		checkboxGroupInject?.size ??
-		formInject?.disabled
+		checkboxButtonProps.size ?? checkboxGroupInject?.size ?? formInject?.size
 	)
 })
 

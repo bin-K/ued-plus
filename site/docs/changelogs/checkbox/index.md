@@ -1,1 +1,1 @@
-<!--@include: ../../../../changelogs/checkout.md-->
+<!--@include: ../../../../changelogs/checkbox.md-->

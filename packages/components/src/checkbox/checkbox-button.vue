@@ -10,7 +10,7 @@
 			v-model="modelValue"
 			type="checkbox"
 			class="ued-checkbox-button__original-checkbox"
-			:disabled="disabled"
+			:disabled="isDisabled"
 			:value="value"
 			:name="name || checkboxGroupInject?.name"
 			@focus="focus = true"
@@ -111,7 +111,7 @@ const disabled = computed(() => {
 })
 
 const selfModel = ref<unknown>(false)
-const isActived = () => {
+const isActived = computed(() => {
 	const value =
 		checkboxGroupInject?.modelValue ?? modelValue.value ?? selfModel.value
 	if (isBoolean(value)) {
@@ -125,11 +125,23 @@ const isActived = () => {
 	} else {
 		return !!value
 	}
-}
+})
+
+const limitDisabled = computed(() => {
+	const value = checkboxGroupInject?.modelValue as CheckboxGroupValueType
+	const max = checkboxGroupInject?.max
+	const min = checkboxGroupInject?.min
+	return (
+		(max !== undefined && value.length >= max && !isActived.value) ||
+		(min !== undefined && value.length <= min && isActived.value)
+	)
+})
+
+const isDisabled = computed(() => disabled.value ?? limitDisabled.value)
 
 const checkboxButtonClass = computed(() => {
 	return {
-		'is-active': isActived(),
+		'is-active': isActived.value,
 		'is-disabled': disabled.value,
 		'is-focus': focus.value,
 		[`ued-checkbox-button--${size.value}`]: size.value,

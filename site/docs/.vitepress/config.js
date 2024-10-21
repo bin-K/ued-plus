@@ -40,6 +40,15 @@ export default {
 						},
 					],
 				},
+				{
+					text: '基础组件',
+					items: [
+						{
+							text: 'Button',
+							link: '/devlogs/button/',
+						},
+					],
+				},
 			],
 			'/changelogs': [
 				{

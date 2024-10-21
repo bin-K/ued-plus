@@ -17,6 +17,7 @@ export default {
 			level: 'deep',
 		},
 		nav: [
+			{ text: '开发日志', link: '/devlogs/mono/' },
 			{ text: '更新日志', link: '/changelogs/mono/' },
 			{ text: '指南', link: '/guide/quickstart/' },
 			{ text: '组件', link: '/components/button/' },
@@ -25,6 +26,21 @@ export default {
 			{ icon: 'github', link: 'https://github.com/bin-K/ued-plus' },
 		],
 		sidebar: {
+			'/devlogs': [
+				{
+					text: '基础日志',
+					items: [
+						{
+							text: 'Project',
+							link: '/devlogs/mono/project.md',
+						},
+						{
+							text: 'Mono',
+							link: '/devlogs/mono/',
+						},
+					],
+				},
+			],
 			'/changelogs': [
 				{
 					text: '基础日志',

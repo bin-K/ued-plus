@@ -47,6 +47,10 @@ export default {
 							text: 'Button',
 							link: '/devlogs/button/',
 						},
+						{
+							text: 'Icon',
+							link: '/devlogs/icon/',
+						},
 					],
 				},
 			],

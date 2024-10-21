@@ -1,6 +1,7 @@
 ### 自定义组件库（Vue3）
 
 - 参考：https://juejin.cn/column/7118932817119019015
+- 参考：https://github.com/bin-K/monorepo-pnpm-vue#monorepo-pnpm-%E6%A8%A1%E5%BC%8F%E7%AE%A1%E7%90%86%E5%A4%9A%E4%B8%AA-web-%E9%A1%B9%E7%9B%AEvue3
 
 #### 组件库的环境配置
 
@@ -664,7 +665,9 @@ export default {
 			{ text: '指南', link: '/guide/installation/' },
 			{ text: '组件', link: '/components/button/' },
 		],
-		socialLinks: [{ icon: 'github', link: 'https://github.com/bin-K/ued-plus' }],
+		socialLinks: [
+			{ icon: 'github', link: 'https://github.com/bin-K/ued-plus' },
+		],
 	},
 }
 ```

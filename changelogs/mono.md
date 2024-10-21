@@ -1,3 +1,12 @@
+### v1.0.16
+#### 2024-10-21 16:49:56 +0800
+
+### Documentation
+
+* **mono:** 补充开发日志  ([0184bc8](https://github.com/bin-K/ued-plus/commit/0184bc8)) by: **KuangZhiBin**
+
+---
+
 ### v1.0.15
 #### 2024-05-22 19:33:03 +0800
 

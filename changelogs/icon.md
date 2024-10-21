@@ -1,3 +1,12 @@
+### v1.2.6
+#### 2024-10-21 18:05:41 +0800
+
+### Documentation
+
+* **icon:** 补充icon开发日志  ([881a2c2](https://github.com/bin-K/ued-plus/commit/881a2c2)) by: **KuangZhiBin**
+
+---
+
 ### v1.2.5
 #### 2024-05-07 14:54:55 +0800
 

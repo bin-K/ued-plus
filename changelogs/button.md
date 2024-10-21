@@ -1,3 +1,12 @@
+### v1.1.7
+#### 2024-10-21 17:30:03 +0800
+
+### Documentation
+
+* **button:** 补充button开发日志  ([d2ed03e](https://github.com/bin-K/ued-plus/commit/d2ed03e)) by: **KuangZhiBin**
+
+---
+
 ### v1.1.6
 #### 2024-05-07 01:53:02 +0800
 

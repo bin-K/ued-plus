@@ -1,3 +1,12 @@
+### v1.3.2
+#### 2024-10-22 10:16:11 +0800
+
+### Documentation
+
+* **text:** 补充text开发日志  ([790e509](https://github.com/bin-K/ued-plus/commit/790e509)) by: **KuangZhiBin**
+
+---
+
 ### v1.3.1
 #### 2024-05-07 11:38:55 +0800
 

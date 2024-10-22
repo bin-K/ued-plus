@@ -51,6 +51,10 @@ export default {
 							text: 'Icon',
 							link: '/devlogs/icon/',
 						},
+						{
+							text: 'Text',
+							link: '/devlogs/text/',
+						},
 					],
 				},
 			],

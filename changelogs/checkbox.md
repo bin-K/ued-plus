@@ -1,3 +1,12 @@
+### v1.11.1
+#### 2024-10-22 11:49:16 +0800
+
+### Documentation
+
+* **checkbox:** 补充checkbox开发日志  ([f27ed84](https://github.com/bin-K/ued-plus/commit/f27ed84)) by: **KuangZhiBin**
+
+---
+
 ### v1.11.0
 #### 2024-10-16 16:54:14 +0800
 

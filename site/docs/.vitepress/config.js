@@ -67,6 +67,10 @@ export default {
 							text: 'Layout',
 							link: '/devlogs/layout/',
 						},
+						{
+							text: 'Scrollbar',
+							link: '/devlogs/scrollbar/',
+						},
 					],
 				},
 			],

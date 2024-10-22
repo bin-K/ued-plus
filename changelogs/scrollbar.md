@@ -1,3 +1,12 @@
+### v1.7.5
+#### 2024-10-22 11:00:52 +0800
+
+### Documentation
+
+* **scrollbar:** 补充scrollbar开发日志  ([08c306c](https://github.com/bin-K/ued-plus/commit/08c306c)) by: **KuangZhiBin**
+
+---
+
 ### v1.7.4
 #### 2024-10-16 17:30:06 +0800
 

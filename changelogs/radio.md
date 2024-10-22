@@ -1,3 +1,12 @@
+### v1.9.2
+#### 2024-10-22 11:43:15 +0800
+
+### Documentation
+
+* **radio:** 补充radio开发日志  ([274f1c9](https://github.com/bin-K/ued-plus/commit/274f1c9)) by: **KuangZhiBin**
+
+---
+
 ### v1.9.1
 #### 2024-05-09 01:42:55 +0800
 

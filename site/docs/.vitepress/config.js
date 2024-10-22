@@ -41,7 +41,7 @@ export default {
 					],
 				},
 				{
-					text: '基础组件',
+					text: '基础组件日志',
 					items: [
 						{
 							text: 'Button',
@@ -73,6 +73,15 @@ export default {
 						},
 					],
 				},
+				{
+					text: '表单组件日志',
+					items: [
+						{
+							text: 'Form',
+							link: '/devlogs/form/',
+						},
+					],
+				},
 			],
 			'/changelogs': [
 				{
@@ -85,7 +94,7 @@ export default {
 					],
 				},
 				{
-					text: '基础组件',
+					text: '基础组件日志',
 					items: [
 						{
 							text: 'Button',

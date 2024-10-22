@@ -26,7 +26,7 @@ container
 ### 采用flex布局
 
 - `container` 包含 `aside`、`footer`、`header`、`main`等几个组件
-- 所以的布局方式均采用`flex`布局
+- 所有的布局方式均采用`flex`布局
 
 ```scss
 .ued-container {

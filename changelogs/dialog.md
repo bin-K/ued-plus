@@ -1,3 +1,12 @@
+### v1.8.3
+#### 2024-10-22 11:29:31 +0800
+
+### Documentation
+
+* **dialog:** 补充dialog开发日志  ([d7bd8b8](https://github.com/bin-K/ued-plus/commit/d7bd8b8)) by: **KuangZhiBin**
+
+---
+
 ### v1.8.2
 #### 2024-05-24 11:01:19 +0800
 

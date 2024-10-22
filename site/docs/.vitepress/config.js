@@ -84,6 +84,10 @@ export default {
 							text: 'Radio',
 							link: '/devlogs/radio/',
 						},
+						{
+							text: 'Checkbox',
+							link: '/devlogs/checkbox/',
+						},
 					],
 				},
 				{

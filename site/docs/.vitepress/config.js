@@ -59,6 +59,10 @@ export default {
 							text: 'Link',
 							link: '/devlogs/link/',
 						},
+						{
+							text: 'Container',
+							link: '/devlogs/container/',
+						},
 					],
 				},
 			],

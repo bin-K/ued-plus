@@ -1,3 +1,12 @@
+### v1.5.3
+#### 2024-10-22 10:39:58 +0800
+
+### Documentation
+
+* **container:** 补充container开发日志  ([d06b47f](https://github.com/bin-K/ued-plus/commit/d06b47f)) by: **KuangZhiBin**
+
+---
+
 ### v1.5.2
 #### 2024-05-07 17:14:13 +0800
 

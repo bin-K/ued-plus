@@ -82,6 +82,15 @@ export default {
 						},
 					],
 				},
+				{
+					text: '反馈组件日志',
+					items: [
+						{
+							text: 'Dialog',
+							link: '/devlogs/dialog/',
+						},
+					],
+				},
 			],
 			'/changelogs': [
 				{

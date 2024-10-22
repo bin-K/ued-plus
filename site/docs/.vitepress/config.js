@@ -63,6 +63,10 @@ export default {
 							text: 'Container',
 							link: '/devlogs/container/',
 						},
+						{
+							text: 'Layout',
+							link: '/devlogs/layout/',
+						},
 					],
 				},
 			],

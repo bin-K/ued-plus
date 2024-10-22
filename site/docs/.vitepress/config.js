@@ -55,6 +55,10 @@ export default {
 							text: 'Text',
 							link: '/devlogs/text/',
 						},
+						{
+							text: 'Link',
+							link: '/devlogs/link/',
+						},
 					],
 				},
 			],

@@ -1,0 +1,131 @@
+# 阶段
+stages:
+  - prepare
+  - test
+  - build
+  - deploy
+
+# 安装依赖
+install_dependency:
+  stage: prepare
+  tags:
+    - ued-plus
+  only:
+    variables:
+      - $CI_COMMIT_BRANCH =~ /^(feature|release|hotfix)\//
+      - $CI_COMMIT_TAG =~ /^v/
+  script:
+    - npm config set registry https://registry.npmmirror.com # 设置淘宝镜像
+    - npm install pnpm -g # 安装pnpm
+    - npm install npm-cli-login -g # 安装npm登录工具
+    - cd ${CI_PROJECT_DIR} # 拉取项目的根目录
+    - pnpm install # 安装依赖
+  cache:
+    paths:
+      - '**/node_modules/'
+  when: manual
+
+# 组件测试
+test_ued:
+  stage: test
+  tags:
+    - ued-plus
+  only:
+    variables:
+      - $CI_COMMIT_BRANCH =~ /^(feature|release|hotfix)\//
+      - $CI_COMMIT_TAG =~ /^v/
+  cache:
+    paths:
+      - '**/node_modules/'
+  script:
+    - cd ${CI_PROJECT_DIR}/packages/components
+    - pnpm test
+
+# 文档打包
+build_docs:
+  stage: build
+  tags:
+    - ued-plus
+  only:
+    variables:
+      - $CI_COMMIT_BRANCH =~ /^(feature|release|hotfix)\//
+      - $CI_COMMIT_TAG =~ /^v/
+  cache:
+    paths:
+      - '**/node_modules/'
+  script:
+    - cd ${CI_PROJECT_DIR}/site
+    - pnpm docs:build
+  artifacts: # 把打包的内容传递给下一个阶段
+    paths:
+      - ${CI_PROJECT_DIR}/site/docs/.vitepress/dist/
+
+# 组件打包
+build_ued:
+  stage: build
+  tags:
+    - ued-plus
+  only:
+    variables:
+      - $CI_COMMIT_BRANCH =~ /^(feature|release|hotfix)\//
+      - $CI_COMMIT_TAG =~ /^v/
+  cache:
+    paths:
+      - '**/node_modules/'
+  script:
+    - rm -rf ${CI_PROJECT_DIR}/packages/ued-plus
+    - pnpm build:ued-plus # 运行构建命令
+  artifacts: # 把打包的内容传递给下一个阶段
+    paths:
+      - ${CI_PROJECT_DIR}/packages/ued-plus/
+
+# 发布组件包
+deploy_ued:
+  stage: deploy
+  tags:
+    - ued-plus
+  only:
+    variables:
+      - $CI_COMMIT_TAG =~ /^v/
+  script:
+    - cd ${CI_PROJECT_DIR}/packages/ued-plus
+    - pnpm publish --no-git-checks
+  when: manual
+
+deploy_docs_feature:
+  stage: deploy
+  tags:
+    - ued-plus
+  only:
+    variables:
+      - $CI_COMMIT_BRANCH =~ /^(feature)\//
+  script:
+    - if [ ! -d "/www/feature/${CI_DOCS_DEPLOY_DIR}" ]; then mkdir /www/feature/${CI_DOCS_DEPLOY_DIR}; chmod -R 777 /www/feature/${CI_DOCS_DEPLOY_DIR}; fi;
+    - rm -rf /www/feature/${CI_DOCS_DEPLOY_DIR}/*
+    - cp -rf ${CI_PROJECT_DIR}/site/docs/.vitepress/dist/* /www/feature/${CI_DOCS_DEPLOY_DIR}/
+
+deploy_docs_preview:
+  stage: deploy
+  tags:
+    - ued-plus
+  only:
+    variables:
+      - $CI_COMMIT_BRANCH =~ /^(release|hotfix)\//
+  script:
+    - if [ ! -d "/www/release/${CI_DOCS_DEPLOY_DIR}" ]; then mkdir /www/release/${CI_DOCS_DEPLOY_DIR}; chmod -R 777 /www/release/${CI_DOCS_DEPLOY_DIR}; fi;
+    - rm -rf /www/release/${CI_DOCS_DEPLOY_DIR}/*
+    - cp -rf ${CI_PROJECT_DIR}/site/docs/.vitepress/dist/* /www/release/${CI_DOCS_DEPLOY_DIR}/
+
+# 部署文档
+deploy_docs_production:
+  stage: deploy
+  tags:
+    - ued-plus
+  only:
+    variables:
+      - $CI_COMMIT_TAG =~ /^v/
+  script:
+    - if [ ! -d "/www/wwwroot/${CI_DOCS_DEPLOY_DIR}" ]; then mkdir /www/wwwroot/${CI_DOCS_DEPLOY_DIR}; chmod -R 777 /www/wwwroot/${CI_DOCS_DEPLOY_DIR}; fi;
+    - rm -rf /www/wwwroot/${CI_DOCS_DEPLOY_DIR}/*
+    - cp -rf ${CI_PROJECT_DIR}/site/docs/.vitepress/dist/* /www/wwwroot/${CI_DOCS_DEPLOY_DIR}/
+  when: manual

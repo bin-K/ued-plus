@@ -1,3 +1,12 @@
+### v1.0.17
+#### 2024-10-30 15:31:01 +0800
+
+### Features
+
+* **mono:** 新增CI/CD脚本  ([881b49f](https://github.com/bin-K/ued-plus/commit/881b49f)) by: **KuangZhiBin**
+
+---
+
 ### v1.0.16
 #### 2024-10-21 16:49:56 +0800
 
